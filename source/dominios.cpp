@@ -96,3 +96,65 @@ void NomeEvento::setNome(string nome) throw (invalid_argument) {
     validar(nome);
     this->nome = nome;
 }
+
+// ------------------------------------------------------------------------  
+
+void Data::validar(string data) throw (invalid_argument) {
+
+    // checa tamanho
+    if (data.length() != TAMANHO_ESPERADO) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa por numeros
+    int caracter;
+    for (int i = 0; i < TAMANHO_ESPERADO; i++) {
+        caracter = int(data[i]);
+        if ((caracter < LIMITE_INFERIOR_NUMERO || caracter > LIMITE_SUPERIOR_NUMERO) &&
+            (i+1)%INTERVALO_BARRAS != 0) {
+            throw invalid_argument("Argumento invalido");       
+        }
+    }
+
+    // checa barras
+    if (data[BARRA_POS1] != '/' || data[BARRA_POS2] != '/') {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa ano bissexto
+    int ano = (int(data[ANO_POS1])-ASCII_OFFSET)*10 + (int(data[ANO_POS2])-ASCII_OFFSET);
+    int mes = (int(data[MES_POS1])-ASCII_OFFSET)*10 + (int(data[MES_POS2])-ASCII_OFFSET);
+    int dia = (int(data[DIA_POS1])-ASCII_OFFSET)*10 + (int(data[DIA_POS2])-ASCII_OFFSET);
+    bool bissexto = false;
+    if (ano%4 == 0) {
+        bissexto = true;
+    }
+
+    if (mes > 12 || dia > 31) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    if (mes == ABR || mes == JUN || mes == SET || mes == NOV) {
+        // tratamento 30 dias
+        if (dia > 30) {
+            throw invalid_argument("Argumento invalido");
+        }
+    } else if (bissexto) {
+        // tratamento 29 dias
+        if (dia > 29) {
+            throw invalid_argument("Argumento invalido");
+        }
+    } else {
+        // tratamento 28 dias
+        if (dia > 28) {
+            throw invalid_argument("Argumento invalido");
+        }
+    }
+    
+    return;
+}
+
+void Data::setData(string data) throw (invalid_argument) {
+    validar(data);
+    this->data = data;
+}

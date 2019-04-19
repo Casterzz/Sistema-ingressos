@@ -12,11 +12,13 @@ int main() {
 	TUCodigoApresentacao testeApresentacao;
 	TUCodigoIngresso testeIngresso;
 	TUNomeEvento testeNomeEvento;
+	TUData testeData;
 
 	testeEvento.run();
 	testeApresentacao.run();
 	testeIngresso.run();
 	testeNomeEvento.run();
+	testeData.run();
 
 	return 0;
 }

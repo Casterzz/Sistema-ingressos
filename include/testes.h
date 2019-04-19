@@ -102,4 +102,30 @@ class TUNomeEvento {
     
     void run();
 };
+
+class TUData {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+
+    static const string DATA_VALIDA_NORMAL;
+    static const string DATA_VALIDA_BISSEXTO;
+    static const string DATA_INVALIDA_MAIOR;
+    static const string DATA_INVALIDA_MENOR;
+    static const string DATA_INVALIDA_BARRAS;
+    static const string DATA_INVALIDA_ANO;
+    static const string DATA_INVALIDA_MES;
+    static const string DATA_INVALIDA_DIA_31;
+    static const string DATA_INVALIDA_DIA_30;
+    static const string DATA_INVALIDA_BISSEXTO;
+
+    Data *pData;
+ 
+ public:
+    
+    void run();
+};
 #endif // TESTES_H_INCLUDED
