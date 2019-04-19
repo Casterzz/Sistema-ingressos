@@ -158,3 +158,196 @@ void Data::setData(string data) throw (invalid_argument) {
     validar(data);
     this->data = data;
 }
+
+// ------------------------------------------------------------------------
+
+const string FaixaEtaria::LIVRE = "L";
+const string FaixaEtaria::DEZ = "10";
+const string FaixaEtaria::DOZE = "12";
+const string FaixaEtaria::QUATORZE = "14";
+const string FaixaEtaria::DEZESSEIS = "16";
+const string FaixaEtaria::DEZOITO = "18";
+   
+
+void FaixaEtaria::validar(string faixa) throw (invalid_argument) {
+
+    // checa tamanho maximo
+    if (faixa.length() > TAMANHO_MAX) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa validade
+    if (LIVRE.compare(faixa) != 0 && DEZ.compare(faixa) != 0 &&
+        DOZE.compare(faixa) != 0 && QUATORZE.compare(faixa) != 0 &&
+        DEZESSEIS.compare(faixa) != 0 && DEZOITO.compare(faixa) != 0) {
+        throw invalid_argument("Argumento invalido");
+    }
+    return;
+}
+
+void FaixaEtaria::setFaixa(string faixa) throw (invalid_argument) {
+    validar(faixa);
+    this->faixa = faixa;
+}
+
+// ------------------------------------------------------------------------
+
+const string Estado::LISTA =
+"AC/AL/AP/AM/BA/CE/DF/ES/GO/MA/MT/MS/MG/PA/PB/PR/PE/PI/RJ/RN/RS/RO/RR/SC/SP/SE/TO/";
+
+void Estado::validar(string estado) throw (invalid_argument) {
+
+    // checa tamanho
+    if (estado.length() != TAMANHO_ESPERADO) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa existencia
+    string copia = estado;
+    copia.push_back('/');
+    if (LISTA.find(copia) == string::npos) {
+        throw invalid_argument("Argumento invalido");
+    }
+    return;
+}
+
+void Estado::setEstado(string estado) throw (invalid_argument) {
+    validar(estado);
+    this->estado = estado;
+}
+
+// ------------------------------------------------------------------------
+
+const string Horario::MINUTOS = "00/15/30/45/";
+
+void Horario::validar(string horario) throw (invalid_argument) {
+
+    // checa tamanho
+    if (horario.length() != TAMANHO_ESPERADO) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa caracteres
+    if (horario[HORAS_POS1] < LIMITE_INFERIOR_NUMERO || horario[HORAS_POS1] > LIMITE_SUPERIOR_NUMERO ||
+        horario[HORAS_POS2] < LIMITE_INFERIOR_NUMERO || horario[HORAS_POS2] > LIMITE_SUPERIOR_NUMERO ||
+        horario[MINUTOS_POS1] < LIMITE_INFERIOR_NUMERO || horario[MINUTOS_POS1] > LIMITE_SUPERIOR_NUMERO ||
+        horario[MINUTOS_POS2] < LIMITE_INFERIOR_NUMERO || horario[MINUTOS_POS2] > LIMITE_SUPERIOR_NUMERO ||
+        horario[MEIO] != ':') {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa horas
+    int hora = (horario[HORAS_POS1]-ASCII_OFFSET)*10 + (horario[HORAS_POS2]-ASCII_OFFSET);
+    if (hora < LIMITE_INFERIOR_HORA || hora > LIMITE_SUPERIOR_HORA) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa minutos
+    string minutos;
+    minutos.push_back(horario[MINUTOS_POS1]);
+    minutos.push_back(horario[MINUTOS_POS2]);
+    minutos.push_back('/');
+    if (MINUTOS.find(minutos) == string::npos) {
+        throw invalid_argument("Argumento invalido");
+    }
+    return;
+}
+
+void Horario::setHorario(string horario) throw (invalid_argument) {
+    validar(horario);
+    this->horario = horario;
+}
+
+// ------------------------------------------------------------------------
+
+void DataValidade::validar(string dataValidade) throw (invalid_argument) {
+
+    // checa tamanho
+    if (dataValidade.length() != TAMANHO_ESPERADO) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa caracteres
+    if (dataValidade[MES_POS1] < LIMITE_INFERIOR_NUMERO || dataValidade[MES_POS1] > LIMITE_SUPERIOR_NUMERO ||
+        dataValidade[MES_POS2] < LIMITE_INFERIOR_NUMERO || dataValidade[MES_POS2] > LIMITE_SUPERIOR_NUMERO ||
+        dataValidade[ANO_POS1] < LIMITE_INFERIOR_NUMERO || dataValidade[ANO_POS1] > LIMITE_SUPERIOR_NUMERO ||
+        dataValidade[ANO_POS2] < LIMITE_INFERIOR_NUMERO || dataValidade[ANO_POS2] > LIMITE_SUPERIOR_NUMERO ||
+        dataValidade[MEIO] != '/') {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa mes
+    int mes = (dataValidade[MES_POS1]-ASCII_OFFSET)*10 + (dataValidade[MES_POS2]-ASCII_OFFSET);
+    if (mes < LIMITE_INFERIOR_MESES || mes > LIMITE_SUPERIOR_MESES) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    return;
+}
+
+void DataValidade::setDataValidade(string dataValidade) throw (invalid_argument) {
+    validar(dataValidade);
+    this->dataValidade = dataValidade;
+}
+
+// ------------------------------------------------------------------------
+const float Preco::VALOR_MAX = 1000.00;
+const float Preco::VALOR_MIN = 0.00;
+
+void Preco::validar(string preco) throw (invalid_argument) {
+
+    // checa tamanho
+    if (preco.length() > TAMANHO_MAX) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa caracteres
+    int diferenca;
+    int numero_virgulas = 0;
+    for (int i = 0; i < preco.length(); i++) {
+
+        if (preco[i] == VIRGULA) {
+            // checa posicao da virgula
+            diferenca = preco.length() - (i+1);
+            if (diferenca != NUM_ALGARISMOS_DEC) {
+                throw invalid_argument("Argumento invalido");
+            }
+            numero_virgulas++;
+        }
+
+        if ((preco[i] < LIMITE_INFERIOR_NUMERO && preco[i] != VIRGULA) ||
+            preco[i] > LIMITE_SUPERIOR_NUMERO) {
+            throw invalid_argument("Argumento invalido");
+        }
+    }
+
+    if (numero_virgulas != 1) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa valor
+    string algarismos;
+    for (int i = 0; i < preco.length(); i++) {
+        if (preco[i] != VIRGULA) {
+            algarismos.push_back(preco[i]);
+        }
+    }
+
+    int expoente;
+    float valor = 0.00;
+    for (int i = algarismos.length(); i >0; i--) {
+        expoente = algarismos.length() - i + POTENCIA_INICIAL;
+        valor += (int(algarismos[i]) - ASCII_OFFSET) * pow(10, expoente);
+    }
+
+    if (valor < VALOR_MIN || valor > VALOR_MAX) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    return;
+}
+
+void Preco::setPreco(string preco) throw (invalid_argument) {
+    validar(preco);
+    this->preco = preco;
+}

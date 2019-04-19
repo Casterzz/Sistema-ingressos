@@ -403,3 +403,368 @@ void TUData::run() {
 
     return;
 }
+
+// ------------------------------------------------------------------------------
+
+const string TUFaixaEtaria::VALOR_VALIDO_LETRA = "L";
+const string TUFaixaEtaria::VALOR_VALIDO_NUMERO = "10";
+const string TUFaixaEtaria::VALOR_INVALIDO_LETRA = "M";
+const string TUFaixaEtaria::VALOR_INVALIDO_NUMERO = "00";
+const string TUFaixaEtaria::VALOR_INVALIDO_TAMANHO = "1800";
+
+void TUFaixaEtaria::monta() {
+    pFaixa = new FaixaEtaria();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+}
+
+void TUFaixaEtaria::desmonta() {
+    delete pFaixa;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+}
+
+void TUFaixaEtaria::testarCenarioSucesso() {
+    try {
+        pFaixa->setFaixa(VALOR_VALIDO_LETRA);
+        if (VALOR_VALIDO_LETRA.compare(pFaixa->getFaixa()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | LETRA\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | LETRA\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | LETRA\n\033[0m";
+    }
+    try {
+        pFaixa->setFaixa(VALOR_VALIDO_NUMERO);
+        if (VALOR_VALIDO_NUMERO.compare(pFaixa->getFaixa()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | NUMERO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | NUMERO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | NUMERO\n\033[0m";
+    }
+    return;
+}
+
+void TUFaixaEtaria::testarCenarioFalha() {
+    try {
+        pFaixa->setFaixa(VALOR_INVALIDO_LETRA);
+        cout << "\033[31mERRO TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    try {
+        pFaixa->setFaixa(VALOR_INVALIDO_NUMERO);
+        cout << "\033[31mERRO TestarCenarioFalha | NUMERO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | NUMERO\n\033[0m";
+    }
+    try {
+        pFaixa->setFaixa(VALOR_INVALIDO_TAMANHO);
+        cout << "\033[31mERRO TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    return;
+}
+
+void TUFaixaEtaria::run() {
+    cout << "\n\n\033[33;1mTestando FaixaEtaria...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    desmonta();
+
+    return;
+}
+
+// ------------------------------------------------------------------------------
+
+const string TUEstado::VALOR_VALIDO = "DF";   
+const string TUEstado::VALOR_INVALIDO_LETRA = "LS";
+const string TUEstado::VALOR_INVALIDO_NUMERO = "R2";
+const string TUEstado::VALOR_INVALIDO_TAMANHO = "LEIA";
+
+void TUEstado::monta() {
+    pEstado = new Estado();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+}
+
+void TUEstado::desmonta() {
+    delete pEstado;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+}
+
+void TUEstado::testarCenarioSucesso() {
+    try {
+        pEstado->setEstado(VALOR_VALIDO);
+        if (VALOR_VALIDO.compare(pEstado->getEstado()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    return;
+}
+
+void TUEstado::testarCenarioFalha() {
+    try {
+        pEstado->setEstado(VALOR_INVALIDO_LETRA);
+        cout << "\033[31mERRO TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    try {
+        pEstado->setEstado(VALOR_INVALIDO_NUMERO);
+        cout << "\033[31mERRO TestarCenarioFalha | NUMERO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | NUMERO\n\033[0m";
+    }
+    try {
+        pEstado->setEstado(VALOR_INVALIDO_TAMANHO);
+        cout << "\033[31mERRO TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    return;
+}
+
+void TUEstado::run() {
+    cout << "\n\n\033[33;1mTestando Estado...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    desmonta();
+
+    return;
+}
+
+// ------------------------------------------------------------------------------
+
+const string TUHorario::VALOR_VALIDO = "08:30";
+const string TUHorario::VALOR_INVALIDO_LETRA = "08:E0";
+const string TUHorario::VALOR_INVALIDO_HORA = "05:30";
+const string TUHorario::VALOR_INVALIDO_MINUTO = "08:34";
+const string TUHorario::VALOR_INVALIDO_TAMANHO = "08:302";   
+
+void TUHorario::monta() {
+    pHorario = new Horario();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+}
+
+void TUHorario::desmonta() {
+    delete pHorario;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+}
+
+void TUHorario::testarCenarioSucesso() {
+    try {
+        pHorario->setHorario(VALOR_VALIDO);
+        if (VALOR_VALIDO.compare(pHorario->getHorario()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    return;
+}
+
+void TUHorario::testarCenarioFalha() {
+    try {
+        pHorario->setHorario(VALOR_INVALIDO_LETRA);
+        cout << "\033[31mERRO TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    try {
+        pHorario->setHorario(VALOR_INVALIDO_HORA);
+        cout << "\033[31mERRO TestarCenarioFalha | HORA\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | HORA\n\033[0m";
+    }
+    try {
+        pHorario->setHorario(VALOR_INVALIDO_MINUTO);
+        cout << "\033[31mERRO TestarCenarioFalha | MINUTO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | MINUTO\n\033[0m";
+    }
+    try {
+        pHorario->setHorario(VALOR_INVALIDO_TAMANHO);
+        cout << "\033[31mERRO TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    return;
+}
+
+void TUHorario::run() {
+    cout << "\n\n\033[33;1mTestando Horario...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    desmonta();
+
+    return;
+}
+
+// ------------------------------------------------------------------------------
+
+const string TUDataValidade::VALOR_VALIDO = "04/19";
+const string TUDataValidade::VALOR_INVALIDO_LETRA = "04/E9";
+const string TUDataValidade::VALOR_INVALIDO_MES = "14/19";
+const string TUDataValidade::VALOR_INVALIDO_TAMANHO = "04/192";   
+
+void TUDataValidade::monta() {
+    pDataValidade = new DataValidade();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+}
+
+void TUDataValidade::desmonta() {
+    delete pDataValidade;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+}
+
+void TUDataValidade::testarCenarioSucesso() {
+    try {
+        pDataValidade->setDataValidade(VALOR_VALIDO);
+        if (VALOR_VALIDO.compare(pDataValidade->getDataValidade()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    return;
+}
+
+void TUDataValidade::testarCenarioFalha() {
+    try {
+        pDataValidade->setDataValidade(VALOR_INVALIDO_LETRA);
+        cout << "\033[31mERRO TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    try {
+        pDataValidade->setDataValidade(VALOR_INVALIDO_MES);
+        cout << "\033[31mERRO TestarCenarioFalha | MES\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | MES\n\033[0m";
+    }
+    try {
+        pDataValidade->setDataValidade(VALOR_INVALIDO_TAMANHO);
+        cout << "\033[31mERRO TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    return;
+}
+
+void TUDataValidade::run() {
+    cout << "\n\n\033[33;1mTestando DataValidade...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    desmonta();
+
+    return;
+}
+
+// ------------------------------------------------------------------------------
+
+const string TUPreco::VALOR_VALIDO = "850,99";
+const string TUPreco::VALOR_INVALIDO_SIMBOLO = "85%,99";
+const string TUPreco::VALOR_INVALIDO_VIRGULAS = "8,50,99";
+const string TUPreco::VALOR_INVALIDO_CENTAVOS = "8,5099";
+const string TUPreco::VALOR_INVALIDO_PRECO = "1850,99";
+const string TUPreco::VALOR_INVALIDO_TAMANHO = "824550,99";
+
+void TUPreco::monta() {
+    pPreco = new Preco();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+}
+
+void TUPreco::desmonta() {
+    delete pPreco;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+}
+
+void TUPreco::testarCenarioSucesso() {
+    try {
+        pPreco->setPreco(VALOR_VALIDO);
+        if (VALOR_VALIDO.compare(pPreco->getPreco()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    return;
+}
+
+void TUPreco::testarCenarioFalha() {
+    try {
+        pPreco->setPreco(VALOR_INVALIDO_SIMBOLO);
+        cout << "\033[31mERRO TestarCenarioFalha | SIMBOLO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | SIMBOLO\n\033[0m";
+    }
+    try {
+        pPreco->setPreco(VALOR_INVALIDO_VIRGULAS);
+        cout << "\033[31mERRO TestarCenarioFalha | VIRGULAS\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | VIRGULAS\n\033[0m";
+    }
+    try {
+        pPreco->setPreco(VALOR_INVALIDO_CENTAVOS);
+        cout << "\033[31mERRO TestarCenarioFalha | CENTAVOS\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | CENTAVOS\n\033[0m";
+    }
+    try {
+        pPreco->setPreco(VALOR_INVALIDO_PRECO);
+        cout << "\033[31mERRO TestarCenarioFalha | PRECO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | PRECO\n\033[0m";
+    }
+    try {
+        pPreco->setPreco(VALOR_INVALIDO_TAMANHO);
+        cout << "\033[31mERRO TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    return;
+}
+
+void TUPreco::run() {
+    cout << "\n\n\033[33;1mTestando Preco...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    desmonta();
+
+    return;
+}

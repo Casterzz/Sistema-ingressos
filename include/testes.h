@@ -128,4 +128,109 @@ class TUData {
     
     void run();
 };
+
+class TUFaixaEtaria {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+
+    static const string VALOR_VALIDO_LETRA;
+    static const string VALOR_VALIDO_NUMERO;    
+    static const string VALOR_INVALIDO_LETRA;
+    static const string VALOR_INVALIDO_NUMERO;
+    static const string VALOR_INVALIDO_TAMANHO;
+
+    FaixaEtaria *pFaixa;
+ 
+ public:
+    
+    void run();
+};
+
+class TUEstado {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+    
+    static const string VALOR_VALIDO;   
+    static const string VALOR_INVALIDO_LETRA;
+    static const string VALOR_INVALIDO_NUMERO;
+    static const string VALOR_INVALIDO_TAMANHO;
+
+    Estado *pEstado;
+ 
+ public:
+    
+    void run();
+};
+
+class TUHorario {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+
+    static const string VALOR_VALIDO;
+    static const string VALOR_INVALIDO_LETRA;
+    static const string VALOR_INVALIDO_HORA;
+    static const string VALOR_INVALIDO_MINUTO;
+    static const string VALOR_INVALIDO_TAMANHO;
+
+    Horario *pHorario;
+
+ public:
+
+    void run();
+};
+
+class TUDataValidade {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+
+    static const string VALOR_VALIDO;
+    static const string VALOR_INVALIDO_LETRA;
+    static const string VALOR_INVALIDO_MES;
+    static const string VALOR_INVALIDO_TAMANHO;
+
+    DataValidade *pDataValidade;
+
+ public:
+
+    void run();
+};
+
+class TUPreco {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+
+    static const string VALOR_VALIDO;
+    static const string VALOR_INVALIDO_SIMBOLO;
+    static const string VALOR_INVALIDO_VIRGULAS;
+    static const string VALOR_INVALIDO_CENTAVOS;
+    static const string VALOR_INVALIDO_PRECO;
+    static const string VALOR_INVALIDO_TAMANHO;
+
+    Preco *pPreco;
+
+ public:
+
+    void run();
+};
+
 #endif // TESTES_H_INCLUDED
