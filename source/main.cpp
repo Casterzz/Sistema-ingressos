@@ -8,9 +8,15 @@ using namespace std;
 
 int main() {
 
-	TUCodigoEvento teste;
+	TUCodigoEvento testeEvento;
+	TUCodigoApresentacao testeApresentacao;
+	TUCodigoIngresso testeIngresso;
+	TUNomeEvento testeNomeEvento;
 
-	teste.run();
+	testeEvento.run();
+	testeApresentacao.run();
+	testeIngresso.run();
+	testeNomeEvento.run();
 
 	return 0;
 }
