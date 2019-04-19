@@ -41,6 +41,26 @@ class TUCodigoEvento {
     void run();
 };
 
+class TUCodigoSeguranca {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+
+    static const string VALOR_VALIDO;
+    static const string VALOR_INVALIDO_LETRA;
+    static const string VALOR_INVALIDO_MAIOR;
+    static const string VALOR_INVALIDO_MENOR;
+
+    CodigoSeguranca *pCodigo;
+ 
+ public:
+    
+    void run();
+};
+
 class TUCodigoApresentacao {
  private:
 

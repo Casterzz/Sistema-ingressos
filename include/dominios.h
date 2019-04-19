@@ -23,6 +23,13 @@ class CodigoEvento {
  	}
 };
 
+class CodigoSeguranca : public CodigoEvento {
+ private:
+
+ public:
+ 	
+};
+
 class CodigoApresentacao {
  private:
  	string codigo;
@@ -94,18 +101,11 @@ class Data {
  	static const int ASCII_OFFSET = 48;
  	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
  	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
- 	static const int JAN = 1;
- 	static const int FEV = 2;
- 	static const int MAR = 3;
+ 	static const string MESES;
  	static const int ABR = 4;
- 	static const int MAI = 5;
  	static const int JUN = 6;
- 	static const int JUL = 7;
- 	static const int AGO = 8;
  	static const int SET = 9;
- 	static const int OUT = 10;
  	static const int NOV = 11;
- 	static const int DEZ = 12;
 
  	void validar(string) throw (invalid_argument);
  

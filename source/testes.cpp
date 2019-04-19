@@ -69,6 +69,74 @@ void TUCodigoEvento::run() {
 
 // ------------------------------------------------------------------------------
 
+const string TUCodigoSeguranca::VALOR_VALIDO = "020";
+const string TUCodigoSeguranca::VALOR_INVALIDO_LETRA = "abc";
+const string TUCodigoSeguranca::VALOR_INVALIDO_MAIOR = "0000";
+const string TUCodigoSeguranca::VALOR_INVALIDO_MENOR = "00";
+
+void TUCodigoSeguranca::monta() {
+    pCodigo = new CodigoSeguranca();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+    return;
+}
+
+void TUCodigoSeguranca::desmonta() {
+    delete pCodigo;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+    return;
+}
+
+void TUCodigoSeguranca::testarCenarioSucesso() {
+    try {
+        pCodigo->setCodigo(VALOR_VALIDO);       
+        if (VALOR_VALIDO.compare(pCodigo->getCodigo()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    return;
+}
+
+void TUCodigoSeguranca::testarCenarioFalha() {
+    try {
+        pCodigo->setCodigo(VALOR_INVALIDO_LETRA);
+        cout << "\033[31mERRO TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    try {
+        pCodigo->setCodigo(VALOR_INVALIDO_MAIOR);
+        cout << "\033[31mERRO TestarCenarioFalha | GRANDE\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | GRANDE\n\033[0m";
+    }
+    try {
+        pCodigo->setCodigo(VALOR_INVALIDO_MENOR);
+        cout << "\033[31mERRO TestarCenarioFalha | MENOR\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | MENOR\n\033[0m";
+    }
+    return;
+}
+
+void TUCodigoSeguranca::run() {
+    cout << "\n\n\033[33;1mTestando CodigoSeguranca...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    desmonta();
+
+    return;
+}
+
+// ------------------------------------------------------------------------------
+
 const string TUCodigoApresentacao::VALOR_VALIDO = "0020";
 const string TUCodigoApresentacao::VALOR_INVALIDO_LETRA = "abcd";
 const string TUCodigoApresentacao::VALOR_INVALIDO_MAIOR = "00000";

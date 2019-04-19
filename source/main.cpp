@@ -9,6 +9,7 @@ using namespace std;
 int main() {
 
 	TUCodigoEvento testeEvento;
+	TUCodigoSeguranca testeCodigoSeguranca;
 	TUCodigoApresentacao testeApresentacao;
 	TUCodigoIngresso testeIngresso;
 	TUNomeEvento testeNomeEvento;
@@ -20,6 +21,7 @@ int main() {
 	TUPreco testePreco;
 
 	testeEvento.run();
+	testeCodigoSeguranca.run();
 	testeApresentacao.run();
 	testeIngresso.run();
 	testeNomeEvento.run();
