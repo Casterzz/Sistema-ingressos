@@ -27,7 +27,7 @@ class CodigoSeguranca : public CodigoEvento {
  private:
 
  public:
- 	
+
 };
 
 class CodigoApresentacao {
@@ -116,6 +116,108 @@ class Data {
  	}
 };
 
+class Senha {
+ private:
+ 	string senha;
+
+ 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
+ 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
+ 	static const int LIMITE_INFERIOR_MAIUSCULAS = 65; // A EM ASCII
+ 	static const int LIMITE_SUPERIOR_MAIUSCULAS = 90; // Z EM ASCII
+ 	static const int LIMITE_INFERIOR_MINUSCULAS = 97; // a EM ASCII
+ 	static const int LIMITE_SUPERIOR_MINUSCULAS = 122; // z EM ASCII
+ 	static const int TAMANHO_ESPERADO = 6;
+
+ 	void validar(string) throw (invalid_argument);
+ 
+ public:
+ 	void setSenha(string) throw (invalid_argument);
+ 	string getSenha() {
+ 		return senha;
+ 	}
+};
+
+class Cidade {
+ private:
+ 	string cidade;
+
+ 	static const int ESPACO = 32; // ESPACO EM ASCII 	
+ 	static const int PONTO = 46; // PONTO EM ASCII
+ 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
+ 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
+ 	static const int LIMITE_INFERIOR_MAIUSCULAS = 65; // A EM ASCII
+ 	static const int LIMITE_SUPERIOR_MAIUSCULAS = 90; // Z EM ASCII
+ 	static const int LIMITE_INFERIOR_MINUSCULAS = 97; // a EM ASCII
+ 	static const int LIMITE_SUPERIOR_MINUSCULAS = 122; // z EM ASCII
+ 	static const int TAMANHO_ESPERADO = 15;
+
+ 	void validar(string) throw (invalid_argument);
+ 
+ public:
+ 	void setCidade(string) throw (invalid_argument);
+ 	string getCidade() {
+ 		return cidade;
+ 	}
+};
+
+class ClasseEvento {
+ private:
+ 	string evento;
+
+ 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
+ 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
+ 	static const int ASCII_OFFSET = 48;
+ 	static const int TAMANHO_ESPERADO = 1;
+
+ 	void validar(string) throw (invalid_argument);
+ 
+ public:
+ 	void setEvento(string) throw (invalid_argument);
+ 	string getEvento() {
+ 		return evento;
+ 	}
+};
+
+class NumeroSala {
+ private:
+ 	string sala;
+
+ 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
+ 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
+ 	static const int TAMANHO_MAXIMO = 2;
+ 	static const int VALOR_MAX = 10;
+ 	static const int VALOR_MIN = 1;
+ 	static const int ASCII_OFFSET = 48;
+
+ 	void validar(string) throw (invalid_argument);
+ 
+ public:
+ 	void setSala(string) throw (invalid_argument);
+ 	string getSala() {
+ 		return sala;
+ 	}
+};
+
+class Disponibilidade {
+ private:
+ 	string disponibilidade;
+
+ 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
+ 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
+ 	static const int TAMANHO_MAXIMO = 3;
+ 	static const int VALOR_MAX = 250;
+ 	static const int VALOR_MIN = 0;
+ 	static const int ASCII_OFFSET = 48;
+
+ 	void validar(string) throw (invalid_argument);
+ 
+ public:
+ 	void setDisponibilidade(string) throw (invalid_argument);
+ 	string getDisponibilidade() {
+ 		return disponibilidade;
+ 	}
+};
+
 class FaixaEtaria {
  private:
  	string faixa;
@@ -129,7 +231,7 @@ class FaixaEtaria {
  	static const string DEZOITO;
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
  	void setFaixa(string) throw (invalid_argument);
  	string getFaixa() {
@@ -145,7 +247,7 @@ class Estado {
  	static const string LISTA;
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
  	void setEstado(string) throw (invalid_argument);
  	string getEstado() {
@@ -171,7 +273,7 @@ class Horario {
  	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
  	void setHorario(string) throw (invalid_argument);
  	string getHorario() {
@@ -196,7 +298,7 @@ class DataValidade {
  	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
  	void setDataValidade(string) throw (invalid_argument);
  	string getDataValidade() {
@@ -225,7 +327,7 @@ class Preco {
  	static const int VIRGULA = 44; // virgula em ASCII
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
  	void setPreco(string) throw (invalid_argument);
  	string getPreco() {

@@ -159,6 +159,214 @@ void Data::setData(string data) throw (invalid_argument) {
     this->data = data;
 }
 
+
+// -----------------------------------------------------------------------------
+
+void Senha::validar(string senha) throw (invalid_argument) {
+
+    // checa tamanho
+    if (senha.length() != TAMANHO_ESPERADO) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    string caracteres_usados = "&";
+    int caracter;
+    bool flag_numero = false;
+    bool flag_maiuscula = false;
+    bool flag_minuscula = false;
+    for (int i = 0; i < TAMANHO_ESPERADO; i++) {
+        caracter = int(senha[i]);
+        // checa por simbolos
+        if ((caracter < LIMITE_INFERIOR_NUMERO) || (caracter > LIMITE_SUPERIOR_NUMERO &&
+            caracter < LIMITE_INFERIOR_MAIUSCULAS) || (caracter > LIMITE_SUPERIOR_MAIUSCULAS &&
+            caracter < LIMITE_INFERIOR_MINUSCULAS) || caracter > LIMITE_SUPERIOR_MINUSCULAS) {
+            throw invalid_argument("Argumento invalido");       
+        } else {
+            // checa caracteres repetidos
+            for (int j = 0; j < caracteres_usados.length(); j++) {
+                if (caracteres_usados.find(senha[i]) != string::npos) {
+                    throw invalid_argument("Argumento invalido");
+                }
+            }
+            caracteres_usados.push_back(senha[i]);
+            // garante a existência de pelo menos um numero, uma letra maiuscula e minuscula
+            if (caracter >= LIMITE_INFERIOR_NUMERO && caracter <= LIMITE_SUPERIOR_NUMERO) {
+                flag_numero = true;
+            } else {
+                if (caracter >= LIMITE_INFERIOR_MAIUSCULAS && caracter <= LIMITE_SUPERIOR_MAIUSCULAS) {
+                    flag_maiuscula = true;
+                } else {
+                    flag_minuscula = true;
+                }
+            }
+        }
+    }
+    if (!flag_numero || !flag_minuscula || !flag_maiuscula) {
+        throw invalid_argument("Argumento invalido");
+    }
+}
+
+void Senha::setSenha(string senha) throw (invalid_argument) {
+    validar(senha);
+    this->senha = senha;
+}
+
+// -----------------------------------------------------------------------------
+
+void Cidade::validar(string cidade) throw (invalid_argument) {
+
+    // checa tamanho
+    if (cidade.length() != TAMANHO_ESPERADO) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    int caracter;
+    bool flag_numero = false;
+    bool flag_letra = false;
+    for (int i = 0; i < TAMANHO_ESPERADO; i++) {
+        caracter = int(cidade[i]);
+        // checa por simbolos nao previstos
+        if ((caracter != ESPACO && caracter != PONTO && caracter < LIMITE_INFERIOR_NUMERO) || 
+            (caracter > LIMITE_SUPERIOR_NUMERO && caracter < LIMITE_INFERIOR_MAIUSCULAS) || 
+            (caracter > LIMITE_SUPERIOR_MAIUSCULAS && caracter < LIMITE_INFERIOR_MINUSCULAS) || 
+            caracter > LIMITE_SUPERIOR_MINUSCULAS) {
+            throw invalid_argument("Argumento invalido");       
+        } else {
+            // garante a existência de pelo menos um numero, uma letra maiuscula e minuscula
+            if (caracter >= LIMITE_INFERIOR_NUMERO && caracter <= LIMITE_SUPERIOR_NUMERO) {
+                flag_numero = true;
+            } else {
+                if (caracter != ESPACO && caracter != PONTO) {
+                    flag_letra = true;
+                } else {
+                    if (caracter == PONTO) {
+                        if (i == 0) {
+                            throw invalid_argument("Argumento invalido");
+                        } else {
+                            if (cidade[i-1] >= LIMITE_INFERIOR_NUMERO && cidade[i-1] <= LIMITE_SUPERIOR_NUMERO ||
+                                cidade[i-1] == ESPACO) {
+                                throw invalid_argument("Argumento invalido");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    if (!flag_letra) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa espacos
+    string espacos = "  ";
+    if (cidade.find(espacos) != string::npos) {
+        throw invalid_argument("Argumento invalido");   
+    }
+}
+
+void Cidade::setCidade(string cidade) throw (invalid_argument) {
+    validar(cidade);
+    this->cidade = cidade;
+}
+
+// ------------------------------------------------------------------
+
+void ClasseEvento::validar(string evento) throw (invalid_argument) {
+
+    // checa tamanho
+    if (evento.length() != TAMANHO_ESPERADO) {
+        throw invalid_argument("Argumento invalido");
+    }
+    int caracter;
+    bool flag = false;
+    caracter = int(evento[0]);
+    // checa por simbolos
+    if (caracter < LIMITE_INFERIOR_NUMERO || caracter > LIMITE_SUPERIOR_NUMERO){
+        throw invalid_argument("Argumento invalido");       
+    } else {
+        if ((caracter - ASCII_OFFSET) < 1 || (caracter - ASCII_OFFSET) > 4) {
+            throw invalid_argument("Argumento invalido");
+        }
+    }
+
+}
+
+void ClasseEvento::setEvento(string evento) throw (invalid_argument) {
+    validar(evento);
+    this->evento = evento;
+}
+
+// ------------------------------------------------------------------
+
+void NumeroSala::validar(string sala) throw (invalid_argument) {
+
+    // checa tamanho
+    if (sala.length() > TAMANHO_MAXIMO || sala.length() == 0) {
+        throw invalid_argument("Argumento invalido");
+    }
+    int caracter;
+    int num = 0;
+    // checa por simbolos
+    for (int i = 0; i < sala.length(); i++) {
+        caracter = int(sala[i]);
+        if (caracter < LIMITE_INFERIOR_NUMERO || caracter > LIMITE_SUPERIOR_NUMERO){
+            throw invalid_argument("Argumento invalido");       
+        } 
+    }
+
+    int expoente;
+    for (int i = sala.length() - 1; i >= 0; i--) {
+        expoente = (sala.length() - 1)-i;
+        num += (int(sala[i]) - ASCII_OFFSET)*pow(10, expoente);
+    }
+
+    if (num < VALOR_MIN || num > VALOR_MAX) {
+        throw invalid_argument("Argumento invalido");
+    }
+    return;
+}
+
+void NumeroSala::setSala(string sala) throw (invalid_argument) {
+    validar(sala);
+    this->sala = sala;
+}
+
+// ------------------------------------------------------------------
+
+void Disponibilidade::validar(string disponibilidade) throw (invalid_argument) {
+
+    // checa tamanho
+    if (disponibilidade.length() > TAMANHO_MAXIMO || disponibilidade.length() == 0) {
+        throw invalid_argument("Argumento invalido");
+    }
+    int caracter;
+    int num = 0;
+    // checa por simbolos
+    for (int i = 0; i < disponibilidade.length(); i++) {
+        caracter = int(disponibilidade[i]);
+        if (caracter < LIMITE_INFERIOR_NUMERO || caracter > LIMITE_SUPERIOR_NUMERO){
+            throw invalid_argument("Argumento invalido");       
+        } 
+    }
+
+    int expoente;
+    for (int i = disponibilidade.length() - 1; i >= 0; i--) {
+        expoente = (disponibilidade.length() - 1)-i;
+        num += (int(disponibilidade[i]) - ASCII_OFFSET)*pow(10, expoente);
+    }
+
+    if (num < VALOR_MIN || num > VALOR_MAX) {
+        throw invalid_argument("Argumento invalido");
+    }
+    return;
+}
+
+void Disponibilidade::setDisponibilidade(string disponibilidade) throw (invalid_argument) {
+    validar(disponibilidade);
+    this->disponibilidade = disponibilidade;
+}
+
 // ------------------------------------------------------------------------
 
 const string FaixaEtaria::LIVRE = "L";
@@ -167,7 +375,7 @@ const string FaixaEtaria::DOZE = "12";
 const string FaixaEtaria::QUATORZE = "14";
 const string FaixaEtaria::DEZESSEIS = "16";
 const string FaixaEtaria::DEZOITO = "18";
-   
+
 
 void FaixaEtaria::validar(string faixa) throw (invalid_argument) {
 

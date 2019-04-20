@@ -474,6 +474,448 @@ void TUData::run() {
 
 // ------------------------------------------------------------------------------
 
+const string TUSenha::VALOR_VALIDO = "Oi3ule";
+const string TUSenha::VALOR_INVALIDO_MAIOR = "Oi3uler";
+const string TUSenha::VALOR_INVALIDO_MENOR = "Oi3ul";
+const string TUSenha::VALOR_INVALIDO_REPETIDO = "Oi3iu3";
+const string TUSenha::VALOR_INVALIDO_MINUS = "oi3iu3";
+const string TUSenha::VALOR_INVALIDO_MAIUS = "ABACAX";
+const string TUSenha::VALOR_INVALIDO_SIMBOLOS = "/>78!a";
+
+
+void TUSenha::monta() {
+    pSenha = new Senha();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+    return;
+}
+
+void TUSenha::desmonta() {
+    delete pSenha;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+    return;
+}
+
+void TUSenha::testarCenarioSucesso() {
+    try {
+        pSenha->setSenha(VALOR_VALIDO);       
+        if (VALOR_VALIDO.compare(pSenha->getSenha()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    return;
+}
+
+void TUSenha::testarCenarioFalha() {
+    try {
+        pSenha->setSenha(VALOR_INVALIDO_MAIOR);
+        cout << "\033[31mERRO TestarCenarioFalha | MAIOR\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | MAIOR\n\033[0m";
+    }
+    try {
+        pSenha->setSenha(VALOR_INVALIDO_MENOR);
+        cout << "\033[31mERRO TestarCenarioFalha | MENOR\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | MENOR\n\033[0m";
+    }
+    try {
+        pSenha->setSenha(VALOR_INVALIDO_REPETIDO);
+        cout << "\033[31mERRO TestarCenarioFalha | REPETIDO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | REPETIDO\n\033[0m";
+    }
+    try {
+        pSenha->setSenha(VALOR_INVALIDO_MAIUS);
+        cout << "\033[31mERRO TestarCenarioFalha | MAIUSCULO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | MAIUSCULO\n\033[0m";
+    }
+    try {
+        pSenha->setSenha(VALOR_INVALIDO_MINUS);
+        cout << "\033[31mERRO TestarCenarioFalha | MINUSCULO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | MINUSCULO\n\033[0m";
+    }
+    try {
+        pSenha->setSenha(VALOR_INVALIDO_SIMBOLOS);
+        cout << "\033[31mERRO TestarCenarioFalha | SIMBOLO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | SIMBOLO\n\033[0m";
+    }
+    return;
+}
+
+void TUSenha::run() {
+    cout << "\n\n\033[33;1mTestando Senha...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    desmonta();
+
+    return;
+}
+
+// --------------------------------------------------------------------
+
+const string TUCidade::VALOR_VALIDO = "Casa do Joao. 2";
+const string TUCidade::VALOR_INVALIDO_PONTO = "Casa do Joa0. 2";
+const string TUCidade::VALOR_INVALIDO_ESPACOS = "Casa do  joao.2";
+const string TUCidade::VALOR_INVALIDO_MENOR = "Casa";
+const string TUCidade::VALOR_INVALIDO_MAIOR = "Joaquim da Silva Barbosa";
+const string TUCidade::VALOR_INVALIDO_SIMBOLOS = "C@s@ do J*a*. 2";
+const string TUCidade::VALOR_INVALIDO_NUMEROS = "123456789101112";
+const string TUCidade::VALOR_INVALIDO_PONTO2 = ".Casa do Joao.3";
+
+void TUCidade::monta() {
+    pCidade = new Cidade();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+    return;
+}
+
+void TUCidade::desmonta() {
+    delete pCidade;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+    return;
+}
+
+void TUCidade::testarCenarioSucesso() {
+    try {
+        pCidade->setCidade(VALOR_VALIDO);       
+        if (VALOR_VALIDO.compare(pCidade->getCidade()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    return;
+}
+
+void TUCidade::testarCenarioFalha() {
+    try {
+        pCidade->setCidade(VALOR_INVALIDO_PONTO);
+        cout << "\033[31mERRO TestarCenarioFalha | PONTO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | PONTO\n\033[0m";
+    }
+    try {
+        pCidade->setCidade(VALOR_INVALIDO_ESPACOS);
+        cout << "\033[31mERRO TestarCenarioFalha | ESPACOS\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | ESPACOS\n\033[0m";
+    }
+    try {
+        pCidade->setCidade(VALOR_INVALIDO_MENOR);
+        cout << "\033[31mERRO TestarCenarioFalha | MENOR\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | MENOR\n\033[0m";
+    }
+    try {
+        pCidade->setCidade(VALOR_INVALIDO_MAIOR);
+        cout << "\033[31mERRO TestarCenarioFalha | MAIOR\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | MAIOR\n\033[0m";
+    }
+    try {
+        pCidade->setCidade(VALOR_INVALIDO_SIMBOLOS);
+        cout << "\033[31mERRO TestarCenarioFalha | SIMBOLOS\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | SIMBOLOS\n\033[0m";
+    }
+    try {
+        pCidade->setCidade(VALOR_INVALIDO_NUMEROS);
+        cout << "\033[31mERRO TestarCenarioFalha | NUMEROS\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | NUMEROS\n\033[0m";
+    }
+    try {
+        pCidade->setCidade(VALOR_INVALIDO_PONTO2);
+        cout << "\033[31mERRO TestarCenarioFalha | PONTO2\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | PONTO2\n\033[0m";
+    }
+    return;
+}
+
+void TUCidade::run() {
+    cout << "\n\n\033[33;1mTestando Cidade...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    desmonta();
+
+    return;
+}
+
+// --------------------------------------------------------------
+
+const string TUClasseEvento::VALOR_VALIDO = "2";
+const string TUClasseEvento::VALOR_INVALIDO_LETRA = "a";
+const string TUClasseEvento::VALOR_INVALIDO_MAIOR = "22";
+const string TUClasseEvento::VALOR_INVALIDO_OVERFLOW = "7";
+
+void TUClasseEvento::monta() {
+    pEvento = new ClasseEvento();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+    return;
+}
+
+void TUClasseEvento::desmonta() {
+    delete pEvento;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+    return;
+}
+
+void TUClasseEvento::testarCenarioSucesso() {
+    try {
+        pEvento->setEvento(VALOR_VALIDO);       
+        if (VALOR_VALIDO.compare(pEvento->getEvento()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    return;
+}
+
+void TUClasseEvento::testarCenarioFalha() {
+    try {
+        pEvento->setEvento(VALOR_INVALIDO_LETRA);
+        cout << "\033[31mERRO TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    try {
+        pEvento->setEvento(VALOR_INVALIDO_MAIOR);
+        cout << "\033[31mERRO TestarCenarioFalha | MAIOR\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | MAIOR\n\033[0m";
+    }
+    try {
+        pEvento->setEvento(VALOR_INVALIDO_OVERFLOW);
+        cout << "\033[31mERRO TestarCenarioFalha | OVERFLOW\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | OVERFLOW\n\033[0m";
+    }
+    return;
+}
+
+void TUClasseEvento::run() {
+    cout << "\n\n\033[33;1mTestando ClasseEvento...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    desmonta();
+}
+// --------------------------------------------------------------
+
+const string TUNumeroSala::VALOR_VALIDO = "2";
+const string TUNumeroSala::VALOR_VALIDO_LIMITE = "10";
+const string TUNumeroSala::VALOR_VALIDO_NPADRAO = "02";
+const string TUNumeroSala::VALOR_INVALIDO_LETRA = "a";
+const string TUNumeroSala::VALOR_INVALIDO_OVERFLOW = "11";
+const string TUNumeroSala::VALOR_INVALIDO_MAIOR = "222";
+
+
+
+void TUNumeroSala::monta() {
+    pSala = new NumeroSala();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+    return;
+}
+
+void TUNumeroSala::desmonta() {
+    delete pSala;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+    return;
+}
+
+void TUNumeroSala::testarCenarioSucesso() {
+    try {
+        pSala->setSala(VALOR_VALIDO);       
+        if (VALOR_VALIDO.compare(pSala->getSala()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | INTERMEDIARIO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | INTERMEDIARIO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | INTERMEDIARIO\n\033[0m";
+    }
+    try {
+        pSala->setSala(VALOR_VALIDO_LIMITE);       
+        if (VALOR_VALIDO_LIMITE.compare(pSala->getSala()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | LIMITE\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | LIMITE\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | LIMITE\n\033[0m";
+    }
+    try {
+        pSala->setSala(VALOR_VALIDO_NPADRAO);       
+        if (VALOR_VALIDO_NPADRAO.compare(pSala->getSala()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | NPADRAO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | NPADRAO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | NPADRAO\n\033[0m";
+    }
+    return;
+}
+
+void TUNumeroSala::testarCenarioFalha() {
+    try {
+        pSala->setSala(VALOR_INVALIDO_LETRA);
+        cout << "\033[31mERRO TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    try {
+        pSala->setSala(VALOR_INVALIDO_OVERFLOW);
+        cout << "\033[31mERRO TestarCenarioFalha | OVERFLOW\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | OVERFLOW\n\033[0m";
+    }
+    try {
+        pSala->setSala(VALOR_INVALIDO_MAIOR);
+        cout << "\033[31mERRO TestarCenarioFalha | MAIOR\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | MAIOR\n\033[0m";
+    }
+    return;
+}
+
+void TUNumeroSala::run() {
+    cout << "\n\n\033[33;1mTestando NumeroSala...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    desmonta();
+
+    return;
+}
+
+// --------------------------------------------------------------
+
+const string TUDisponibilidade::VALOR_VALIDO = "2";
+const string TUDisponibilidade::VALOR_VALIDO_LIMITE = "250";
+const string TUDisponibilidade::VALOR_VALIDO_NPADRAO = "07";
+const string TUDisponibilidade::VALOR_INVALIDO_LETRA = "abc";
+const string TUDisponibilidade::VALOR_INVALIDO_OVERFLOW = "256";
+const string TUDisponibilidade::VALOR_INVALIDO_TAMANHO = "9999";
+
+
+
+void TUDisponibilidade::monta() {
+    pDisponibilidade = new Disponibilidade();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+    return;
+}
+
+void TUDisponibilidade::desmonta() {
+    delete pDisponibilidade;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+    return;
+}
+
+void TUDisponibilidade::testarCenarioSucesso() {
+    try {
+        pDisponibilidade->setDisponibilidade(VALOR_VALIDO);       
+        if (VALOR_VALIDO.compare(pDisponibilidade->getDisponibilidade()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | INTERMEDIARIO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | INTERMEDIARIO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | INTERMEDIARIO\n\033[0m";
+    }
+    try {
+        pDisponibilidade->setDisponibilidade(VALOR_VALIDO_LIMITE);       
+        if (VALOR_VALIDO_LIMITE.compare(pDisponibilidade->getDisponibilidade()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | LIMITE\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | LIMITE\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | LIMITE\n\033[0m";
+    }
+    try {
+        pDisponibilidade->setDisponibilidade(VALOR_VALIDO_NPADRAO);       
+        if (VALOR_VALIDO_NPADRAO.compare(pDisponibilidade->getDisponibilidade()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | NPADRAO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | NPADRAO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | NPADRAO\n\033[0m";
+    }
+    return;
+}
+
+void TUDisponibilidade::testarCenarioFalha() {
+    try {
+        pDisponibilidade->setDisponibilidade(VALOR_INVALIDO_LETRA);
+        cout << "\033[31mERRO TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | LETRA\n\033[0m";
+    }
+    try {
+        pDisponibilidade->setDisponibilidade(VALOR_INVALIDO_OVERFLOW);
+        cout << "\033[31mERRO TestarCenarioFalha | OVERFLOW\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | OVERFLOW\n\033[0m";
+    }
+    try {
+        pDisponibilidade->setDisponibilidade(VALOR_INVALIDO_TAMANHO);
+        cout << "\033[31mERRO TestarCenarioFalha | MAIOR\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | MAIOR\n\033[0m";
+    }
+    return;
+}
+
+void TUDisponibilidade::run() {
+    cout << "\n\n\033[33;1mTestando Disponibilidade...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    desmonta();
+
+    return;
+}
+
+// ------------------------------------------------------------------------------
+
 const string TUFaixaEtaria::VALOR_VALIDO_LETRA = "L";
 const string TUFaixaEtaria::VALOR_VALIDO_NUMERO = "10";
 const string TUFaixaEtaria::VALOR_INVALIDO_LETRA = "M";

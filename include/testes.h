@@ -55,9 +55,9 @@ class TUCodigoSeguranca {
     static const string VALOR_INVALIDO_MENOR;
 
     CodigoSeguranca *pCodigo;
- 
+
  public:
-    
+
     void run();
 };
 
@@ -149,6 +149,117 @@ class TUData {
     void run();
 };
 
+class TUSenha {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+
+    static const string VALOR_VALIDO;
+    static const string VALOR_INVALIDO_MAIOR;
+    static const string VALOR_INVALIDO_MENOR;
+    static const string VALOR_INVALIDO_REPETIDO;
+    static const string VALOR_INVALIDO_MINUS;
+    static const string VALOR_INVALIDO_MAIUS;
+    static const string VALOR_INVALIDO_SIMBOLOS;
+
+    Senha *pSenha;
+ 
+ public:
+    
+    void run();
+};
+
+class TUCidade {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+
+    static const string VALOR_VALIDO;
+    static const string VALOR_INVALIDO_PONTO;
+    static const string VALOR_INVALIDO_ESPACOS;
+    static const string VALOR_INVALIDO_MENOR;
+    static const string VALOR_INVALIDO_MAIOR;
+    static const string VALOR_INVALIDO_SIMBOLOS;
+    static const string VALOR_INVALIDO_NUMEROS;
+    static const string VALOR_INVALIDO_PONTO2;
+
+    Cidade *pCidade;
+ 
+ public:
+    
+    void run();
+};
+
+class TUClasseEvento {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+
+    static const string VALOR_VALIDO;
+    static const string VALOR_INVALIDO_LETRA;
+    static const string VALOR_INVALIDO_MAIOR;
+    static const string VALOR_INVALIDO_OVERFLOW;
+
+    ClasseEvento *pEvento;
+ 
+ public:
+    
+    void run();
+};
+
+class TUNumeroSala {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+
+    static const string VALOR_VALIDO;
+    static const string VALOR_VALIDO_LIMITE;
+    static const string VALOR_VALIDO_NPADRAO;
+    static const string VALOR_INVALIDO_LETRA;
+    static const string VALOR_INVALIDO_OVERFLOW;
+    static const string VALOR_INVALIDO_MAIOR;
+
+    NumeroSala *pSala;
+ 
+ public:
+    
+    void run();
+};
+
+class TUDisponibilidade {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+
+    static const string VALOR_VALIDO;
+    static const string VALOR_VALIDO_LIMITE;
+    static const string VALOR_VALIDO_NPADRAO;
+    static const string VALOR_INVALIDO_LETRA;
+    static const string VALOR_INVALIDO_OVERFLOW;
+    static const string VALOR_INVALIDO_TAMANHO;
+
+    Disponibilidade *pDisponibilidade;
+ 
+ public:
+    
+    void run();
+};
+
 class TUFaixaEtaria {
  private:
 
@@ -164,9 +275,9 @@ class TUFaixaEtaria {
     static const string VALOR_INVALIDO_TAMANHO;
 
     FaixaEtaria *pFaixa;
- 
+
  public:
-    
+
     void run();
 };
 
@@ -177,16 +288,16 @@ class TUEstado {
     void desmonta();
     void testarCenarioSucesso();
     void testarCenarioFalha();
-    
+
     static const string VALOR_VALIDO;   
     static const string VALOR_INVALIDO_LETRA;
     static const string VALOR_INVALIDO_NUMERO;
     static const string VALOR_INVALIDO_TAMANHO;
 
     Estado *pEstado;
- 
+
  public:
-    
+
     void run();
 };
 
