@@ -559,3 +559,125 @@ void Preco::setPreco(string preco) throw (invalid_argument) {
     validar(preco);
     this->preco = preco;
 }
+
+// ------------------------------------------------------------------------
+
+void NumeroCartao::validar_entrada(string numero) throw (invalid_argument) {
+
+    // checa tamanho
+    if (numero.length() != TAMANHO_ESPERADO) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa digitos
+    for (int i = 0; i < numero.length(); i++) {
+        if (int(numero[i]) < LIMITE_INFERIOR_NUMERO || int(numero[i]) > LIMITE_SUPERIOR_NUMERO){
+            throw invalid_argument("Argumento invalido");       
+        } 
+    }
+
+    return;
+}
+
+void NumeroCartao::validar_logica(string numero) throw (invalid_argument) {
+
+    int digito;
+    int soma = 0;
+    bool multiplica = false;
+    for (int i = numero.length() - 1; i >= 0; i--) {
+        digito = numero[i] - '0';
+        if (multiplica)
+            digito *= 2;
+        if (digito > 9) {
+            soma += digito/10;
+            soma += digito%10;
+        } else {
+            soma += digito;
+        }
+        multiplica = !multiplica;
+    }
+
+    if (soma%10 != 0) throw invalid_argument("Argumento invalido");
+
+
+    return;
+}
+
+void NumeroCartao::setNumero(string numero) throw (invalid_argument) {
+    validar_entrada(numero);
+    validar_logica(numero);
+    this->numero = numero;
+}
+
+// ------------------------------------------------------------------------
+
+void CPF::validar_entrada(string cpf) throw (invalid_argument) {
+
+    // checa tamanho
+    if (cpf.length() != TAMANHO_ESPERADO) {
+        throw invalid_argument("Argumento invalido");
+    }
+
+    // checa digitos
+    for (int i = 0; i < cpf.length(); i++) {
+        if ((i == POS_PONTO1 || i == POS_PONTO2) && cpf[i] != '.') {
+            throw invalid_argument("Argumento invalido");
+        } else if (i == POS_TRACO && cpf[i] != '-') {
+            throw invalid_argument("Argumento invalido");
+        } else if ((int(cpf[i]) < LIMITE_INFERIOR_NUMERO || int(cpf[i]) > LIMITE_SUPERIOR_NUMERO) &&
+                   (i != POS_PONTO1 && i != POS_PONTO2 && i != POS_TRACO)) {      
+            throw invalid_argument("Argumento invalido");       
+        } 
+    }
+
+    return;
+}
+
+void CPF::validar_logica(string cpf) throw (invalid_argument) {
+
+    int soma1 = 0;
+    int soma2 = 0;
+    int verificador1;
+    int verificador2;
+    int anterior = cpf[0];
+    bool repetido = true;
+    int j = 10;
+    for (int i = 0; i < cpf.length(); i++) {
+        if (i != POS_PONTO1 && i != POS_PONTO2 && i != POS_TRACO) {
+            if (j > 1) soma1 += (cpf[i] - '0') * j;
+            if (j >= 1) soma2 += (cpf[i] - '0') * (j+1);
+            j--;
+
+            if (i > 0 && anterior != cpf[i]) {
+                repetido = false;
+            }
+        }
+    }
+
+    if (repetido) throw invalid_argument("Argumento invalido");
+
+    if ((soma1*10)%11 == 10) { 
+        verificador1 = 0;
+    } else {
+        verificador1 = (soma1*10)%11;
+    }
+    if ((soma2*10)%11 == 10) { 
+        verificador2 = 0;
+    } else {
+        verificador2 = (soma2*10)%11;
+    }
+
+    if (verificador1 != cpf[cpf.length()-2] - '0') {
+        throw invalid_argument("Argumento invalido");
+    }
+    if (verificador2 != cpf[cpf.length()-1] - '0') {
+        throw invalid_argument("Argumento invalido");
+    }
+    return;
+}
+
+void CPF::setCPF(string cpf) throw (invalid_argument) {
+    validar_entrada(cpf);
+    validar_logica(cpf);
+    this->cpf = cpf;
+}

@@ -306,12 +306,6 @@ class DataValidade {
  	}
 };
 
-/*
-	static const int TAMANHO_MAX = 7;
-	static const float VALOR_MAX = 1000.00;
-	static const float VALOR_MIN = 0.00;
-*/
-
 class Preco {
  private:
  	string preco;
@@ -334,5 +328,46 @@ class Preco {
  		return preco;
  	}
 };
+
+class NumeroCartao {
+ private:
+ 	string numero;
+
+ 	static const int TAMANHO_ESPERADO = 16;
+ 	static const int ASCII_OFFSET = 48;
+ 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
+ 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
+
+ 	void validar_entrada(string) throw (invalid_argument);
+ 	void validar_logica(string) throw (invalid_argument);
+
+ public:
+ 	void setNumero(string) throw (invalid_argument);
+ 	string getNumero() {
+ 		return numero;
+ 	}
+};
+
+class CPF {
+ private:
+ 	string cpf;
+
+ 	static const int TAMANHO_ESPERADO = 14;
+ 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
+ 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
+ 	static const int POS_PONTO1 = 3;
+ 	static const int POS_PONTO2 = 7;
+ 	static const int POS_TRACO = 11;
+
+ 	void validar_entrada(string) throw (invalid_argument);
+ 	void validar_logica(string) throw (invalid_argument);
+
+ public:
+ 	void setCPF(string) throw (invalid_argument);
+ 	string getCPF() {
+ 		return cpf;
+ 	}
+};
+
 
 #endif

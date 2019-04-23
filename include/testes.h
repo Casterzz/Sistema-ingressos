@@ -4,23 +4,8 @@
 #include "dominios.h"
 
 using namespace std;
-/*
-class TUgeral {
- private:
-    int estado;
 
-    void monta();
-    void desmonta();
-    void testarCenarioSucesso();
-    void testarCenarioFalha();
 
- public:
-    const static int SUCESSO = 0;
-    const static int FALHA = -1;
-    
-    int run();
-};
-*/
 class TUCodigoEvento {
  private:
 
@@ -358,6 +343,48 @@ class TUPreco {
     static const string VALOR_INVALIDO_TAMANHO;
 
     Preco *pPreco;
+
+ public:
+
+    void run();
+};
+
+class TUNumeroCartao {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+
+    static const string VALOR_VALIDO;
+    static const string VALOR_INVALIDO;
+    static const string VALOR_INVALIDO_SIMBOLO;
+    static const string VALOR_INVALIDO_TAMANHO;
+
+    NumeroCartao *pNumeroCartao;
+
+ public:
+
+    void run();
+};
+
+class TUCPF {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+    void testarCenarioFalha();
+
+    static const string VALOR_VALIDO;
+    static const string VALOR_INVALIDO;
+    static const string VALOR_INVALIDO_SIMBOLO;
+    static const string VALOR_INVALIDO_TAMANHO;
+    static const string VALOR_INVALIDO_REPETIDO;
+    static const string VALOR_INVALIDO_PONTO;
+
+    CPF *pCPF;
 
  public:
 

@@ -1278,3 +1278,151 @@ void TUPreco::run() {
 
     return;
 }
+
+// ------------------------------------------------------------------------------
+
+const string TUNumeroCartao::VALOR_VALIDO = "4556830088565320";
+const string TUNumeroCartao::VALOR_INVALIDO = "4556830188565320";
+const string TUNumeroCartao::VALOR_INVALIDO_SIMBOLO = "a55683o188565320";
+const string TUNumeroCartao::VALOR_INVALIDO_TAMANHO = "45568300";
+
+void TUNumeroCartao::monta() {
+    pNumeroCartao = new NumeroCartao();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+}
+
+void TUNumeroCartao::desmonta() {
+    delete pNumeroCartao;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+}
+
+void TUNumeroCartao::testarCenarioSucesso() {
+    try {
+        pNumeroCartao->setNumero(VALOR_VALIDO);
+        if (VALOR_VALIDO.compare(pNumeroCartao->getNumero()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    return;
+}
+
+void TUNumeroCartao::testarCenarioFalha() {
+    try {
+        pNumeroCartao->setNumero(VALOR_INVALIDO);
+        cout << "\033[31mERRO TestarCenarioFalha | DIGITO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | DIGITO\n\033[0m";
+    }
+    try {
+        pNumeroCartao->setNumero(VALOR_INVALIDO_SIMBOLO);
+        cout << "\033[31mERRO TestarCenarioFalha | SIMBOLO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | SIMBOLO\n\033[0m";
+    }
+    try {
+        pNumeroCartao->setNumero(VALOR_INVALIDO_TAMANHO);
+        cout << "\033[31mERRO TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    return;
+}
+
+void TUNumeroCartao::run() {
+    cout << "\n\n\033[33;1mTestando NumeroCartao...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    desmonta();
+
+    return;
+}
+
+// ------------------------------------------------------------------------------
+
+const string TUCPF::VALOR_VALIDO = "529.982.247-25";
+const string TUCPF::VALOR_INVALIDO = "173.859.290-86";
+const string TUCPF::VALOR_INVALIDO_REPETIDO = "111.111.111-11";
+const string TUCPF::VALOR_INVALIDO_SIMBOLO = "est.eem.euc-pf";
+const string TUCPF::VALOR_INVALIDO_TAMANHO = "173.829.290-867";
+const string TUCPF::VALOR_INVALIDO_PONTO = "17308291290286";
+
+void TUCPF::monta() {
+    pCPF = new CPF();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+}
+
+void TUCPF::desmonta() {
+    delete pCPF;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+}
+
+void TUCPF::testarCenarioSucesso() {
+    try {
+        pCPF->setCPF(VALOR_VALIDO);
+        if (VALOR_VALIDO.compare(pCPF->getCPF()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
+    }
+    return;
+}
+
+void TUCPF::testarCenarioFalha() {
+    try {
+        pCPF->setCPF(VALOR_INVALIDO);
+        cout << "\033[31mERRO TestarCenarioFalha | DIGITO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | DIGITO\n\033[0m";
+    }
+    try {
+        pCPF->setCPF(VALOR_INVALIDO_SIMBOLO);
+        cout << "\033[31mERRO TestarCenarioFalha | SIMBOLO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | SIMBOLO\n\033[0m";
+    }
+    try {
+        pCPF->setCPF(VALOR_INVALIDO_REPETIDO);
+        cout << "\033[31mERRO TestarCenarioFalha | REPETIDO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | REPETIDO\n\033[0m";
+    }
+    try {
+        pCPF->setCPF(VALOR_INVALIDO_TAMANHO);
+        cout << "\033[31mERRO TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | TAMANHO\n\033[0m";
+    }
+    try {
+        pCPF->setCPF(VALOR_INVALIDO_PONTO);
+        cout << "\033[31mERRO TestarCenarioFalha | PONTO\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | PONTO\n\033[0m";
+    }
+    return;
+}
+
+void TUCPF::run() {
+    cout << "\n\n\033[33;1mTestando CPF...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    desmonta();
+
+    return;
+}

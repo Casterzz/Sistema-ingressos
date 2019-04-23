@@ -24,6 +24,8 @@ int main() {
     TUHorario testeHorario;
     TUDataValidade testeDataValidade;
     TUPreco testePreco;
+    TUNumeroCartao testeCartao;
+    TUCPF testeCPF;
 
     testeEvento.run();
     testeCodigoSeguranca.run();
@@ -41,6 +43,8 @@ int main() {
     testeHorario.run();
     testeDataValidade.run();
     testePreco.run();
+    testeCartao.run();
+    testeCPF.run();
 
     cout << "\n\033[33;1mTestes Concluídos\033[0m\n\n";
 
