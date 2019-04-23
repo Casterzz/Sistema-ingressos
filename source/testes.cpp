@@ -482,7 +482,6 @@ const string TUSenha::VALOR_INVALIDO_MINUS = "oi3iu3";
 const string TUSenha::VALOR_INVALIDO_MAIUS = "ABACAX";
 const string TUSenha::VALOR_INVALIDO_SIMBOLOS = "/>78!a";
 
-
 void TUSenha::monta() {
     pSenha = new Senha();
     cout << "\033[32mOK (Monta)\n\033[0m";
@@ -739,8 +738,6 @@ const string TUNumeroSala::VALOR_INVALIDO_LETRA = "a";
 const string TUNumeroSala::VALOR_INVALIDO_OVERFLOW = "11";
 const string TUNumeroSala::VALOR_INVALIDO_MAIOR = "222";
 
-
-
 void TUNumeroSala::monta() {
     pSala = new NumeroSala();
     cout << "\033[32mOK (Monta)\n\033[0m";
@@ -831,8 +828,6 @@ const string TUDisponibilidade::VALOR_INVALIDO_LETRA = "abc";
 const string TUDisponibilidade::VALOR_INVALIDO_OVERFLOW = "256";
 const string TUDisponibilidade::VALOR_INVALIDO_TAMANHO = "9999";
 
-
-
 void TUDisponibilidade::monta() {
     pDisponibilidade = new Disponibilidade();
     cout << "\033[32mOK (Monta)\n\033[0m";
@@ -919,6 +914,7 @@ void TUDisponibilidade::run() {
 const string TUFaixaEtaria::VALOR_VALIDO_LETRA = "L";
 const string TUFaixaEtaria::VALOR_VALIDO_NUMERO = "10";
 const string TUFaixaEtaria::VALOR_INVALIDO_LETRA = "M";
+const string TUFaixaEtaria::VALOR_INVALIDO_BARRA = "L/";
 const string TUFaixaEtaria::VALOR_INVALIDO_NUMERO = "00";
 const string TUFaixaEtaria::VALOR_INVALIDO_TAMANHO = "1800";
 
@@ -965,6 +961,13 @@ void TUFaixaEtaria::testarCenarioFalha() {
         cout << "\033[32mOK TestarCenarioFalha | LETRA\n\033[0m";
     }
     try {
+        pFaixa->setFaixa(VALOR_INVALIDO_BARRA);
+        cout << "\033[31mERRO TestarCenarioFalha | BARRA\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[32mOK TestarCenarioFalha | BARRA\n\033[0m";
+    }
+    try {
         pFaixa->setFaixa(VALOR_INVALIDO_NUMERO);
         cout << "\033[31mERRO TestarCenarioFalha | NUMERO\n\033[0m";
     }
@@ -995,6 +998,7 @@ void TUFaixaEtaria::run() {
 
 const string TUEstado::VALOR_VALIDO = "DF";   
 const string TUEstado::VALOR_INVALIDO_LETRA = "LS";
+const string TUEstado::VALOR_INVALIDO_BARRA = "F/";
 const string TUEstado::VALOR_INVALIDO_NUMERO = "R2";
 const string TUEstado::VALOR_INVALIDO_TAMANHO = "LEIA";
 

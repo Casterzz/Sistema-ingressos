@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 class TUCodigoEvento {
  private:
 
@@ -256,6 +255,7 @@ class TUFaixaEtaria {
     static const string VALOR_VALIDO_LETRA;
     static const string VALOR_VALIDO_NUMERO;    
     static const string VALOR_INVALIDO_LETRA;
+    static const string VALOR_INVALIDO_BARRA;
     static const string VALOR_INVALIDO_NUMERO;
     static const string VALOR_INVALIDO_TAMANHO;
 
@@ -276,6 +276,7 @@ class TUEstado {
 
     static const string VALOR_VALIDO;   
     static const string VALOR_INVALIDO_LETRA;
+    static const string VALOR_INVALIDO_BARRA;
     static const string VALOR_INVALIDO_NUMERO;
     static const string VALOR_INVALIDO_TAMANHO;
 

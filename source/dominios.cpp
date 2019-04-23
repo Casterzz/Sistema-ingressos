@@ -3,7 +3,6 @@
 const string CodigoEvento::LIMITE_SUPERIOR = "999";
 const string CodigoEvento::LIMITE_INFERIOR = "000";
     
-
 void CodigoEvento::validar(string codigo) throw (invalid_argument) {
 
     if (LIMITE_INFERIOR.compare(codigo) > 0 || LIMITE_SUPERIOR.compare(codigo) < 0 ||
@@ -21,7 +20,6 @@ void CodigoEvento::setCodigo(string codigo) throw (invalid_argument) {
 
 const string CodigoApresentacao::LIMITE_SUPERIOR = "9999";
 const string CodigoApresentacao::LIMITE_INFERIOR = "0000";
-    
 
 void CodigoApresentacao::validar(string codigo) throw (invalid_argument) {
 
@@ -40,7 +38,6 @@ void CodigoApresentacao::setCodigo(string codigo) throw (invalid_argument) {
 
 const string CodigoIngresso::LIMITE_SUPERIOR = "99999";
 const string CodigoIngresso::LIMITE_INFERIOR = "00000";
-    
 
 void CodigoIngresso::validar(string codigo) throw (invalid_argument) {
 
@@ -69,13 +66,13 @@ void NomeEvento::validar(string nome) throw (invalid_argument) {
     for (int i = 0; i < TAMANHO_ESPERADO; i++) {
         caracter = int(nome[i]);
         // checa por simbolos
-        if ((caracter != ESPACO && caracter < LIMITE_INFERIOR_NUMERO) || (caracter > LIMITE_SUPERIOR_NUMERO &&
-            caracter < LIMITE_INFERIOR_MAIUSCULAS) || (caracter > LIMITE_SUPERIOR_MAIUSCULAS &&
-            caracter < LIMITE_INFERIOR_MINUSCULAS) || caracter > LIMITE_SUPERIOR_MINUSCULAS) {
+        if ((caracter != ' ' && caracter < '0') || (caracter > '9' &&
+            caracter < 'A') || (caracter > 'Z' &&
+            caracter < 'a') || caracter > 'z') {
             throw invalid_argument("Argumento invalido");       
         } else {
             // checa por existencia de letras
-            if (caracter > LIMITE_SUPERIOR_NUMERO) {
+            if (caracter > '9') {
                 flag = true;
             }
         }
@@ -110,7 +107,7 @@ void Data::validar(string data) throw (invalid_argument) {
     int caracter;
     for (int i = 0; i < TAMANHO_ESPERADO; i++) {
         caracter = int(data[i]);
-        if ((caracter < LIMITE_INFERIOR_NUMERO || caracter > LIMITE_SUPERIOR_NUMERO) &&
+        if ((caracter < '0' || caracter > '9') &&
             (i+1)%INTERVALO_BARRAS != 0) {
             throw invalid_argument("Argumento invalido");       
         }
@@ -122,9 +119,9 @@ void Data::validar(string data) throw (invalid_argument) {
     }
 
     // checa ano bissexto
-    int ano = (int(data[ANO_POS1])-ASCII_OFFSET)*10 + (int(data[ANO_POS2])-ASCII_OFFSET);
-    int mes = (int(data[MES_POS1])-ASCII_OFFSET)*10 + (int(data[MES_POS2])-ASCII_OFFSET);
-    int dia = (int(data[DIA_POS1])-ASCII_OFFSET)*10 + (int(data[DIA_POS2])-ASCII_OFFSET);
+    int ano = (data[ANO_POS1] - '0')*10 + (data[ANO_POS2] - '0');
+    int mes = (data[MES_POS1] - '0')*10 + (data[MES_POS2] - '0');
+    int dia = (data[DIA_POS1] - '0')*10 + (data[DIA_POS2] - '0');
     bool bissexto = false;
     if (ano%4 == 0) {
         bissexto = true;
@@ -159,7 +156,6 @@ void Data::setData(string data) throw (invalid_argument) {
     this->data = data;
 }
 
-
 // -----------------------------------------------------------------------------
 
 void Senha::validar(string senha) throw (invalid_argument) {
@@ -177,9 +173,9 @@ void Senha::validar(string senha) throw (invalid_argument) {
     for (int i = 0; i < TAMANHO_ESPERADO; i++) {
         caracter = int(senha[i]);
         // checa por simbolos
-        if ((caracter < LIMITE_INFERIOR_NUMERO) || (caracter > LIMITE_SUPERIOR_NUMERO &&
-            caracter < LIMITE_INFERIOR_MAIUSCULAS) || (caracter > LIMITE_SUPERIOR_MAIUSCULAS &&
-            caracter < LIMITE_INFERIOR_MINUSCULAS) || caracter > LIMITE_SUPERIOR_MINUSCULAS) {
+        if ((caracter < '0') || (caracter > '9' &&
+            caracter < 'A') || (caracter > 'Z' &&
+            caracter < 'a') || caracter > 'z') {
             throw invalid_argument("Argumento invalido");       
         } else {
             // checa caracteres repetidos
@@ -190,10 +186,10 @@ void Senha::validar(string senha) throw (invalid_argument) {
             }
             caracteres_usados.push_back(senha[i]);
             // garante a existência de pelo menos um numero, uma letra maiuscula e minuscula
-            if (caracter >= LIMITE_INFERIOR_NUMERO && caracter <= LIMITE_SUPERIOR_NUMERO) {
+            if (caracter >= '0' && caracter <= '9') {
                 flag_numero = true;
             } else {
-                if (caracter >= LIMITE_INFERIOR_MAIUSCULAS && caracter <= LIMITE_SUPERIOR_MAIUSCULAS) {
+                if (caracter >= 'A' && caracter <= 'Z') {
                     flag_maiuscula = true;
                 } else {
                     flag_minuscula = true;
@@ -226,25 +222,25 @@ void Cidade::validar(string cidade) throw (invalid_argument) {
     for (int i = 0; i < TAMANHO_ESPERADO; i++) {
         caracter = int(cidade[i]);
         // checa por simbolos nao previstos
-        if ((caracter != ESPACO && caracter != PONTO && caracter < LIMITE_INFERIOR_NUMERO) || 
-            (caracter > LIMITE_SUPERIOR_NUMERO && caracter < LIMITE_INFERIOR_MAIUSCULAS) || 
-            (caracter > LIMITE_SUPERIOR_MAIUSCULAS && caracter < LIMITE_INFERIOR_MINUSCULAS) || 
-            caracter > LIMITE_SUPERIOR_MINUSCULAS) {
+        if ((caracter != ' ' && caracter != '.' && caracter < '0') || 
+            (caracter > '9' && caracter < 'A') || 
+            (caracter > 'Z' && caracter < 'a') || 
+            caracter > 'z') {
             throw invalid_argument("Argumento invalido");       
         } else {
             // garante a existência de pelo menos um numero, uma letra maiuscula e minuscula
-            if (caracter >= LIMITE_INFERIOR_NUMERO && caracter <= LIMITE_SUPERIOR_NUMERO) {
+            if (caracter >= '0' && caracter <= '9') {
                 flag_numero = true;
             } else {
-                if (caracter != ESPACO && caracter != PONTO) {
+                if (caracter != ' ' && caracter != '.') {
                     flag_letra = true;
                 } else {
-                    if (caracter == PONTO) {
+                    if (caracter == '.') {
                         if (i == 0) {
                             throw invalid_argument("Argumento invalido");
                         } else {
-                            if (cidade[i-1] >= LIMITE_INFERIOR_NUMERO && cidade[i-1] <= LIMITE_SUPERIOR_NUMERO ||
-                                cidade[i-1] == ESPACO) {
+                            if (cidade[i-1] >= '0' && cidade[i-1] <= '9' ||
+                                cidade[i-1] == ' ') {
                                 throw invalid_argument("Argumento invalido");
                             }
                         }
@@ -282,14 +278,13 @@ void ClasseEvento::validar(string evento) throw (invalid_argument) {
     bool flag = false;
     caracter = int(evento[0]);
     // checa por simbolos
-    if (caracter < LIMITE_INFERIOR_NUMERO || caracter > LIMITE_SUPERIOR_NUMERO){
+    if (caracter < '0' || caracter > '9'){
         throw invalid_argument("Argumento invalido");       
     } else {
-        if ((caracter - ASCII_OFFSET) < 1 || (caracter - ASCII_OFFSET) > 4) {
+        if ((caracter - '0') < 1 || (caracter - '0') > 4) {
             throw invalid_argument("Argumento invalido");
         }
     }
-
 }
 
 void ClasseEvento::setEvento(string evento) throw (invalid_argument) {
@@ -310,7 +305,7 @@ void NumeroSala::validar(string sala) throw (invalid_argument) {
     // checa por simbolos
     for (int i = 0; i < sala.length(); i++) {
         caracter = int(sala[i]);
-        if (caracter < LIMITE_INFERIOR_NUMERO || caracter > LIMITE_SUPERIOR_NUMERO){
+        if (caracter < '0' || caracter > '9'){
             throw invalid_argument("Argumento invalido");       
         } 
     }
@@ -318,7 +313,7 @@ void NumeroSala::validar(string sala) throw (invalid_argument) {
     int expoente;
     for (int i = sala.length() - 1; i >= 0; i--) {
         expoente = (sala.length() - 1)-i;
-        num += (int(sala[i]) - ASCII_OFFSET)*pow(10, expoente);
+        num += (sala[i] - '0') * pow(10, expoente);
     }
 
     if (num < VALOR_MIN || num > VALOR_MAX) {
@@ -345,7 +340,7 @@ void Disponibilidade::validar(string disponibilidade) throw (invalid_argument) {
     // checa por simbolos
     for (int i = 0; i < disponibilidade.length(); i++) {
         caracter = int(disponibilidade[i]);
-        if (caracter < LIMITE_INFERIOR_NUMERO || caracter > LIMITE_SUPERIOR_NUMERO){
+        if (caracter < '0' || caracter > '9'){
             throw invalid_argument("Argumento invalido");       
         } 
     }
@@ -353,7 +348,7 @@ void Disponibilidade::validar(string disponibilidade) throw (invalid_argument) {
     int expoente;
     for (int i = disponibilidade.length() - 1; i >= 0; i--) {
         expoente = (disponibilidade.length() - 1)-i;
-        num += (int(disponibilidade[i]) - ASCII_OFFSET)*pow(10, expoente);
+        num += (disponibilidade[i] - '0') * pow(10, expoente);
     }
 
     if (num < VALOR_MIN || num > VALOR_MAX) {
@@ -369,13 +364,7 @@ void Disponibilidade::setDisponibilidade(string disponibilidade) throw (invalid_
 
 // ------------------------------------------------------------------------
 
-const string FaixaEtaria::LIVRE = "L";
-const string FaixaEtaria::DEZ = "10";
-const string FaixaEtaria::DOZE = "12";
-const string FaixaEtaria::QUATORZE = "14";
-const string FaixaEtaria::DEZESSEIS = "16";
-const string FaixaEtaria::DEZOITO = "18";
-
+const string FaixaEtaria::FAIXAS = "L/10/12/14/16/18/";
 
 void FaixaEtaria::validar(string faixa) throw (invalid_argument) {
 
@@ -384,10 +373,16 @@ void FaixaEtaria::validar(string faixa) throw (invalid_argument) {
         throw invalid_argument("Argumento invalido");
     }
 
-    // checa validade
-    if (LIVRE.compare(faixa) != 0 && DEZ.compare(faixa) != 0 &&
-        DOZE.compare(faixa) != 0 && QUATORZE.compare(faixa) != 0 &&
-        DEZESSEIS.compare(faixa) != 0 && DEZOITO.compare(faixa) != 0) {
+    // checa caracteres
+    for (int i = 0; i < faixa.length(); i++) {
+    	if (faixa[i] != 'L' && (faixa[i] < '0' || faixa[i] > '9'))
+    		throw invalid_argument("Argumento invalido");
+    }
+
+	// checa existencia
+    string copia = faixa;
+    copia.push_back('/');
+    if (FAIXAS.find(copia) == string::npos) {
         throw invalid_argument("Argumento invalido");
     }
     return;
@@ -408,6 +403,12 @@ void Estado::validar(string estado) throw (invalid_argument) {
     // checa tamanho
     if (estado.length() != TAMANHO_ESPERADO) {
         throw invalid_argument("Argumento invalido");
+    }
+
+    // checa caracteres
+    for (int i = 0; i < estado.length(); i++) {
+    	if (estado[i] < 'A' || estado[i] > 'Z')
+    		throw invalid_argument("Argumento invalido");
     }
 
     // checa existencia
@@ -436,16 +437,16 @@ void Horario::validar(string horario) throw (invalid_argument) {
     }
 
     // checa caracteres
-    if (horario[HORAS_POS1] < LIMITE_INFERIOR_NUMERO || horario[HORAS_POS1] > LIMITE_SUPERIOR_NUMERO ||
-        horario[HORAS_POS2] < LIMITE_INFERIOR_NUMERO || horario[HORAS_POS2] > LIMITE_SUPERIOR_NUMERO ||
-        horario[MINUTOS_POS1] < LIMITE_INFERIOR_NUMERO || horario[MINUTOS_POS1] > LIMITE_SUPERIOR_NUMERO ||
-        horario[MINUTOS_POS2] < LIMITE_INFERIOR_NUMERO || horario[MINUTOS_POS2] > LIMITE_SUPERIOR_NUMERO ||
+    if (horario[HORAS_POS1] < '0' || horario[HORAS_POS1] > '9' ||
+        horario[HORAS_POS2] < '0' || horario[HORAS_POS2] > '9' ||
+        horario[MINUTOS_POS1] < '0' || horario[MINUTOS_POS1] > '9' ||
+        horario[MINUTOS_POS2] < '0' || horario[MINUTOS_POS2] > '9' ||
         horario[MEIO] != ':') {
         throw invalid_argument("Argumento invalido");
     }
 
     // checa horas
-    int hora = (horario[HORAS_POS1]-ASCII_OFFSET)*10 + (horario[HORAS_POS2]-ASCII_OFFSET);
+    int hora = (horario[HORAS_POS1] - '0') * 10 + (horario[HORAS_POS2] - '0');
     if (hora < LIMITE_INFERIOR_HORA || hora > LIMITE_SUPERIOR_HORA) {
         throw invalid_argument("Argumento invalido");
     }
@@ -476,16 +477,16 @@ void DataValidade::validar(string dataValidade) throw (invalid_argument) {
     }
 
     // checa caracteres
-    if (dataValidade[MES_POS1] < LIMITE_INFERIOR_NUMERO || dataValidade[MES_POS1] > LIMITE_SUPERIOR_NUMERO ||
-        dataValidade[MES_POS2] < LIMITE_INFERIOR_NUMERO || dataValidade[MES_POS2] > LIMITE_SUPERIOR_NUMERO ||
-        dataValidade[ANO_POS1] < LIMITE_INFERIOR_NUMERO || dataValidade[ANO_POS1] > LIMITE_SUPERIOR_NUMERO ||
-        dataValidade[ANO_POS2] < LIMITE_INFERIOR_NUMERO || dataValidade[ANO_POS2] > LIMITE_SUPERIOR_NUMERO ||
+    if (dataValidade[MES_POS1] < '0' || dataValidade[MES_POS1] > '9' ||
+        dataValidade[MES_POS2] < '0' || dataValidade[MES_POS2] > '9' ||
+        dataValidade[ANO_POS1] < '0' || dataValidade[ANO_POS1] > '9' ||
+        dataValidade[ANO_POS2] < '0' || dataValidade[ANO_POS2] > '9' ||
         dataValidade[MEIO] != '/') {
         throw invalid_argument("Argumento invalido");
     }
 
     // checa mes
-    int mes = (dataValidade[MES_POS1]-ASCII_OFFSET)*10 + (dataValidade[MES_POS2]-ASCII_OFFSET);
+    int mes = (dataValidade[MES_POS1] - '0') * 10 + (dataValidade[MES_POS2] - '0');
     if (mes < LIMITE_INFERIOR_MESES || mes > LIMITE_SUPERIOR_MESES) {
         throw invalid_argument("Argumento invalido");
     }
@@ -499,6 +500,7 @@ void DataValidade::setDataValidade(string dataValidade) throw (invalid_argument)
 }
 
 // ------------------------------------------------------------------------
+
 const float Preco::VALOR_MAX = 1000.00;
 const float Preco::VALOR_MIN = 0.00;
 
@@ -511,32 +513,25 @@ void Preco::validar(string preco) throw (invalid_argument) {
 
     // checa caracteres
     int diferenca;
-    int numero_virgulas = 0;
     for (int i = 0; i < preco.length(); i++) {
 
-        if (preco[i] == VIRGULA) {
+        if (preco[i] == ',') {
             // checa posicao da virgula
             diferenca = preco.length() - (i+1);
             if (diferenca != NUM_ALGARISMOS_DEC) {
                 throw invalid_argument("Argumento invalido");
             }
-            numero_virgulas++;
         }
 
-        if ((preco[i] < LIMITE_INFERIOR_NUMERO && preco[i] != VIRGULA) ||
-            preco[i] > LIMITE_SUPERIOR_NUMERO) {
+        if ((preco[i] < '0' && preco[i] != ',') || preco[i] > '9') {
             throw invalid_argument("Argumento invalido");
         }
-    }
-
-    if (numero_virgulas != 1) {
-        throw invalid_argument("Argumento invalido");
     }
 
     // checa valor
     string algarismos;
     for (int i = 0; i < preco.length(); i++) {
-        if (preco[i] != VIRGULA) {
+        if (preco[i] != ',') {
             algarismos.push_back(preco[i]);
         }
     }
@@ -545,7 +540,7 @@ void Preco::validar(string preco) throw (invalid_argument) {
     float valor = 0.00;
     for (int i = algarismos.length(); i >0; i--) {
         expoente = algarismos.length() - i + POTENCIA_INICIAL;
-        valor += (int(algarismos[i]) - ASCII_OFFSET) * pow(10, expoente);
+        valor += (algarismos[i] - '0') * pow(10, expoente);
     }
 
     if (valor < VALOR_MIN || valor > VALOR_MAX) {
@@ -571,7 +566,7 @@ void NumeroCartao::validar_entrada(string numero) throw (invalid_argument) {
 
     // checa digitos
     for (int i = 0; i < numero.length(); i++) {
-        if (int(numero[i]) < LIMITE_INFERIOR_NUMERO || int(numero[i]) > LIMITE_SUPERIOR_NUMERO){
+        if (numero[i] < '0' || numero[i] > '9'){
             throw invalid_argument("Argumento invalido");       
         } 
     }
@@ -599,7 +594,6 @@ void NumeroCartao::validar_logica(string numero) throw (invalid_argument) {
 
     if (soma%10 != 0) throw invalid_argument("Argumento invalido");
 
-
     return;
 }
 
@@ -624,7 +618,7 @@ void CPF::validar_entrada(string cpf) throw (invalid_argument) {
             throw invalid_argument("Argumento invalido");
         } else if (i == POS_TRACO && cpf[i] != '-') {
             throw invalid_argument("Argumento invalido");
-        } else if ((int(cpf[i]) < LIMITE_INFERIOR_NUMERO || int(cpf[i]) > LIMITE_SUPERIOR_NUMERO) &&
+        } else if ((cpf[i] < '0' || cpf[i] > '9') &&
                    (i != POS_PONTO1 && i != POS_PONTO2 && i != POS_TRACO)) {      
             throw invalid_argument("Argumento invalido");       
         } 

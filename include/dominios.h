@@ -24,10 +24,6 @@ class CodigoEvento {
 };
 
 class CodigoSeguranca : public CodigoEvento {
- private:
-
- public:
-
 };
 
 class CodigoApresentacao {
@@ -66,13 +62,6 @@ class NomeEvento {
  private:
  	string nome;
 
- 	static const int ESPACO = 32; // ESPACO EM ASCII
- 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
- 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
- 	static const int LIMITE_INFERIOR_MAIUSCULAS = 65; // A EM ASCII
- 	static const int LIMITE_SUPERIOR_MAIUSCULAS = 90; // Z EM ASCII
- 	static const int LIMITE_INFERIOR_MINUSCULAS = 97; // a EM ASCII
- 	static const int LIMITE_SUPERIOR_MINUSCULAS = 122; // z EM ASCII
  	static const int TAMANHO_ESPERADO = 20;
 
  	void validar(string) throw (invalid_argument);
@@ -98,9 +87,6 @@ class Data {
  	static const int MES_POS2 = 4;
  	static const int DIA_POS1 = 0;
  	static const int DIA_POS2 = 1;
- 	static const int ASCII_OFFSET = 48;
- 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
- 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
  	static const string MESES;
  	static const int ABR = 4;
  	static const int JUN = 6;
@@ -120,12 +106,6 @@ class Senha {
  private:
  	string senha;
 
- 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
- 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
- 	static const int LIMITE_INFERIOR_MAIUSCULAS = 65; // A EM ASCII
- 	static const int LIMITE_SUPERIOR_MAIUSCULAS = 90; // Z EM ASCII
- 	static const int LIMITE_INFERIOR_MINUSCULAS = 97; // a EM ASCII
- 	static const int LIMITE_SUPERIOR_MINUSCULAS = 122; // z EM ASCII
  	static const int TAMANHO_ESPERADO = 6;
 
  	void validar(string) throw (invalid_argument);
@@ -141,14 +121,6 @@ class Cidade {
  private:
  	string cidade;
 
- 	static const int ESPACO = 32; // ESPACO EM ASCII 	
- 	static const int PONTO = 46; // PONTO EM ASCII
- 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
- 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
- 	static const int LIMITE_INFERIOR_MAIUSCULAS = 65; // A EM ASCII
- 	static const int LIMITE_SUPERIOR_MAIUSCULAS = 90; // Z EM ASCII
- 	static const int LIMITE_INFERIOR_MINUSCULAS = 97; // a EM ASCII
- 	static const int LIMITE_SUPERIOR_MINUSCULAS = 122; // z EM ASCII
  	static const int TAMANHO_ESPERADO = 15;
 
  	void validar(string) throw (invalid_argument);
@@ -164,9 +136,6 @@ class ClasseEvento {
  private:
  	string evento;
 
- 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
- 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
- 	static const int ASCII_OFFSET = 48;
  	static const int TAMANHO_ESPERADO = 1;
 
  	void validar(string) throw (invalid_argument);
@@ -182,12 +151,9 @@ class NumeroSala {
  private:
  	string sala;
 
- 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
- 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
  	static const int TAMANHO_MAXIMO = 2;
  	static const int VALOR_MAX = 10;
  	static const int VALOR_MIN = 1;
- 	static const int ASCII_OFFSET = 48;
 
  	void validar(string) throw (invalid_argument);
  
@@ -202,12 +168,9 @@ class Disponibilidade {
  private:
  	string disponibilidade;
 
- 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
- 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
  	static const int TAMANHO_MAXIMO = 3;
  	static const int VALOR_MAX = 250;
  	static const int VALOR_MIN = 0;
- 	static const int ASCII_OFFSET = 48;
 
  	void validar(string) throw (invalid_argument);
  
@@ -223,13 +186,8 @@ class FaixaEtaria {
  	string faixa;
 
  	static const int TAMANHO_MAX = 2;
- 	static const string LIVRE;
- 	static const string DEZ;
- 	static const string DOZE;
- 	static const string QUATORZE;
- 	static const string DEZESSEIS;
- 	static const string DEZOITO;
-
+ 	static const string FAIXAS;
+ 	
  	void validar(string) throw (invalid_argument);
 
  public:
@@ -260,7 +218,6 @@ class Horario {
  	string horario;
 
  	static const int TAMANHO_ESPERADO = 5;
- 	static const int ASCII_OFFSET = 48;
     static const int LIMITE_INFERIOR_HORA = 7;
     static const int LIMITE_SUPERIOR_HORA = 22;
     static const int HORAS_POS1 = 0;
@@ -269,8 +226,6 @@ class Horario {
     static const int MINUTOS_POS1 = 3;
     static const int MINUTOS_POS2 = 4;
     static const string MINUTOS;
-    static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
- 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
 
  	void validar(string) throw (invalid_argument);
 
@@ -288,14 +243,11 @@ class DataValidade {
  	static const int TAMANHO_ESPERADO = 5;
  	static const int LIMITE_SUPERIOR_MESES = 12;
  	static const int LIMITE_INFERIOR_MESES = 1;
- 	static const int ASCII_OFFSET = 48;
  	static const int MES_POS1 = 0;
  	static const int MES_POS2 = 1;
  	static const int MEIO = 2;
  	static const int ANO_POS1 = 3;
  	static const int ANO_POS2 = 4;
- 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
- 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
 
  	void validar(string) throw (invalid_argument);
 
@@ -315,10 +267,6 @@ class Preco {
 	static const float VALOR_MIN;
 	static const int POTENCIA_INICIAL = -2;
 	static const int NUM_ALGARISMOS_DEC = 2;
- 	static const int ASCII_OFFSET = 48;
- 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
- 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
- 	static const int VIRGULA = 44; // virgula em ASCII
 
  	void validar(string) throw (invalid_argument);
 
@@ -334,9 +282,6 @@ class NumeroCartao {
  	string numero;
 
  	static const int TAMANHO_ESPERADO = 16;
- 	static const int ASCII_OFFSET = 48;
- 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
- 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
 
  	void validar_entrada(string) throw (invalid_argument);
  	void validar_logica(string) throw (invalid_argument);
@@ -353,8 +298,6 @@ class CPF {
  	string cpf;
 
  	static const int TAMANHO_ESPERADO = 14;
- 	static const int LIMITE_INFERIOR_NUMERO = 48; // 0 EM ASCII
- 	static const int LIMITE_SUPERIOR_NUMERO = 57; // 9 EM ASCII
  	static const int POS_PONTO1 = 3;
  	static const int POS_PONTO2 = 7;
  	static const int POS_TRACO = 11;
@@ -368,6 +311,5 @@ class CPF {
  		return cpf;
  	}
 };
-
 
 #endif
