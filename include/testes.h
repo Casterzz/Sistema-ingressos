@@ -2,6 +2,7 @@
 #define TESTES_H_INCLUDED
 
 #include "dominios.h"
+#include "entidades.h"
 
 using namespace std;
 
@@ -386,6 +387,23 @@ class TUCPF {
     static const string VALOR_INVALIDO_PONTO;
 
     CPF *pCPF;
+
+ public:
+
+    void run();
+};
+
+class TUUsuario {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+
+    static const string VALOR_VALIDO_CPF;
+    static const string VALOR_VALIDO_SENHA;
+    
+    Usuario *pUsuario;
 
  public:
 

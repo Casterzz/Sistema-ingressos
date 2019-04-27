@@ -27,6 +27,8 @@ int main() {
     TUNumeroCartao testeCartao;
     TUCPF testeCPF;
 
+    cout << "\n\033[33;1mTestando Dominios\033[0m\n";
+
     testeEvento.run();
     testeCodigoSeguranca.run();
     testeApresentacao.run();
@@ -46,7 +48,16 @@ int main() {
     testeCartao.run();
     testeCPF.run();
 
-    cout << "\n\033[33;1mTestes Concluídos\033[0m\n\n";
+    cout << "\n\033[34;1mTestes de Dominios Concluídos\033[0m\n";
+
+    TUUsuario testeUsuario;
+
+    cout << "\n\033[33;1mTestando Entidades\033[0m\n";
+
+    testeUsuario.run();
+
+    cout << "\n\033[34;1mTestes de Entidades Concluídos\033[0m\n";
+    cout << "\n\033[34;1mTestes Concluídos\033[0m\n\n";
 
     return 0;
 }

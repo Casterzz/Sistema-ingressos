@@ -1430,3 +1430,45 @@ void TUCPF::run() {
 
     return;
 }
+
+// ------------------------------------------------------------------------------
+
+const string TUUsuario::VALOR_VALIDO_CPF = "529.982.247-25";
+const string TUUsuario::VALOR_VALIDO_SENHA = "Oi3ule";
+
+void TUUsuario::monta() {
+    pUsuario = new Usuario();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+}
+
+void TUUsuario::desmonta() {
+    delete pUsuario;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+}
+
+void TUUsuario::testarCenarioSucesso() {
+    CPF teste_cpf;
+    Senha teste_senha;
+    try {
+        pUsuario->setUsuario(VALOR_VALIDO_CPF, VALOR_VALIDO_SENHA);
+        pUsuario->getUsuario(&teste_cpf, &teste_senha);
+        if (VALOR_VALIDO_CPF.compare(teste_cpf.getCPF()) != 0 ||
+            VALOR_VALIDO_SENHA.compare(teste_senha.getSenha()) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso\n\033[0m";
+    }
+    return;
+}
+
+void TUUsuario::run() {
+    cout << "\n\n\033[33;1mTestando Usuario...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    desmonta();
+
+    return;
+}
