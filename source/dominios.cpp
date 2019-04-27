@@ -1,8 +1,27 @@
+/**
+ *  @file dominios.cpp
+ *  @author Pedro Carvalho
+ *  @author Victor Castor
+ *  @version 1.0
+ *
+ *  @section DESCRIÇÃO
+ *
+ *  Este arquivo é parte de uma biblioteca de classes desenvolvida para um
+ *  trabalho universitário e contém as implementações dos métodos das classes
+ *  de domínio.
+ *
+ *  Universidade de Brasília (UnB)
+ *
+ *  @subsection Período de Desenvolvimento
+ *
+ *  Primeiro semestre de 2019
+ */
+
 #include "dominios.h"
 
 const string CodigoEvento::LIMITE_SUPERIOR = "999";
 const string CodigoEvento::LIMITE_INFERIOR = "000";
-    
+
 void CodigoEvento::validar(string codigo) throw (invalid_argument) {
 
     if (LIMITE_INFERIOR.compare(codigo) > 0 || LIMITE_SUPERIOR.compare(codigo) < 0 ||
@@ -16,7 +35,7 @@ void CodigoEvento::setCodigo(string codigo) throw (invalid_argument) {
     this->codigo = codigo;
 }
 
-// ------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string CodigoApresentacao::LIMITE_SUPERIOR = "9999";
 const string CodigoApresentacao::LIMITE_INFERIOR = "0000";
@@ -52,7 +71,7 @@ void CodigoIngresso::setCodigo(string codigo) throw (invalid_argument) {
     this->codigo = codigo;
 }
 
-// ------------------------------------------------------------------------  
+// ------------------------------------------------------------------------
 
 void NomeEvento::validar(string nome) throw (invalid_argument) {
 
@@ -69,7 +88,7 @@ void NomeEvento::validar(string nome) throw (invalid_argument) {
         if ((caracter != ' ' && caracter < '0') || (caracter > '9' &&
             caracter < 'A') || (caracter > 'Z' &&
             caracter < 'a') || caracter > 'z') {
-            throw invalid_argument("Argumento invalido");       
+            throw invalid_argument("Argumento invalido");
         } else {
             // checa por existencia de letras
             if (caracter > '9') {
@@ -84,7 +103,7 @@ void NomeEvento::validar(string nome) throw (invalid_argument) {
     // checa espacos
     string espacos = "  ";
     if (nome.find(espacos) != string::npos) {
-        throw invalid_argument("Argumento invalido");   
+        throw invalid_argument("Argumento invalido");
     }
     return;
 }
@@ -94,7 +113,7 @@ void NomeEvento::setNome(string nome) throw (invalid_argument) {
     this->nome = nome;
 }
 
-// ------------------------------------------------------------------------  
+// ------------------------------------------------------------------------
 
 void Data::validar(string data) throw (invalid_argument) {
 
@@ -109,7 +128,7 @@ void Data::validar(string data) throw (invalid_argument) {
         caracter = int(data[i]);
         if ((caracter < '0' || caracter > '9') &&
             (i+1)%INTERVALO_BARRAS != 0) {
-            throw invalid_argument("Argumento invalido");       
+            throw invalid_argument("Argumento invalido");
         }
     }
 
@@ -147,7 +166,7 @@ void Data::validar(string data) throw (invalid_argument) {
             throw invalid_argument("Argumento invalido");
         }
     }
-    
+
     return;
 }
 
@@ -176,7 +195,7 @@ void Senha::validar(string senha) throw (invalid_argument) {
         if ((caracter < '0') || (caracter > '9' &&
             caracter < 'A') || (caracter > 'Z' &&
             caracter < 'a') || caracter > 'z') {
-            throw invalid_argument("Argumento invalido");       
+            throw invalid_argument("Argumento invalido");
         } else {
             // checa caracteres repetidos
             for (int j = 0; j < caracteres_usados.length(); j++) {
@@ -222,11 +241,11 @@ void Cidade::validar(string cidade) throw (invalid_argument) {
     for (int i = 0; i < TAMANHO_ESPERADO; i++) {
         caracter = int(cidade[i]);
         // checa por simbolos nao previstos
-        if ((caracter != ' ' && caracter != '.' && caracter < '0') || 
-            (caracter > '9' && caracter < 'A') || 
-            (caracter > 'Z' && caracter < 'a') || 
+        if ((caracter != ' ' && caracter != '.' && caracter < '0') ||
+            (caracter > '9' && caracter < 'A') ||
+            (caracter > 'Z' && caracter < 'a') ||
             caracter > 'z') {
-            throw invalid_argument("Argumento invalido");       
+            throw invalid_argument("Argumento invalido");
         } else {
             // garante a existência de pelo menos um numero, uma letra maiuscula e minuscula
             if (caracter >= '0' && caracter <= '9') {
@@ -249,7 +268,7 @@ void Cidade::validar(string cidade) throw (invalid_argument) {
             }
         }
     }
-    
+
     if (!flag_letra) {
         throw invalid_argument("Argumento invalido");
     }
@@ -257,7 +276,7 @@ void Cidade::validar(string cidade) throw (invalid_argument) {
     // checa espacos
     string espacos = "  ";
     if (cidade.find(espacos) != string::npos) {
-        throw invalid_argument("Argumento invalido");   
+        throw invalid_argument("Argumento invalido");
     }
 }
 
@@ -279,7 +298,7 @@ void ClasseEvento::validar(string evento) throw (invalid_argument) {
     caracter = int(evento[0]);
     // checa por simbolos
     if (caracter < '0' || caracter > '9'){
-        throw invalid_argument("Argumento invalido");       
+        throw invalid_argument("Argumento invalido");
     } else {
         if ((caracter - '0') < 1 || (caracter - '0') > 4) {
             throw invalid_argument("Argumento invalido");
@@ -306,8 +325,8 @@ void NumeroSala::validar(string sala) throw (invalid_argument) {
     for (int i = 0; i < sala.length(); i++) {
         caracter = int(sala[i]);
         if (caracter < '0' || caracter > '9'){
-            throw invalid_argument("Argumento invalido");       
-        } 
+            throw invalid_argument("Argumento invalido");
+        }
     }
 
     int expoente;
@@ -341,8 +360,8 @@ void Disponibilidade::validar(string disponibilidade) throw (invalid_argument) {
     for (int i = 0; i < disponibilidade.length(); i++) {
         caracter = int(disponibilidade[i]);
         if (caracter < '0' || caracter > '9'){
-            throw invalid_argument("Argumento invalido");       
-        } 
+            throw invalid_argument("Argumento invalido");
+        }
     }
 
     int expoente;
@@ -567,8 +586,8 @@ void NumeroCartao::validar_entrada(string numero) throw (invalid_argument) {
     // checa digitos
     for (int i = 0; i < numero.length(); i++) {
         if (numero[i] < '0' || numero[i] > '9'){
-            throw invalid_argument("Argumento invalido");       
-        } 
+            throw invalid_argument("Argumento invalido");
+        }
     }
 
     return;
@@ -619,9 +638,9 @@ void CPF::validar_entrada(string cpf) throw (invalid_argument) {
         } else if (i == POS_TRACO && cpf[i] != '-') {
             throw invalid_argument("Argumento invalido");
         } else if ((cpf[i] < '0' || cpf[i] > '9') &&
-                   (i != POS_PONTO1 && i != POS_PONTO2 && i != POS_TRACO)) {      
-            throw invalid_argument("Argumento invalido");       
-        } 
+                   (i != POS_PONTO1 && i != POS_PONTO2 && i != POS_TRACO)) {
+            throw invalid_argument("Argumento invalido");
+        }
     }
 
     return;
@@ -650,12 +669,12 @@ void CPF::validar_logica(string cpf) throw (invalid_argument) {
 
     if (repetido) throw invalid_argument("Argumento invalido");
 
-    if ((soma1*10)%11 == 10) { 
+    if ((soma1*10)%11 == 10) {
         verificador1 = 0;
     } else {
         verificador1 = (soma1*10)%11;
     }
-    if ((soma2*10)%11 == 10) { 
+    if ((soma2*10)%11 == 10) {
         verificador2 = 0;
     } else {
         verificador2 = (soma2*10)%11;

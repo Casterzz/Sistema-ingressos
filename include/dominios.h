@@ -1,3 +1,21 @@
+/**
+ *  @file dominios.h
+ *  @author Pedro Carvalho
+ *  @author Victor Castor
+ *  @version 1.0
+ *
+ *  @section DESCRIÇÃO
+ *
+ *  Este arquivo é parte de uma biblioteca de classes desenvolvida para um
+ *  trabalho universitário e contém as declarações das classes de domínio.
+ *
+ *  Universidade de Brasília (UnB)
+ *
+ *  @subsection Período de Desenvolvimento
+ *
+ *  Primeiro semestre de 2019
+ */
+
 #ifndef DOMINIOS_H_INCLUDED
 #define DOMINIOS_H_INCLUDED
 
@@ -7,6 +25,18 @@
 
 using namespace std;
 
+/**
+ *  @brief Classe que contém um código de evento.
+ *  @author Pedro Carvalho
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa o código de evento.
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "XXX", em que X é dígito (0 a 9).
+ */
+
 class CodigoEvento {
  private:
  	string codigo;
@@ -15,16 +45,51 @@ class CodigoEvento {
  	static const string LIMITE_INFERIOR;
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
+    /**
+     *  Atribui valor à variável "codigo".
+     *
+     *  @param string[in]
+     */
  	void setCodigo(string) throw (invalid_argument);
+
+    /**
+     *  Obtém o código.
+     *
+     *  @return Uma string correspondente à variável "codigo".
+     */
  	string getCodigo() {
  		return codigo;
  	}
 };
 
+/**
+ *  @brief Classe que contém um código de segurança.
+ *  @author Pedro Carvalho
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe é equivalente à classe "CodigoEvento".
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "XXX", em que X é dígito (0 a 9).
+ */
+
 class CodigoSeguranca : public CodigoEvento {
 };
+
+/**
+ *  @brief Classe que contém um código de apresentação.
+ *  @author Pedro Carvalho
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa o código de apresentação.
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "XXXX", em que X é dígito (0 a 9).
+ */
 
 class CodigoApresentacao {
  private:
@@ -34,13 +99,36 @@ class CodigoApresentacao {
  	static const string LIMITE_INFERIOR;
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
+    /**
+     *  Atribui valor à variável "codigo".
+     *
+     *  @param string[in]
+     */
  	void setCodigo(string) throw (invalid_argument);
+
+    /**
+     *  Obtém o código.
+     *
+     *  @return Uma string correspondente à variável "codigo".
+     */
  	string getCodigo() {
  		return codigo;
  	}
 };
+
+/**
+ *  @brief Classe que contém um código de ingresso.
+ *  @author Pedro Carvalho
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa o código de ingresso.
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "XXXXX", em que X é dígito (0 a 9).
+ */
 
 class CodigoIngresso {
  private:
@@ -50,13 +138,38 @@ class CodigoIngresso {
  	static const string LIMITE_INFERIOR;
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
+    /**
+     *  Atribui valor à variável "codigo".
+     *
+     *  @param string[in]
+     */
  	void setCodigo(string) throw (invalid_argument);
+
+    /**
+     *  Obtém o código.
+     *
+     *  @return Uma string correspondente à variável "codigo".
+     */
  	string getCodigo() {
  		return codigo;
  	}
 };
+
+/**
+ *  @brief Classe que contém um nome de evento.
+ *  @author Pedro Carvalho
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa o nome de evento.
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "XXXXXXXXXXXXXXXXXXXX" (20 caracteres), em que X
+ *  pode ser letra, dígito ou espaço. Pelo menos um caracter é letra. Não podem
+ *  existir espaços em sequência.
+ */
 
 class NomeEvento {
  private:
@@ -65,13 +178,39 @@ class NomeEvento {
  	static const int TAMANHO_ESPERADO = 20;
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
+    /**
+     *  Atribui valor à variável "nome".
+     *
+     *  @param string[in]
+     */
  	void setNome(string) throw (invalid_argument);
+
+    /**
+     *  Obtém o nome.
+     *
+     *  @return Uma string correspondente à variável "nome".
+     */
  	string getNome() {
  		return nome;
  	}
 };
+
+/**
+ *  @brief Classe que contém uma data.
+ *  @author Pedro Carvalho
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa uma data.
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "DD/MM/AA", em que:
+ *  - DD é um número de 1 a 31;
+ *  - MM é um número de 1 a 12;
+ *  - AA é um número de 0 a 99.
+ */
 
 class Data {
  private:
@@ -94,9 +233,20 @@ class Data {
  	static const int NOV = 11;
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
+    /**
+     *  Atribui valor à variável "data".
+     *
+     *  @param string[in]
+     */
  	void setData(string) throw (invalid_argument);
+
+    /**
+     *  Obtém a data.
+     *
+     *  @return Uma string correspondente à variável "data".
+     */
  	string getData() {
  		return data;
  	}
@@ -109,7 +259,7 @@ class Senha {
  	static const int TAMANHO_ESPERADO = 6;
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
  	void setSenha(string) throw (invalid_argument);
  	string getSenha() {
@@ -124,7 +274,7 @@ class Cidade {
  	static const int TAMANHO_ESPERADO = 15;
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
  	void setCidade(string) throw (invalid_argument);
  	string getCidade() {
@@ -139,7 +289,7 @@ class ClasseEvento {
  	static const int TAMANHO_ESPERADO = 1;
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
  	void setEvento(string) throw (invalid_argument);
  	string getEvento() {
@@ -156,7 +306,7 @@ class NumeroSala {
  	static const int VALOR_MIN = 1;
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
  	void setSala(string) throw (invalid_argument);
  	string getSala() {
@@ -173,7 +323,7 @@ class Disponibilidade {
  	static const int VALOR_MIN = 0;
 
  	void validar(string) throw (invalid_argument);
- 
+
  public:
  	void setDisponibilidade(string) throw (invalid_argument);
  	string getDisponibilidade() {
@@ -187,7 +337,7 @@ class FaixaEtaria {
 
  	static const int TAMANHO_MAX = 2;
  	static const string FAIXAS;
- 	
+
  	void validar(string) throw (invalid_argument);
 
  public:
