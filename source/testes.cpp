@@ -1,9 +1,9 @@
 #include "testes.h"
 #include <iostream>
 
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // 								DOMINIOS
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUCodigoEvento::VALOR_VALIDO = "020";
 const string TUCodigoEvento::VALOR_INVALIDO_LETRA = "abc";
@@ -24,7 +24,7 @@ void TUCodigoEvento::desmonta() {
 
 void TUCodigoEvento::testarCenarioSucesso() {
     try {
-        pCodigo->setCodigo(VALOR_VALIDO);       
+        pCodigo->setCodigo(VALOR_VALIDO);
         if (VALOR_VALIDO.compare(pCodigo->getCodigo()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
         }
@@ -71,7 +71,7 @@ void TUCodigoEvento::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUCodigoSeguranca::VALOR_VALIDO = "020";
 const string TUCodigoSeguranca::VALOR_INVALIDO_LETRA = "abc";
@@ -92,7 +92,7 @@ void TUCodigoSeguranca::desmonta() {
 
 void TUCodigoSeguranca::testarCenarioSucesso() {
     try {
-        pCodigo->setCodigo(VALOR_VALIDO);       
+        pCodigo->setCodigo(VALOR_VALIDO);
         if (VALOR_VALIDO.compare(pCodigo->getCodigo()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
         }
@@ -139,7 +139,7 @@ void TUCodigoSeguranca::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUCodigoApresentacao::VALOR_VALIDO = "0020";
 const string TUCodigoApresentacao::VALOR_INVALIDO_LETRA = "abcd";
@@ -160,7 +160,7 @@ void TUCodigoApresentacao::desmonta() {
 
 void TUCodigoApresentacao::testarCenarioSucesso() {
     try {
-        pCodigo->setCodigo(VALOR_VALIDO);       
+        pCodigo->setCodigo(VALOR_VALIDO);
         if (VALOR_VALIDO.compare(pCodigo->getCodigo()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
         }
@@ -207,7 +207,7 @@ void TUCodigoApresentacao::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUCodigoIngresso::VALOR_VALIDO = "00020";
 const string TUCodigoIngresso::VALOR_INVALIDO_LETRA = "abcde";
@@ -226,7 +226,7 @@ void TUCodigoIngresso::desmonta() {
 
 void TUCodigoIngresso::testarCenarioSucesso() {
     try {
-        pCodigo->setCodigo(VALOR_VALIDO);       
+        pCodigo->setCodigo(VALOR_VALIDO);
         if (VALOR_VALIDO.compare(pCodigo->getCodigo()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
         }
@@ -273,11 +273,11 @@ void TUCodigoIngresso::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUNomeEvento::NOME_VALIDO = "3v3nt0 d0 J040 P3dr0";
 const string TUNomeEvento::NOME_INVALIDO_SIMBOLO = "&v&nto do Joao P&dro";
-const string TUNomeEvento::NOME_INVALIDO_MAIOR = "Evento do Joao Pedro da Silva";
+const string TUNomeEvento::NOME_INVALIDO_MAIOR = "Evento do Joao Pedro d'Avila";
 const string TUNomeEvento::NOME_INVALIDO_MENOR = "Evento do Joao";
 const string TUNomeEvento::NOME_INVALIDO_ESPACOS = "Evento do      Pedro";
 const string TUNomeEvento::NOME_INVALIDO_NUMEROS = "43779487293874943545";
@@ -296,7 +296,7 @@ void TUNomeEvento::desmonta() {
 
 void TUNomeEvento::testarCenarioSucesso() {
     try {
-        pNome->setNome(NOME_VALIDO);       
+        pNome->setNome(NOME_VALIDO);
         if (NOME_VALIDO.compare(pNome->getNome()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
         }
@@ -357,7 +357,7 @@ void TUNomeEvento::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUData::DATA_VALIDA_NORMAL = "18/04/19";
 const string TUData::DATA_VALIDA_BISSEXTO = "29/02/20";
@@ -394,7 +394,7 @@ void TUData::testarCenarioSucesso() {
         cout << "\033[31mERRO TestarCenarioSucesso | NORMAL\n\033[0m";
     }
     try {
-        pData->setData(DATA_VALIDA_BISSEXTO);       
+        pData->setData(DATA_VALIDA_BISSEXTO);
         if (DATA_VALIDA_BISSEXTO.compare(pData->getData()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | BISSEXTO VALIDO\n\033[0m";
         }
@@ -476,7 +476,7 @@ void TUData::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUSenha::VALOR_VALIDO = "Oi3ule";
 const string TUSenha::VALOR_INVALIDO_MAIOR = "Oi3uler";
@@ -500,7 +500,7 @@ void TUSenha::desmonta() {
 
 void TUSenha::testarCenarioSucesso() {
     try {
-        pSenha->setSenha(VALOR_VALIDO);       
+        pSenha->setSenha(VALOR_VALIDO);
         if (VALOR_VALIDO.compare(pSenha->getSenha()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
         }
@@ -568,7 +568,7 @@ void TUSenha::run() {
     return;
 }
 
-// --------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUCidade::VALOR_VALIDO = "Casa do Joao. 2";
 const string TUCidade::VALOR_INVALIDO_PONTO = "Casa do Joa0. 2";
@@ -593,7 +593,7 @@ void TUCidade::desmonta() {
 
 void TUCidade::testarCenarioSucesso() {
     try {
-        pCidade->setCidade(VALOR_VALIDO);       
+        pCidade->setCidade(VALOR_VALIDO);
         if (VALOR_VALIDO.compare(pCidade->getCidade()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
         }
@@ -668,7 +668,7 @@ void TUCidade::run() {
     return;
 }
 
-// --------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUClasseEvento::VALOR_VALIDO = "2";
 const string TUClasseEvento::VALOR_INVALIDO_LETRA = "a";
@@ -689,7 +689,7 @@ void TUClasseEvento::desmonta() {
 
 void TUClasseEvento::testarCenarioSucesso() {
     try {
-        pEvento->setClasseEvento(VALOR_VALIDO);       
+        pEvento->setClasseEvento(VALOR_VALIDO);
         if (VALOR_VALIDO.compare(pEvento->getClasseEvento()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
         }
@@ -733,7 +733,7 @@ void TUClasseEvento::run() {
     testarCenarioFalha();
     desmonta();
 }
-// --------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUNumeroSala::VALOR_VALIDO = "2";
 const string TUNumeroSala::VALOR_VALIDO_LIMITE = "10";
@@ -756,7 +756,7 @@ void TUNumeroSala::desmonta() {
 
 void TUNumeroSala::testarCenarioSucesso() {
     try {
-        pSala->setSala(VALOR_VALIDO);       
+        pSala->setSala(VALOR_VALIDO);
         if (VALOR_VALIDO.compare(pSala->getSala()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | INTERMEDIARIO\n\033[0m";
         }
@@ -766,7 +766,7 @@ void TUNumeroSala::testarCenarioSucesso() {
         cout << "\033[31mERRO TestarCenarioSucesso | INTERMEDIARIO\n\033[0m";
     }
     try {
-        pSala->setSala(VALOR_VALIDO_LIMITE);       
+        pSala->setSala(VALOR_VALIDO_LIMITE);
         if (VALOR_VALIDO_LIMITE.compare(pSala->getSala()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | LIMITE\n\033[0m";
         }
@@ -776,7 +776,7 @@ void TUNumeroSala::testarCenarioSucesso() {
         cout << "\033[31mERRO TestarCenarioSucesso | LIMITE\n\033[0m";
     }
     try {
-        pSala->setSala(VALOR_VALIDO_NPADRAO);       
+        pSala->setSala(VALOR_VALIDO_NPADRAO);
         if (VALOR_VALIDO_NPADRAO.compare(pSala->getSala()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | NPADRAO\n\033[0m";
         }
@@ -823,7 +823,7 @@ void TUNumeroSala::run() {
     return;
 }
 
-// --------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUDisponibilidade::VALOR_VALIDO = "2";
 const string TUDisponibilidade::VALOR_VALIDO_LIMITE = "250";
@@ -846,7 +846,7 @@ void TUDisponibilidade::desmonta() {
 
 void TUDisponibilidade::testarCenarioSucesso() {
     try {
-        pDisponibilidade->setDisponibilidade(VALOR_VALIDO);       
+        pDisponibilidade->setDisponibilidade(VALOR_VALIDO);
         if (VALOR_VALIDO.compare(pDisponibilidade->getDisponibilidade()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | INTERMEDIARIO\n\033[0m";
         }
@@ -856,7 +856,7 @@ void TUDisponibilidade::testarCenarioSucesso() {
         cout << "\033[31mERRO TestarCenarioSucesso | INTERMEDIARIO\n\033[0m";
     }
     try {
-        pDisponibilidade->setDisponibilidade(VALOR_VALIDO_LIMITE);       
+        pDisponibilidade->setDisponibilidade(VALOR_VALIDO_LIMITE);
         if (VALOR_VALIDO_LIMITE.compare(pDisponibilidade->getDisponibilidade()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | LIMITE\n\033[0m";
         }
@@ -866,7 +866,7 @@ void TUDisponibilidade::testarCenarioSucesso() {
         cout << "\033[31mERRO TestarCenarioSucesso | LIMITE\n\033[0m";
     }
     try {
-        pDisponibilidade->setDisponibilidade(VALOR_VALIDO_NPADRAO);       
+        pDisponibilidade->setDisponibilidade(VALOR_VALIDO_NPADRAO);
         if (VALOR_VALIDO_NPADRAO.compare(pDisponibilidade->getDisponibilidade()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | NPADRAO\n\033[0m";
         }
@@ -913,7 +913,7 @@ void TUDisponibilidade::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUFaixaEtaria::VALOR_VALIDO_LETRA = "L";
 const string TUFaixaEtaria::VALOR_VALIDO_NUMERO = "10";
@@ -998,9 +998,9 @@ void TUFaixaEtaria::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-const string TUEstado::VALOR_VALIDO = "DF";   
+const string TUEstado::VALOR_VALIDO = "DF";
 const string TUEstado::VALOR_INVALIDO_LETRA = "LS";
 const string TUEstado::VALOR_INVALIDO_BARRA = "F/";
 const string TUEstado::VALOR_INVALIDO_NUMERO = "R2";
@@ -1065,13 +1065,13 @@ void TUEstado::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUHorario::VALOR_VALIDO = "08:30";
 const string TUHorario::VALOR_INVALIDO_LETRA = "08:E0";
 const string TUHorario::VALOR_INVALIDO_HORA = "05:30";
 const string TUHorario::VALOR_INVALIDO_MINUTO = "08:34";
-const string TUHorario::VALOR_INVALIDO_TAMANHO = "08:302";   
+const string TUHorario::VALOR_INVALIDO_TAMANHO = "08:302";
 
 void TUHorario::monta() {
     pHorario = new Horario();
@@ -1139,12 +1139,12 @@ void TUHorario::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUDataValidade::VALOR_VALIDO = "04/19";
 const string TUDataValidade::VALOR_INVALIDO_LETRA = "04/E9";
 const string TUDataValidade::VALOR_INVALIDO_MES = "14/19";
-const string TUDataValidade::VALOR_INVALIDO_TAMANHO = "04/192";   
+const string TUDataValidade::VALOR_INVALIDO_TAMANHO = "04/192";
 
 void TUDataValidade::monta() {
     pDataValidade = new DataValidade();
@@ -1205,7 +1205,7 @@ void TUDataValidade::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUPreco::VALOR_VALIDO = "850,99";
 const string TUPreco::VALOR_INVALIDO_SIMBOLO = "85%,99";
@@ -1287,7 +1287,7 @@ void TUPreco::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUNumeroCartao::VALOR_VALIDO = "4556830088565320";
 const string TUNumeroCartao::VALOR_INVALIDO = "4556830188565320";
@@ -1353,7 +1353,7 @@ void TUNumeroCartao::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const string TUCPF::VALOR_VALIDO = "529.982.247-25";
 const string TUCPF::VALOR_INVALIDO = "173.859.290-86";
@@ -1435,9 +1435,9 @@ void TUCPF::run() {
     return;
 }
 
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // 								ENTIDADES
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const EstruturaUsuario TUUsuario::ESTRUTURA_VALIDA = {
 	"529.982.247-25",
@@ -1480,7 +1480,7 @@ void TUUsuario::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const EstruturaApresentacao TUApresentacao::ESTRUTURA_VALIDA = {
   	"0020",
@@ -1502,7 +1502,7 @@ void TUApresentacao::desmonta() {
 }
 
 void TUApresentacao::testarCenarioSucesso() {
-    
+
     EstruturaApresentacao apresentacao;
 
     try {
@@ -1533,7 +1533,7 @@ void TUApresentacao::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const EstruturaEvento TUEvento::ESTRUTURA_VALIDA = {
   	"002",
@@ -1555,7 +1555,7 @@ void TUEvento::desmonta() {
 }
 
 void TUEvento::testarCenarioSucesso() {
-    
+
     EstruturaEvento evento;
 
     try {
@@ -1586,7 +1586,7 @@ void TUEvento::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 const EstruturaIngresso TUIngresso::ESTRUTURA_VALIDA = {
 	"12345"
@@ -1627,7 +1627,7 @@ void TUIngresso::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 
 const EstruturaCartaoCredito TUCartaoCredito::ESTRUTURA_VALIDA = {
@@ -1647,7 +1647,7 @@ void TUCartaoCredito::desmonta() {
 }
 
 void TUCartaoCredito::testarCenarioSucesso() {
-    
+
     EstruturaCartaoCredito cartao;
 
     try {

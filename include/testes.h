@@ -6,9 +6,9 @@
 
 using namespace std;
 
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //                                 DOMINIOS
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 class TUCodigoEvento {
  private:
@@ -24,9 +24,9 @@ class TUCodigoEvento {
     static const string VALOR_INVALIDO_MENOR;
 
     CodigoEvento *pCodigo;
- 
+
  public:
-    
+
     void run();
 };
 
@@ -64,9 +64,9 @@ class TUCodigoApresentacao {
     static const string VALOR_INVALIDO_MENOR;
 
     CodigoApresentacao *pCodigo;
- 
+
  public:
-    
+
     void run();
 };
 
@@ -84,9 +84,9 @@ class TUCodigoIngresso {
     static const string VALOR_INVALIDO_MENOR;
 
     CodigoIngresso *pCodigo;
- 
+
  public:
-    
+
     void run();
 };
 
@@ -106,9 +106,9 @@ class TUNomeEvento {
     static const string NOME_INVALIDO_NUMEROS;
 
     NomeEvento *pNome;
- 
+
  public:
-    
+
     void run();
 };
 
@@ -132,9 +132,9 @@ class TUData {
     static const string DATA_INVALIDA_BISSEXTO;
 
     Data *pData;
- 
+
  public:
-    
+
     void run();
 };
 
@@ -155,9 +155,9 @@ class TUSenha {
     static const string VALOR_INVALIDO_SIMBOLOS;
 
     Senha *pSenha;
- 
+
  public:
-    
+
     void run();
 };
 
@@ -179,9 +179,9 @@ class TUCidade {
     static const string VALOR_INVALIDO_PONTO2;
 
     Cidade *pCidade;
- 
+
  public:
-    
+
     void run();
 };
 
@@ -199,9 +199,9 @@ class TUClasseEvento {
     static const string VALOR_INVALIDO_OVERFLOW;
 
     ClasseEvento *pEvento;
- 
+
  public:
-    
+
     void run();
 };
 
@@ -221,9 +221,9 @@ class TUNumeroSala {
     static const string VALOR_INVALIDO_MAIOR;
 
     NumeroSala *pSala;
- 
+
  public:
-    
+
     void run();
 };
 
@@ -243,9 +243,9 @@ class TUDisponibilidade {
     static const string VALOR_INVALIDO_TAMANHO;
 
     Disponibilidade *pDisponibilidade;
- 
+
  public:
-    
+
     void run();
 };
 
@@ -258,7 +258,7 @@ class TUFaixaEtaria {
     void testarCenarioFalha();
 
     static const string VALOR_VALIDO_LETRA;
-    static const string VALOR_VALIDO_NUMERO;    
+    static const string VALOR_VALIDO_NUMERO;
     static const string VALOR_INVALIDO_LETRA;
     static const string VALOR_INVALIDO_BARRA;
     static const string VALOR_INVALIDO_NUMERO;
@@ -279,7 +279,7 @@ class TUEstado {
     void testarCenarioSucesso();
     void testarCenarioFalha();
 
-    static const string VALOR_VALIDO;   
+    static const string VALOR_VALIDO;
     static const string VALOR_INVALIDO_LETRA;
     static const string VALOR_INVALIDO_BARRA;
     static const string VALOR_INVALIDO_NUMERO;
@@ -397,9 +397,9 @@ class TUCPF {
     void run();
 };
 
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //                              ENTIDADES
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 class TUUsuario {
  private:
@@ -409,7 +409,7 @@ class TUUsuario {
     void testarCenarioSucesso();
 
     static const EstruturaUsuario ESTRUTURA_VALIDA;
-    
+
     Usuario *pUsuario;
 
  public:

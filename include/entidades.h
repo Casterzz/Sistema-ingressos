@@ -172,6 +172,18 @@ class Apresentacao {
 
 // ----------------------------------------------------------------------------
 
+/**
+ *  @brief Estrutura que contém atributos da entidade Evento
+ *  @author Pedro Victor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa estrutura armazena os atributos "codigo", "nome", "cidade", "estado",
+ *  "classe" e "faixa".
+ *
+ *  @subsection FORMA
+ *  Os atributos são strings.
+ */
+
 typedef struct Estrutura_Evento {
     string codigo;
     string nome;
@@ -180,6 +192,24 @@ typedef struct Estrutura_Evento {
     string classe;
     string faixa;
 }EstruturaEvento;
+
+/**
+ *  @brief Classe que representa um evento.
+ *  @author Pedro Carvalho
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena os atributos "codigo", "nome", "cidade", "estado",
+ *  "classe" e "faixa".
+ *
+ *  @subsection FORMA
+ *  Os atributos são objetos da biblioteca de domínios:
+ *  - "codigo" é um objeto da classe CodigoEvento.
+ *  - "nome" é um objeto da classe NomeEvento.
+ *  - "cidade" é um objeto da classe Cidade.
+ *  - "estado" é um objeto da classe Estado.
+ *  - "classe" é um objeto da classe ClasseEvento.
+ *  - "faixa" é um objeto da classe FaixaEtaria.
+ */
 
 class Evento {
  private:
@@ -192,6 +222,13 @@ class Evento {
 
  public:
 
+    /**
+     *  Atribui valor aos atributos "codigo", "nome", "cidade", "estado",
+     *  "classe" e "faixa".
+     *
+     *  @param evento[in] É uma instância da estrutura "EstruturaEvento" na qual
+     *  há valores para serem colocados nos membros do objeto dessa classe.
+     */
     void setEvento(EstruturaEvento evento) throw (invalid_argument) {
         this->codigo.setCodigo(evento.codigo);
         this->nome.setNome(evento.nome);
@@ -201,6 +238,14 @@ class Evento {
         this->faixa.setFaixa(evento.faixa);
         return;
     }
+
+    /**
+     *  Obtém os dados do evento.
+     *
+     *  @param evento[in,out] é um ponteiro para uma instância da estrutura
+     *  "EstruturaEvento" na qual os valores do objeto dessa classe serão
+     *  escritos.
+     */
 
     void getEvento(EstruturaEvento *evento) {
         evento->codigo = this->codigo.getCodigo();
@@ -274,11 +319,36 @@ class Ingresso {
 
 // ----------------------------------------------------------------------------
 
+/**
+ *  @brief Estrutura que contém atributos da entidade CartaoCredito
+ *  @author Pedro Victor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa estrutura armazena os atributos "numero", "codigo" e "data".
+ *
+ *  @subsection FORMA
+ *  Os atributos são strings.
+ */
+
 typedef struct Estrutura_Cartao_Credito {
     string numero;
     string codigo;
     string data;
 }EstruturaCartaoCredito;
+
+/**
+ *  @brief Classe que representa um cartão de crédito.
+ *  @author Pedro Carvalho
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena os atributos "numero", "codigo" e "data".
+ *
+ *  @subsection FORMA
+ *  Os atributos são objetos da biblioteca de domínios:
+ *  - "numero" é um objeto da classe NumeroCartao.
+ *  - "codigo" é um objeto da classe CodigoSeguranca.
+ *  - "data" é um objeto da classe DataValidade.
+ */
 
 class CartaoCredito {
  private:
@@ -288,12 +358,28 @@ class CartaoCredito {
 
  public:
 
+    /**
+     *  Atribui valor aos atributos "numero", "codigo" e "data".
+     *
+     *  @param cartao[in] É uma instância da estrutura "EstruturaCartaoCredito"
+     *  na qual há valores para serem colocados nos membros do objeto dessa
+     *  classe.
+     */
+
     void setCartaoCredito(EstruturaCartaoCredito cartao) throw (invalid_argument) {
         this->numero.setNumero(cartao.numero);
         this->codigo.setCodigo(cartao.codigo);
         this->data.setDataValidade(cartao.data);
         return;
     }
+
+    /**
+     *  Obtém os dados do cartão de crédito.
+     *
+     *  @param cartao[in,out] é um ponteiro para uma instância da estrutura
+     *  "EstruturaCartaoCredito" na qual os valores do objeto dessa classe serão
+     *  escritos.
+     */
 
     void getCartaoCredito(EstruturaCartaoCredito *cartao) {
         cartao->numero = this->numero.getNumero();
