@@ -65,7 +65,7 @@ class CodigoEvento {
 };
 
 /**
- *  @brief Classe que contém um código de segurança.
+ *  @brief Classe que contém um código de segurança de cartão de crédito.
  *  @author Pedro Carvalho
  *  @author Victor Castor
  *
@@ -331,6 +331,17 @@ class Disponibilidade {
  	}
 };
 
+/**
+ *  @brief Classe que contém uma faixa etária.
+ *  @author Pedro Carvalho
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa uma faixa etária.
+ *
+ *  @subsection FORMA
+ *  A string só pode assumir os valores "L", "10", "12", "14", "16" e "18".
+ */
+
 class FaixaEtaria {
  private:
  	string faixa;
@@ -341,11 +352,34 @@ class FaixaEtaria {
  	void validar(string) throw (invalid_argument);
 
  public:
+
+    /**
+     *  Atribui valor à variável "faixa".
+     *
+     *  @param string[in]
+     */
  	void setFaixa(string) throw (invalid_argument);
+
+    /**
+     *  Obtém a faixa etária.
+     *
+     *  @return Uma string correspondente à variável "faixa".
+     */
  	string getFaixa() {
  		return faixa;
  	}
 };
+
+/**
+ *  @brief Classe que contém um estado.
+ *  @author Pedro Carvalho
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa a sigla de um estado.
+ *
+ *  @subsection FORMA
+ *  A string só pode assumir os valores que sejam siglas de estados brasileiros.
+ */
 
 class Estado {
  private:
@@ -357,11 +391,37 @@ class Estado {
  	void validar(string) throw (invalid_argument);
 
  public:
+
+    /**
+     *  Atribui valor à variável "estado".
+     *
+     *  @param string[in]
+     */
  	void setEstado(string) throw (invalid_argument);
+
+    /**
+     *  Obtém a sigla de estado.
+     *
+     *  @return Uma string correspondente à variável "estado".
+     */
  	string getEstado() {
  		return estado;
  	}
 };
+
+/**
+ *  @brief Classe que contém um horário.
+ *  @author Pedro Carvalho
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa um horário, com hora e
+ *  minuto.
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "HH:MM", em que:
+ *  - HH é um número de 7 a 22;
+ *  - MM é um número igual a 00, 15, 30 ou 45.
+ */
 
 class Horario {
  private:
@@ -380,11 +440,36 @@ class Horario {
  	void validar(string) throw (invalid_argument);
 
  public:
+    /**
+     *  Atribui valor à variável "horario".
+     *
+     *  @param string[in]
+     */
  	void setHorario(string) throw (invalid_argument);
+
+    /**
+     *  Obtém a hora e minuto.
+     *
+     *  @return Uma string correspondente à variável "horario".
+     */
  	string getHorario() {
  		return horario;
  	}
 };
+
+/**
+ *  @brief Classe que contém uma data de validade de cartão de crédito.
+ *  @author Pedro Carvalho
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa uma data de validade
+ *  pertencente a um cartão de crédito.
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "MM/AA", em que:
+ *  - MM é um número de 1 a 12;
+ *  - AA é um número de 00 a 99.
+ */
 
 class DataValidade {
  private:
@@ -402,11 +487,36 @@ class DataValidade {
  	void validar(string) throw (invalid_argument);
 
  public:
+
+    /**
+     *  Atribui valor à variável "dataValidade".
+     *
+     *  @param string[in]
+     */
  	void setDataValidade(string) throw (invalid_argument);
+
+    /**
+     *  Obtém a data de validade.
+     *
+     *  @return Uma string correspondente à variável "dataValidade".
+     */
  	string getDataValidade() {
  		return dataValidade;
  	}
 };
+
+/**
+ *  @brief Classe que contém um preço.
+ *  @author Pedro Carvalho
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa o valor de um preço.
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "X,DD", em que:
+ *  - X é um número de 0 a 1000, podendo ter de 1 a 4 algarismos;
+ *  - DD é um número de 00 a 99.
+ */
 
 class Preco {
  private:
@@ -421,11 +531,36 @@ class Preco {
  	void validar(string) throw (invalid_argument);
 
  public:
+
+    /**
+     *  Atribui valor à variável "preco".
+     *
+     *  @param string[in]
+     */
  	void setPreco(string) throw (invalid_argument);
+
+    /**
+     *  Obtém o preço.
+     *
+     *  @return Uma string correspondente à variável "preco".
+     */
  	string getPreco() {
  		return preco;
  	}
 };
+
+/**
+ *  @brief Classe que contém um número de cartão de crédito.
+ *  @author Pedro Carvalho
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa o número de um cartão de
+ *  crédito.
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "XXXXXXXXXXXXXXXX" (16 caracteres), em que X é
+ *  dígito (0 a 9).
+ */
 
 class NumeroCartao {
  private:
@@ -437,11 +572,35 @@ class NumeroCartao {
  	void validar_logica(string) throw (invalid_argument);
 
  public:
+
+    /**
+     *  Atribui valor à variável "numero".
+     *
+     *  @param string[in]
+     */
  	void setNumero(string) throw (invalid_argument);
+
+    /**
+     *  Obtém o número do cartão de crédito.
+     *
+     *  @return Uma string correspondente à variável "numero".
+     */
  	string getNumero() {
  		return numero;
  	}
 };
+
+/**
+ *  @brief Classe que contém um CPF.
+ *  @author Pedro Carvalho
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa um CPF.
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "XXX.XXX.XXX-XX", em que X é dígito (0 a 9). Os
+ *  dígitos devem ser válidos de acordo com o algoritmo de validação de CPF.
+ */
 
 class CPF {
  private:
@@ -456,7 +615,19 @@ class CPF {
  	void validar_logica(string) throw (invalid_argument);
 
  public:
+
+    /**
+     *  Atribui valor à variável "cpf".
+     *
+     *  @param string[in]
+     */
  	void setCPF(string) throw (invalid_argument);
+
+    /**
+     *  Obtém o CPF.
+     *
+     *  @return Uma string correspondente à variável "cpf".
+     */
  	string getCPF() {
  		return cpf;
  	}
