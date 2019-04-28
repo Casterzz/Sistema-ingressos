@@ -291,8 +291,8 @@ class ClasseEvento {
  	void validar(string) throw (invalid_argument);
 
  public:
- 	void setEvento(string) throw (invalid_argument);
- 	string getEvento() {
+ 	void setClasseEvento(string) throw (invalid_argument);
+ 	string getClasseEvento() {
  		return evento;
  	}
 };

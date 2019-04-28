@@ -24,6 +24,11 @@
 
 using namespace std;
 
+typedef struct Estrutura_Usuario {
+    string cpf;
+    string senha;
+}EstruturaUsuario;
+
 /**
  *  @brief Classe que representa um usuário.
  *  @author Pedro Carvalho
@@ -48,28 +53,29 @@ class Usuario {
     /**
      *  Atribui valor aos atributos "cpf" e "senha".
      *
-     *  @param cpf_in[in] String contendo o CPF a ser atribuido.
-     *  @param senha_in[in] String contendo a senha a ser atribuida.
+     *  @param usuario[in] É uma instância da estrutura "EstruturaUsuario" na qual
+     *  há valores para serem colocados nos membros do objeto dessa classe.
      */
- 	void setUsuario(string cpf_in, string senha_in) throw (invalid_argument) {
- 		this->cpf.setCPF(cpf_in);
- 		this->senha.setSenha(senha_in);
+ 	void setUsuario(EstruturaUsuario usuario) throw (invalid_argument) {
+ 		this->cpf.setCPF(usuario.cpf);
+ 		this->senha.setSenha(usuario.senha);
  	}
 
     /**
      *  Obtém os dados do usuário.
      *
-     *  @param cpf_out[in,out] É um ponteiro para um objeto da classe CPF no qual se
-     *  armazenará o cpf do usuário.
-     *  @param senha_out[in,out] É um ponteiro para um objeto da classe Senha no qual se
-     *  armazenará a senha do usuário.
+     *  @param usuario[in,out] é um ponteiro para uma instância da estrutura
+     *  "EstruturaUsuario" na qual os valores do objeto dessa classe serão
+     *  escritos.
      */
- 	void getUsuario(CPF *cpf_out, Senha *senha_out) {
- 		cpf_out->setCPF(this->cpf.getCPF());
- 		senha_out->setSenha(this->senha.getSenha());
+ 	void getUsuario(EstruturaUsuario *usuario) {
+ 		usuario->cpf = this->cpf.getCPF();
+ 		usuario->senha = this->senha.getSenha();
  		return;
  	}
 };
+
+// ----------------------------------------------------------------------------
 
 typedef struct Estrutura_Apresentacao {
     string codigo;
@@ -79,7 +85,6 @@ typedef struct Estrutura_Apresentacao {
     string sala;
     string disponibilidade;
 }EstruturaApresentacao;
-
 
 class Apresentacao {
 
@@ -100,6 +105,7 @@ class Apresentacao {
         this->preco.setPreco(apresentacao.preco);
         this->sala.setSala(apresentacao.sala);
         this->disponibilidade.setDisponibilidade(apresentacao.disponibilidade);
+        return;
     }
 
     void getApresentacao(EstruturaApresentacao *apresentacao) {
@@ -109,6 +115,80 @@ class Apresentacao {
         apresentacao->preco = this->preco.getPreco();
         apresentacao->sala = this->sala.getSala();
         apresentacao->disponibilidade = this->disponibilidade.getDisponibilidade();
+        return;
+    }
+};
+
+// ----------------------------------------------------------------------------
+
+typedef struct Estrutura_Evento {
+    string codigo;
+    string nome;
+    string cidade;
+    string estado;
+    string classe;
+    string faixa;
+}EstruturaEvento;
+
+class Evento {
+ private:
+    CodigoEvento codigo;
+    NomeEvento nome;
+    Cidade cidade;
+    Estado estado;
+    ClasseEvento classe;
+    FaixaEtaria faixa;
+
+ public:
+
+    void setEvento(EstruturaEvento evento) throw (invalid_argument) {
+        this->codigo.setCodigo(evento.codigo);
+        this->nome.setNome(evento.nome);
+        this->cidade.setCidade(evento.cidade);
+        this->estado.setEstado(evento.estado);
+        this->classe.setClasseEvento(evento.classe);
+        this->faixa.setFaixa(evento.faixa);
+        return;
+    }
+
+    void getEvento(EstruturaEvento *evento) {
+        evento->codigo = this->codigo.getCodigo();
+        evento->nome = this->nome.getNome();
+        evento->cidade = this->cidade.getCidade();
+        evento->estado = this->estado.getEstado();
+        evento->classe = this->classe.getClasseEvento();
+        evento->faixa = this->faixa.getFaixa();
+        return;
+    }
+};
+
+// ----------------------------------------------------------------------------
+
+typedef struct Estrutura_Cartao_Credito {
+    string numero;
+    string codigo;
+    string data;
+}EstruturaCartaoCredito;
+
+class CartaoCredito {
+ private:
+    NumeroCartao numero;
+    CodigoSeguranca codigo;
+    DataValidade data;
+
+ public:
+
+    void setCartaoCredito(EstruturaCartaoCredito cartao) throw (invalid_argument) {
+        this->numero.setNumero(cartao.numero);
+        this->codigo.setCodigo(cartao.codigo);
+        this->data.setDataValidade(cartao.data);
+        return;
+    }
+
+    void getCartaoCredito(EstruturaCartaoCredito *cartao) {
+        cartao->numero = this->numero.getNumero();
+        cartao->codigo = this->codigo.getCodigo();
+        cartao->data = this->data.getDataValidade();
         return;
     }
 };

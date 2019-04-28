@@ -6,6 +6,10 @@
 
 using namespace std;
 
+// ----------------------------------------------------------------------------
+//                                 DOMINIOS
+// ----------------------------------------------------------------------------
+
 class TUCodigoEvento {
  private:
 
@@ -393,6 +397,10 @@ class TUCPF {
     void run();
 };
 
+// ----------------------------------------------------------------------------
+//                              ENTIDADES
+// ----------------------------------------------------------------------------
+
 class TUUsuario {
  private:
 
@@ -400,8 +408,7 @@ class TUUsuario {
     void desmonta();
     void testarCenarioSucesso();
 
-    static const string VALOR_VALIDO_CPF;
-    static const string VALOR_VALIDO_SENHA;
+    static const EstruturaUsuario ESTRUTURA_VALIDA;
     
     Usuario *pUsuario;
 
@@ -420,6 +427,38 @@ class TUApresentacao {
     static const EstruturaApresentacao ESTRUTURA_VALIDA;
 
     Apresentacao *pApresentacao;
+
+ public:
+
+    void run();
+};
+
+class TUEvento {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+
+    static const EstruturaEvento ESTRUTURA_VALIDA;
+
+    Evento *pEvento;
+
+ public:
+
+    void run();
+};
+
+class TUCartaoCredito {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+
+    static const EstruturaCartaoCredito ESTRUTURA_VALIDA;
+
+    CartaoCredito *pCartao;
 
  public:
 

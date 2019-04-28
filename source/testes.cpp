@@ -1,6 +1,10 @@
 #include "testes.h"
 #include <iostream>
 
+// ----------------------------------------------------------------------------
+// 								DOMINIOS
+// ----------------------------------------------------------------------------
+
 const string TUCodigoEvento::VALOR_VALIDO = "020";
 const string TUCodigoEvento::VALOR_INVALIDO_LETRA = "abc";
 const string TUCodigoEvento::VALOR_INVALIDO_MAIOR = "0000";
@@ -685,8 +689,8 @@ void TUClasseEvento::desmonta() {
 
 void TUClasseEvento::testarCenarioSucesso() {
     try {
-        pEvento->setEvento(VALOR_VALIDO);       
-        if (VALOR_VALIDO.compare(pEvento->getEvento()) != 0) {
+        pEvento->setClasseEvento(VALOR_VALIDO);       
+        if (VALOR_VALIDO.compare(pEvento->getClasseEvento()) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso | UNICO\n\033[0m";
         }
         cout << "\033[32mOK TestarCenarioSucesso | UNICO\n\033[0m";
@@ -699,21 +703,21 @@ void TUClasseEvento::testarCenarioSucesso() {
 
 void TUClasseEvento::testarCenarioFalha() {
     try {
-        pEvento->setEvento(VALOR_INVALIDO_LETRA);
+        pEvento->setClasseEvento(VALOR_INVALIDO_LETRA);
         cout << "\033[31mERRO TestarCenarioFalha | LETRA\n\033[0m";
     }
     catch(invalid_argument excecao) {
         cout << "\033[32mOK TestarCenarioFalha | LETRA\n\033[0m";
     }
     try {
-        pEvento->setEvento(VALOR_INVALIDO_MAIOR);
+        pEvento->setClasseEvento(VALOR_INVALIDO_MAIOR);
         cout << "\033[31mERRO TestarCenarioFalha | MAIOR\n\033[0m";
     }
     catch(invalid_argument excecao) {
         cout << "\033[32mOK TestarCenarioFalha | MAIOR\n\033[0m";
     }
     try {
-        pEvento->setEvento(VALOR_INVALIDO_OVERFLOW);
+        pEvento->setClasseEvento(VALOR_INVALIDO_OVERFLOW);
         cout << "\033[31mERRO TestarCenarioFalha | OVERFLOW\n\033[0m";
     }
     catch(invalid_argument excecao) {
@@ -1431,10 +1435,14 @@ void TUCPF::run() {
     return;
 }
 
-// ------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// 								ENTIDADES
+// ----------------------------------------------------------------------------
 
-const string TUUsuario::VALOR_VALIDO_CPF = "529.982.247-25";
-const string TUUsuario::VALOR_VALIDO_SENHA = "Oi3ule";
+const EstruturaUsuario TUUsuario::ESTRUTURA_VALIDA = {
+	"529.982.247-25",
+	"Oi3ule"
+};
 
 void TUUsuario::monta() {
     pUsuario = new Usuario();
@@ -1447,13 +1455,12 @@ void TUUsuario::desmonta() {
 }
 
 void TUUsuario::testarCenarioSucesso() {
-    CPF teste_cpf;
-    Senha teste_senha;
+    EstruturaUsuario teste_out;
     try {
-        pUsuario->setUsuario(VALOR_VALIDO_CPF, VALOR_VALIDO_SENHA);
-        pUsuario->getUsuario(&teste_cpf, &teste_senha);
-        if (VALOR_VALIDO_CPF.compare(teste_cpf.getCPF()) != 0 ||
-            VALOR_VALIDO_SENHA.compare(teste_senha.getSenha()) != 0) {
+        pUsuario->setUsuario(ESTRUTURA_VALIDA);
+        pUsuario->getUsuario(&teste_out);
+        if (ESTRUTURA_VALIDA.cpf.compare(teste_out.cpf) != 0 ||
+            ESTRUTURA_VALIDA.senha.compare(teste_out.senha) != 0) {
             cout << "\033[31mERRO TestarCenarioSucesso\n\033[0m";
         }
         cout << "\033[32mOK TestarCenarioSucesso\n\033[0m";
@@ -1476,12 +1483,12 @@ void TUUsuario::run() {
 // ------------------------------------------------------------------------------
 
 const EstruturaApresentacao TUApresentacao::ESTRUTURA_VALIDA = {
-  "0020",
-  "18/04/19",
-  "10:30",
-  "212,15",
-  "8",
-  "102"
+  	"0020",
+  	"18/04/19",
+  	"10:30",
+  	"212,15",
+  	"8",
+  	"102"
 };
 
 void TUApresentacao::monta() {
@@ -1519,6 +1526,106 @@ void TUApresentacao::testarCenarioSucesso() {
 
 void TUApresentacao::run() {
     cout << "\n\n\033[33;1mTestando Apresentacao...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    desmonta();
+
+    return;
+}
+
+// ------------------------------------------------------------------------------
+
+const EstruturaEvento TUEvento::ESTRUTURA_VALIDA = {
+  	"002",
+  	"Evento do Joao Pedro",
+  	"Parim do Brasil",
+  	"MG",
+  	"1",
+  	"L"
+};
+
+void TUEvento::monta() {
+    pEvento = new Evento();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+}
+
+void TUEvento::desmonta() {
+    delete pEvento;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+}
+
+void TUEvento::testarCenarioSucesso() {
+    
+    EstruturaEvento evento;
+
+    try {
+        pEvento->setEvento(ESTRUTURA_VALIDA);
+        pEvento->getEvento(&evento);
+        if (ESTRUTURA_VALIDA.codigo.compare(evento.codigo) != 0 ||
+            ESTRUTURA_VALIDA.nome.compare(evento.nome) != 0 ||
+            ESTRUTURA_VALIDA.cidade.compare(evento.cidade) != 0 ||
+            ESTRUTURA_VALIDA.estado.compare(evento.estado) != 0 ||
+            ESTRUTURA_VALIDA.classe.compare(evento.classe) != 0 ||
+            ESTRUTURA_VALIDA.faixa.compare(evento.faixa) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso\n\033[0m";
+    }
+    return;
+}
+
+void TUEvento::run() {
+    cout << "\n\n\033[33;1mTestando Evento...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    desmonta();
+
+    return;
+}
+
+// ------------------------------------------------------------------------------
+
+const EstruturaCartaoCredito TUCartaoCredito::ESTRUTURA_VALIDA = {
+  	"4539661491081288",
+  	"857",
+  	"06/22"
+};
+
+void TUCartaoCredito::monta() {
+    pCartao = new CartaoCredito();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+}
+
+void TUCartaoCredito::desmonta() {
+    delete pCartao;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+}
+
+void TUCartaoCredito::testarCenarioSucesso() {
+    
+    EstruturaCartaoCredito cartao;
+
+    try {
+        pCartao->setCartaoCredito(ESTRUTURA_VALIDA);
+        pCartao->getCartaoCredito(&cartao);
+        if (ESTRUTURA_VALIDA.numero.compare(cartao.numero) != 0 ||
+            ESTRUTURA_VALIDA.codigo.compare(cartao.codigo) != 0 ||
+            ESTRUTURA_VALIDA.data.compare(cartao.data) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso\n\033[0m";
+    }
+    return;
+}
+
+void TUCartaoCredito::run() {
+    cout << "\n\n\033[33;1mTestando Cartao de Credito...\n\033[0m";
     monta();
     testarCenarioSucesso();
     desmonta();

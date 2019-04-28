@@ -306,7 +306,7 @@ void ClasseEvento::validar(string evento) throw (invalid_argument) {
     }
 }
 
-void ClasseEvento::setEvento(string evento) throw (invalid_argument) {
+void ClasseEvento::setClasseEvento(string evento) throw (invalid_argument) {
     validar(evento);
     this->evento = evento;
 }
