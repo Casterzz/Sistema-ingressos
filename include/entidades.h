@@ -20,9 +20,20 @@
 #define ENTIDADES_H_INCLUDED
 
 #include "dominios.h"
-//#include <string>
 
 using namespace std;
+
+/**
+ *  @brief Estrutura que contém atributos da entidade Usuario.
+ *  @author Pedro Carvalho
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa estrutura armazena os atributos "cpf" e "senha".
+ *
+ *  @subsection FORMA
+ *  Os atributos são strings.
+ */
 
 typedef struct Estrutura_Usuario {
     string cpf;
@@ -77,6 +88,17 @@ class Usuario {
 
 // ----------------------------------------------------------------------------
 
+/**
+ *  @brief Estrutura que contém atributos da entidade Apresentacao
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa estrutura armazena os atributos "codigo", "data", "horario", "preco", "sala" e "disponibilidade".
+ *
+ *  @subsection FORMA
+ *  Os atributos são strings.
+ */
+
 typedef struct Estrutura_Apresentacao {
     string codigo;
     string data;
@@ -85,6 +107,23 @@ typedef struct Estrutura_Apresentacao {
     string sala;
     string disponibilidade;
 }EstruturaApresentacao;
+
+/**
+ *  @brief Classe que representa uma apresentação.
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena os atributos "codigo", "data", "horario", "preco", "sala" e "disponibilidade".
+ *
+ *  @subsection FORMA
+ *  Os atributos são objetos da biblioteca de domínios:
+ *  - "codigo" é um objeto da classe CodigoApresentacao.
+ *  - "data" é um objeto da classe Data.
+ *  - "horario" é um objeto da classe Horario.
+ *  - "preco" é um objeto da classe Preco.
+ *  - "sala" é um objeto da classe NumeroSala.
+ *  - "disponibilidade" é um objeto da classe Disponibilidade.
+ */
 
 class Apresentacao {
 
@@ -97,7 +136,12 @@ class Apresentacao {
     Disponibilidade disponibilidade;
 
  public:
-    
+    /**
+     *  Atribui valor aos atributos "codigo", "data", "horario", "preco", "sala" e "disponibilidade".
+     *
+     *  @param apresentacao[in] É uma instância da estrutura "EstruturaApresentacao" na qual
+     *  há valores para serem colocados nos membros do objeto dessa classe.
+     */
     void setApresentacao(EstruturaApresentacao apresentacao) throw (invalid_argument) {
         this->codigo.setCodigo(apresentacao.codigo);
         this->data.setData(apresentacao.data);
@@ -108,6 +152,13 @@ class Apresentacao {
         return;
     }
 
+    /**
+     *  Obtém os dados da apresentação.
+     *
+     *  @param apresentacao[in,out] é um ponteiro para uma instância da estrutura
+     *  "EstruturaApresentacao" na qual os valores do objeto dessa classe serão
+     *  escritos.
+     */
     void getApresentacao(EstruturaApresentacao *apresentacao) {
         apresentacao->codigo = this->codigo.getCodigo();
         apresentacao->data = this->data.getData();
@@ -158,6 +209,65 @@ class Evento {
         evento->estado = this->estado.getEstado();
         evento->classe = this->classe.getClasseEvento();
         evento->faixa = this->faixa.getFaixa();
+        return;
+    }
+};
+
+// ----------------------------------------------------------------------------
+
+/**
+ *  @brief Estrutura que contém atributos da entidade Ingresso
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa estrutura armazena o atributo "codigo".
+ *
+ *  @subsection FORMA
+ *  O atributo é uma string.
+ */
+
+typedef struct Estrutura_Ingresso {
+    string codigo;
+}EstruturaIngresso;
+
+/**
+ *  @brief Classe que representa um ingresso.
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena o atributo "codigo".
+ *
+ *  @subsection FORMA
+ *  O atributo é um objeto da biblioteca de domínios:
+ *  - "codigo" é um objeto da classe CodigoIngresso.
+ */
+
+class Ingresso {
+
+ private:
+    CodigoIngresso codigo;
+
+ public:
+    /**
+     *  Atribui valor ao atributo "codigo"
+     *
+     *  @param codigo[in] É uma instância da estrutura "EstruturaIngresso" na qual
+     *  há valor para ser colocado no membro do objeto dessa classe.
+     */
+    void setIngresso(EstruturaIngresso ingresso) throw (invalid_argument) {
+        this->codigo.setCodigo(ingresso.codigo);
+        return;
+    }
+
+    /**
+     *  Obtém o dado do Ingresso.
+     *
+     *  @param ingresso[in,out] é um ponteiro para uma instância da estrutura
+     *  "EstruturaIngresso" na qual o valor do objeto dessa classe é
+     *  escrito.
+     */
+    void getIngresso(EstruturaIngresso *ingresso) {
+        ingresso->codigo = this->codigo.getCodigo();
         return;
     }
 };

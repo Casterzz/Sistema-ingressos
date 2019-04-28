@@ -252,6 +252,20 @@ class Data {
  	}
 };
 
+/**
+ *  @brief Classe que contém uma senha.
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa uma senha.
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "XXXXXX", onde:
+ *  - X é digito de 0 a 9 ou uma letra (A - Z, a - z).
+ *  - Não há caracteres repetidos.
+ *  - Há pelo menos uma letra maiúscula, uma minúscula e um dígito.
+ */
+
 class Senha {
  private:
  	string senha;
@@ -261,11 +275,37 @@ class Senha {
  	void validar(string) throw (invalid_argument);
 
  public:
+    /**
+     *  Atribui valor à variável "senha".
+     *
+     *  @param string[in]
+     */
  	void setSenha(string) throw (invalid_argument);
- 	string getSenha() {
+ 	
+    /**
+     *  Obtém a senha.
+     *
+     *  @return Uma string correspondente à variável "senha".
+     */
+    string getSenha() {
  		return senha;
  	}
 };
+
+/**
+ *  @brief Classe que contém o nome da cidade.
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa o nome da cidade.
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "XXXXXXXXXXXXXXX", onde:
+ *  - X é letra, espaço ou ponto.
+ *  - Pelo menos um caracter é ponto.
+ *  - Não há espaços seguidos.
+ *  - Ponto é precedido por letra.
+ */
 
 class Cidade {
  private:
@@ -276,11 +316,36 @@ class Cidade {
  	void validar(string) throw (invalid_argument);
 
  public:
+    /**
+     *  Atribui valor à variável "string".
+     *
+     *  @param string[in]
+     */
  	void setCidade(string) throw (invalid_argument);
- 	string getCidade() {
+ 	
+    /**
+     *  Obtém o nome da cidade.
+     *
+     *  @return Uma string correspondente à variável "cidade".
+     */
+    string getCidade() {
  		return cidade;
  	}
 };
+
+/**
+ *  @brief Classe que contém o nome de evento.
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa o nome de evento.
+ *
+ *  @subsection FORMA
+ *  A string obedece à forma "XXXXXXXXXXXXXXXXXXXX", onde:
+ *  - X é letra, dígito ou espaço.
+ *  - Pelo menos um caracter é letra.
+ *  - Não há espaços seguidos.
+ */
 
 class ClasseEvento {
  private:
@@ -291,11 +356,33 @@ class ClasseEvento {
  	void validar(string) throw (invalid_argument);
 
  public:
+    /**
+     *  Atribui valor à variável "evento".
+     *
+     *  @param string[in]
+     */
  	void setClasseEvento(string) throw (invalid_argument);
- 	string getClasseEvento() {
+ 	
+    /**
+     *  Obtém o nome de evento.
+     *
+     *  @return Uma string correspondente à variável "evento".
+     */
+    string getClasseEvento() {
  		return evento;
  	}
 };
+
+/**
+ *  @brief Classe que contém o numero da sala.
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa o numero da sala.
+ *
+ *  @subsection FORMA
+ *  A string é numero de 1 a 10.
+ */
 
 class NumeroSala {
  private:
@@ -308,11 +395,33 @@ class NumeroSala {
  	void validar(string) throw (invalid_argument);
 
  public:
+    /**
+     *  Atribui valor à variável "sala".
+     *
+     *  @param string[in]
+     */
  	void setSala(string) throw (invalid_argument);
- 	string getSala() {
+ 	
+    /**
+     *  Obtém o numero da sala.
+     *
+     *  @return Uma string correspondente à variável "sala".
+     */
+    string getSala() {
  		return sala;
  	}
 };
+
+/**
+ *  @brief Classe que contém a disponinilidade.
+ *  @author Victor Castor
+ *
+ *  @section DESCRIÇÃO
+ *  Essa classe armazena uma string que representa o numero da disponibilidade.
+ *
+ *  @subsection FORMA
+ *  A string é numero de 1 a 250.
+ */
 
 class Disponibilidade {
  private:
@@ -325,8 +434,19 @@ class Disponibilidade {
  	void validar(string) throw (invalid_argument);
 
  public:
+    /**
+     *  Atribui valor à variável "disponibilidade".
+     *
+     *  @param string[in]
+     */
  	void setDisponibilidade(string) throw (invalid_argument);
- 	string getDisponibilidade() {
+ 	
+    /**
+     *  Obtém o numero da disponibilidade.
+     *
+     *  @return Uma string correspondente à variável "disponibilidade".
+     */
+    string getDisponibilidade() {
  		return disponibilidade;
  	}
 };

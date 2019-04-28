@@ -11,7 +11,7 @@ int main() {
     TUCodigoEvento testeCodigoEvento;
     TUCodigoSeguranca testeCodigoSeguranca;
     TUCodigoApresentacao testeCodigoApresentacao;
-    TUCodigoIngresso testeIngresso;
+    TUCodigoIngresso testeCodigoIngresso;
     TUNomeEvento testeNomeEvento;
     TUData testeData;
     TUSenha testeSenha;
@@ -32,7 +32,7 @@ int main() {
     testeCodigoEvento.run();
     testeCodigoSeguranca.run();
     testeCodigoApresentacao.run();
-    testeIngresso.run();
+    testeCodigoIngresso.run();
     testeNomeEvento.run();
     testeData.run();
     testeSenha.run();
@@ -53,6 +53,7 @@ int main() {
     TUUsuario testeUsuario;
     TUApresentacao testeApresentacao;
     TUEvento testeEvento;
+    TUIngresso testeIngresso;
     TUCartaoCredito testeCartaoCredito;
 
     cout << "\n\033[33;1mTestando Entidades\033[0m\n";
@@ -60,6 +61,7 @@ int main() {
     testeUsuario.run();
     testeApresentacao.run();
     testeEvento.run();
+    testeIngresso.run();
     testeCartaoCredito.run();
 
     cout << "\n\033[34;1mTestes de Entidades Concluídos\033[0m\n";

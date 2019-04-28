@@ -449,6 +449,22 @@ class TUEvento {
     void run();
 };
 
+class TUIngresso {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+
+    static const EstruturaIngresso ESTRUTURA_VALIDA;
+
+    Ingresso *pIngresso;
+
+ public:
+
+    void run();
+};
+
 class TUCartaoCredito {
  private:
 

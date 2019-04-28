@@ -1588,6 +1588,48 @@ void TUEvento::run() {
 
 // ------------------------------------------------------------------------------
 
+const EstruturaIngresso TUIngresso::ESTRUTURA_VALIDA = {
+	"12345"
+};
+
+void TUIngresso::monta() {
+    pIngresso = new Ingresso();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+}
+
+void TUIngresso::desmonta() {
+    delete pIngresso;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+}
+
+void TUIngresso::testarCenarioSucesso() {
+    EstruturaIngresso ingresso;
+    try {
+        pIngresso->setIngresso(ESTRUTURA_VALIDA);
+        pIngresso->getIngresso(&ingresso);
+        if (ESTRUTURA_VALIDA.codigo.compare(ingresso.codigo) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso\n\033[0m";
+    }
+    return;
+}
+
+void TUIngresso::run() {
+    cout << "\n\n\033[33;1mTestando Ingresso...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    desmonta();
+
+    return;
+}
+
+// ------------------------------------------------------------------------------
+
+
 const EstruturaCartaoCredito TUCartaoCredito::ESTRUTURA_VALIDA = {
   	"4539661491081288",
   	"857",
