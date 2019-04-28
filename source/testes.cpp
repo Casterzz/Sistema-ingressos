@@ -1472,3 +1472,56 @@ void TUUsuario::run() {
 
     return;
 }
+
+// ------------------------------------------------------------------------------
+
+const EstruturaApresentacao TUApresentacao::ESTRUTURA_VALIDA = {
+  "0020",
+  "18/04/19",
+  "10:30",
+  "212,15",
+  "8",
+  "102"
+};
+
+void TUApresentacao::monta() {
+    pApresentacao = new Apresentacao();
+    cout << "\033[32mOK (Monta)\n\033[0m";
+}
+
+void TUApresentacao::desmonta() {
+    delete pApresentacao;
+    cout << "\033[32mOK (Desmonta)\n\033[0m";
+}
+
+void TUApresentacao::testarCenarioSucesso() {
+    
+    EstruturaApresentacao apresentacao;
+
+    try {
+        pApresentacao->setApresentacao(ESTRUTURA_VALIDA);
+        pApresentacao->getApresentacao(&apresentacao);
+        if (ESTRUTURA_VALIDA.codigo.compare(apresentacao.codigo) != 0 ||
+            ESTRUTURA_VALIDA.data.compare(apresentacao.data) != 0 ||
+            ESTRUTURA_VALIDA.horario.compare(apresentacao.horario) != 0 ||
+            ESTRUTURA_VALIDA.preco.compare(apresentacao.preco) != 0 ||
+            ESTRUTURA_VALIDA.sala.compare(apresentacao.sala) != 0 ||
+            ESTRUTURA_VALIDA.disponibilidade.compare(apresentacao.disponibilidade) != 0) {
+            cout << "\033[31mERRO TestarCenarioSucesso\n\033[0m";
+        }
+        cout << "\033[32mOK TestarCenarioSucesso\n\033[0m";
+    }
+    catch(invalid_argument excecao) {
+        cout << "\033[31mERRO TestarCenarioSucesso\n\033[0m";
+    }
+    return;
+}
+
+void TUApresentacao::run() {
+    cout << "\n\n\033[33;1mTestando Apresentacao...\n\033[0m";
+    monta();
+    testarCenarioSucesso();
+    desmonta();
+
+    return;
+}

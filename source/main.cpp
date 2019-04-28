@@ -51,10 +51,12 @@ int main() {
     cout << "\n\033[34;1mTestes de Dominios Concluídos\033[0m\n";
 
     TUUsuario testeUsuario;
+    TUApresentacao teste_Apresentacao;
 
     cout << "\n\033[33;1mTestando Entidades\033[0m\n";
 
     testeUsuario.run();
+    teste_Apresentacao.run();
 
     cout << "\n\033[34;1mTestes de Entidades Concluídos\033[0m\n";
     cout << "\n\033[34;1mTestes Concluídos\033[0m\n\n";

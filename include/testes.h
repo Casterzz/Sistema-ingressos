@@ -410,4 +410,20 @@ class TUUsuario {
     void run();
 };
 
+class TUApresentacao {
+ private:
+
+    void monta();
+    void desmonta();
+    void testarCenarioSucesso();
+
+    static const EstruturaApresentacao ESTRUTURA_VALIDA;
+
+    Apresentacao *pApresentacao;
+
+ public:
+
+    void run();
+};
+
 #endif // TESTES_H_INCLUDED

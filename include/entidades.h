@@ -71,4 +71,46 @@ class Usuario {
  	}
 };
 
+typedef struct Estrutura_Apresentacao {
+    string codigo;
+    string data;
+    string horario;
+    string preco;
+    string sala;
+    string disponibilidade;
+}EstruturaApresentacao;
+
+
+class Apresentacao {
+
+ private:
+    CodigoApresentacao codigo;
+    Data data;
+    Horario horario;
+    Preco preco;
+    NumeroSala sala;
+    Disponibilidade disponibilidade;
+
+ public:
+    
+    void setApresentacao(EstruturaApresentacao apresentacao) throw (invalid_argument) {
+        this->codigo.setCodigo(apresentacao.codigo);
+        this->data.setData(apresentacao.data);
+        this->horario.setHorario(apresentacao.horario);
+        this->preco.setPreco(apresentacao.preco);
+        this->sala.setSala(apresentacao.sala);
+        this->disponibilidade.setDisponibilidade(apresentacao.disponibilidade);
+    }
+
+    void getApresentacao(EstruturaApresentacao *apresentacao) {
+        apresentacao->codigo = this->codigo.getCodigo();
+        apresentacao->data = this->data.getData();
+        apresentacao->horario = this->horario.getHorario();
+        apresentacao->preco = this->preco.getPreco();
+        apresentacao->sala = this->sala.getSala();
+        apresentacao->disponibilidade = this->disponibilidade.getDisponibilidade();
+        return;
+    }
+};
+
 #endif
