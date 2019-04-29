@@ -1,0 +1,137 @@
+Módulo de apresentação de controle (MAC): Responsável por guiar o usuário entre os outros módulos exceto o MAV, sendo então cliente de todas as interfaces de apresentação do programa.
+
+Módulo de apresentação de autenticação (MAA): Responsável por interagir diretamente com o usuário pedindo seus dados e autenticando-os se possível.
+
+Módulo de serviço de autenticação (MSA): É responsável por prover os métodos necessários para autenticação, tendo acesso direto ao banco de dados.
+
+Módulo de aprensentação de usuários (MAU): É responsável por interagir com o usuário solicitando-o a operação a ser realizada: Criação, remoção, pesquisa ou manutenção.
+
+Módulo de serviço de usuários (MSU): É responsável por realizar as ações requisitadas pelo MAU. Possui acesso direto ao banco de dados.
+
+Módulo de apresentação de eventos (MAE): É responsável por interagir com o usuário mostrando-o os eventos disponíveis, permitindo pesquisas sobre eventos e acesso a interface de apresentação de vendas (IAV).
+
+Módulo de serviço de apresentação (MSE): Provê os dados de evento à interface de serviço de evento (ISE).
+
+Módulo de apresentação de vendas (MAV): É responsável por interagir com o usuário apresentando os dados do evento e solicitando os dados do cartão de crédito para a realização da compra.
+
+Módulo de serviço de vendas (MSV): Provê os métodos necessários para a realização da venda.
+
+
+
+Interfaces:
+
+
+
+Interface de apresentação de autenticação (IAA): É provida pelo MAA e tem como cliente o MAC.
+
+Métodos:
+
+bool  autenticar (CPF&) Erro
+
+É fornecido o objeto CPF para ser preenchido caso a autenticação seja bem sucedida. Se não for, será retornado um valor booleano falso.
+Se houver algum erro inersperado no processo, será lançado uma exceção.
+O método autenticar chama a interface ISA.
+
+
+
+
+
+
+
+
+
+Interface de serviço de autenticação (ISA): É provida pelo MSA e tem como cliente o MAA.
+
+Métodos:
+
+bool  autenticar (CPF, Senha) Erro
+
+Recebe um valor de CPF e uma senha, e autentica se houver esse registro no banco de dados. Para qualquer erro lança uma exceção. Se não encontrar esse registro retorna um valor booleano falso.
+
+
+Interface de apresentação de usuário (IAU): É provida pelo MAU e tem como cliente o MAC.
+
+Métodos:
+
+void executar_autenticado (CPF) Erro
+void executar_novo () Erro
+
+O método executar_autenticado recebe o CPF do usuário autenticado e fornece meios para a manutenção de seus dados. Se algo der errado no procedimento, lança-se exceção.
+
+O método executar_novo fornece um meio para que um usuário não autenticado se cadastre. Se algo der errado no procedimento, lança-se exceção.
+
+
+
+Interface de serviço de usuário (ISU): É provida pelo MSU e tem como cliente o MAU.
+
+Métodos:
+
+bool cadastrar () Erro
+bool excluir (CPF) Erro
+bool alterar (CPF) Erro
+
+O método cadastrar permite a criação de um novo registro de usuário. Para qualquer erro lança-se exceção. Se for executado com sucesso retorna verdadeiro, caso contrário falso.
+
+O método excluir recebe o objeto CPF para fazer a busca do registro de usuário e excluí-lo. Para qualquer erro lança-se exceção. Se for executado com sucesso retorna verdadeiro, caso contrário falso.
+
+O método alterar recebe o objeto CPF para fazer a busca do registro e alterá-lo Para qualquer erro lança-se exceção. Se for executado com sucesso retorna verdadeiro, caso contrário falso.
+
+
+
+
+
+
+
+
+
+
+Interface de apresentação de eventos (IAE): É provida pelo MAE e tem como cliente o MAC.
+
+Métodos:
+
+void executar_autenticado (CPF) Erro
+void executar_novo () Erro
+
+O método executar_autenticado recebe o CPF do usuário autenticado e fornece meios para a visualização dos eventos e acesso à interface de apresentação de vendas. Se algo der errado no procedimento, lança-se exceção.
+
+O método executar_novo fornece meios para a visualização dos eventos. Se algo der errado no procedimento, lança-se exceção.
+
+
+
+Interface de serviços dos eventos (ISE): É provida pelo MSE e tem como cliente o MAE e o MAV.
+
+Métodos:
+
+bool pesquisar (Evento) Erro
+bool mostrar_dados (CodigoEvento) Erro
+bool mostrar_disponiveis () Erro
+
+O método pesquisar recebe um objeto do tipo Evento, com dados pelo menos parcialmente preenchidos, afim de que sejam utilizados (de acordo com uma ordem de prioridade) para pesquisar um evento específico. Para qualquer erro lança-se exceção. Se encontrar um ou mais resultados com sucesso retorna verdadeiro, caso contrário falso.
+
+O método mostrar_dados recebe um objeto do tipo CodigoEvento que é a chave principal de busca para mostrar os dados completos de um determinado evento. Para qualquer erro lança-se exceção. Se encontrar com sucesso retorna verdadeiro, caso contrário falso.
+
+O método mostrar_disponiveis mostra ao usuário quais são os eventos disponíveis para ingresso. Para qualquer erro lança-se exceção. Caso não haja eventos disponíveis retorna falso, caso contrário verdadeiro.
+
+
+Interface de apresentação de vendas (IAV): É provida pelo MAV e tem como cliente o MAE.
+
+Métodos
+
+void executar (CPF) Erro
+
+O método executar recebe o objeto CPF do usuário autenticado e exige seus dados de pagamento enquanto mostra os dados do evento em questão (por meio da interface ISE). Para qualquer erro lança-se exceção.
+
+
+
+
+
+Interface de serviço de vendas (ISV): É provida pelo MSV e tem como cliente o MAV.
+
+Métodos
+
+
+bool valida_compra (CartaoCredito) Erro
+
+O método valida_compra recebe o objeto CartaoCredito e é responsável por alterar a disponibilidade do evento em questão, acessando o respectivo registro. O retorno é verdadeiro quando a quando a compra for executada com sucesso e falso caso contrário. Para qualquer erro lança-se exceção. 
+
+
