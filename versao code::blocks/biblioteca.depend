@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1556491332 source:/home/castorzaum/Desktop/TP1 Trab1/biblioteca/dominios.cpp
+	"dominios.h"
+
+1556500246 /home/castorzaum/Desktop/TP1 Trab1/biblioteca/dominios.h
+	<stdexcept>
+	<string>
+	<cmath>
+
+1556491332 source:/home/castorzaum/Desktop/TP1 Trab1/biblioteca/entidades.cpp
+	"entidades.h"
+
+1556491332 /home/castorzaum/Desktop/TP1 Trab1/biblioteca/entidades.h
+	"dominios.h"
+
+1556555070 source:/home/castorzaum/Desktop/TP1 Trab1/biblioteca/testes.cpp
+	"testes.h"
+	<iostream>
+
+1556491332 /home/castorzaum/Desktop/TP1 Trab1/biblioteca/testes.h
+	"dominios.h"
+	"entidades.h"
+
+1556555705 source:/home/castorzaum/Desktop/TP1 Trab1/biblioteca/main.cpp
+	<iostream>
+	"dominios.h"
+	"entidades.h"
+	"testes.h"
+
