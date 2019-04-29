@@ -711,7 +711,7 @@ class NumeroCartao {
 };
 
 /**
- *  @brief Classe que contém um CPF.
+ *  @brief Classe que contém um cpf.
  *  @author Pedro Carvalho
  *
  *  @section DESCRIÇÃO
