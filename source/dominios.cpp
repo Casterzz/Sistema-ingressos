@@ -142,7 +142,7 @@ void Data::validar(string data) throw (invalid_argument) {
     int mes = (data[MES_POS1] - '0')*10 + (data[MES_POS2] - '0');
     int dia = (data[DIA_POS1] - '0')*10 + (data[DIA_POS2] - '0');
     bool bissexto = false;
-    if (ano%4 == 0) {
+    if (ano%4 == 0 && (ano%10 || ano/10)) {
         bissexto = true;
     }
 
@@ -155,12 +155,12 @@ void Data::validar(string data) throw (invalid_argument) {
         if (dia > 30) {
             throw invalid_argument("Argumento invalido");
         }
-    } else if (bissexto) {
+    } else if (mes == FEV && bissexto) {
         // tratamento 29 dias
         if (dia > 29) {
             throw invalid_argument("Argumento invalido");
         }
-    } else {
+	  } else if (mes == FEV && !bissexto){
         // tratamento 28 dias
         if (dia > 28) {
             throw invalid_argument("Argumento invalido");

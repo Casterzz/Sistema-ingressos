@@ -227,7 +227,8 @@ class Data {
  	static const int DIA_POS1 = 0;
  	static const int DIA_POS2 = 1;
  	static const string MESES;
- 	static const int ABR = 4;
+ 	static const int FEV = 2;
+  static const int ABR = 4;
  	static const int JUN = 6;
  	static const int SET = 9;
  	static const int NOV = 11;
@@ -281,7 +282,7 @@ class Senha {
      *  @param string[in]
      */
  	void setSenha(string) throw (invalid_argument);
- 	
+
     /**
      *  Obtém a senha.
      *
@@ -322,7 +323,7 @@ class Cidade {
      *  @param string[in]
      */
  	void setCidade(string) throw (invalid_argument);
- 	
+
     /**
      *  Obtém o nome da cidade.
      *
@@ -362,7 +363,7 @@ class ClasseEvento {
      *  @param string[in]
      */
  	void setClasseEvento(string) throw (invalid_argument);
- 	
+
     /**
      *  Obtém o nome de evento.
      *
@@ -401,7 +402,7 @@ class NumeroSala {
      *  @param string[in]
      */
  	void setSala(string) throw (invalid_argument);
- 	
+
     /**
      *  Obtém o numero da sala.
      *
@@ -440,7 +441,7 @@ class Disponibilidade {
      *  @param string[in]
      */
  	void setDisponibilidade(string) throw (invalid_argument);
- 	
+
     /**
      *  Obtém o numero da disponibilidade.
      *
