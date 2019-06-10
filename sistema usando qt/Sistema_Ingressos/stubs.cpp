@@ -4,7 +4,7 @@ bool StubISAutenticacao::autenticar(Usuario usuario) throw(runtime_error) {
 
     EstruturaUsuario estrutura_usuario;
     usuario.getUsuario(&estrutura_usuario);
-    if (estrutura_usuario.cpf == "529.982.247-25" &&
+    if (estrutura_usuario.cpf == "030.583.421-52" &&
         estrutura_usuario.senha == "Oi3ule") {
         return true;
     } else {
@@ -27,4 +27,8 @@ bool StubISUsuario::cadastrar(Usuario usuario, CartaoCredito cartao) throw(runti
     } else {
         return false;
     }
+}
+
+bool StubISUsuario::excluir(CPF cpf) throw(runtime_error){
+    return true;
 }

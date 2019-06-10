@@ -53,8 +53,8 @@ class ISUsuario {
 public:
 
     virtual bool cadastrar(Usuario, CartaoCredito) throw(runtime_error) = 0;
-/*
     virtual bool excluir(CPF) throw(runtime_error) = 0; //fazer deslogar
+/*
     virtual bool mostrar_dados(Usuario&, CartaoCredito&) throw(runtime_error) = 0;
     virtual bool alterar_cpf(CPF) throw(runtime_error) = 0;
     virtual bool alterar_senha(Senha&) throw(runtime_error) = 0;

@@ -48,14 +48,35 @@ void CntrIAAutenticacao::logarGUI(QString cpf, QString senha){
     else emit (notifique_situacao(2));
 }
 
-bool CntrIAUsuario::executar_autenticado(CPF) throw(runtime_error) {
+bool CntrIAUsuario::executar_autenticado(CPF cpf) throw(runtime_error) {
+    TelaUsuario Tela;
+    Tela.setModal(true);
+    logado = true;
+    this->cpf = cpf;
 
+    QObject::connect(&Tela, SIGNAL (clicou_ir_cadastrar(EstruturaUsuario, EstruturaCartaoCredito)),
+                     this, SLOT(executarCadastrarGUI(EstruturaUsuario, EstruturaCartaoCredito)));
+
+    QObject::connect(&Tela, SIGNAL (clicou_excluir_usuario(int)), this, SLOT(executarExcluirUsuarioGUI()));
+    QObject::connect(this, SIGNAL (inicia_exclusao_conta()), &Tela, SLOT(on_Excluir_clicked_logado()));
+    QObject::connect(&Tela, SIGNAL (clicou_confirmar_excluir()), this, SLOT(excluirUsuarioGUI()));
+
+    //QObject::connect(&Tela, SIGNAL (clicou_dados_conta(int)), this, SLOT(executarDadosContaGUI()));
+    //QObject::connect(&Tela, SIGNAL (clicou_minhas_compras(int)), this, SLOT(executarMinhasComprasGUI()));
+    //QObject::connect(&Tela, SIGNAL (clicou_meus_eventos(int)), this, SLOT(executarMeusEventosGUI()));
+
+    QObject::connect(this, SIGNAL (notifique_situacao(int)), &Tela, SLOT(on_notificar_situacao(int)));
+
+    Tela.exec();
+
+    return logado;
 }
 
 
 void CntrIAUsuario::executar_novo() throw(runtime_error) {
     TelaUsuario Tela;
     Tela.setModal(true);
+    logado = false;
 
     QObject::connect(&Tela, SIGNAL (clicou_ir_cadastrar(EstruturaUsuario, EstruturaCartaoCredito)),
                      this, SLOT(executarCadastrarGUI(EstruturaUsuario, EstruturaCartaoCredito)));
@@ -90,3 +111,14 @@ void CntrIAUsuario::executarCadastrarGUI(EstruturaUsuario estrutura_usuario, Est
     else emit (notifique_situacao(2));
 }
 
+void CntrIAUsuario::executarExcluirUsuarioGUI() {
+    emit (inicia_exclusao_conta());
+}
+
+void CntrIAUsuario::excluirUsuarioGUI() {
+    bool excluiu = cntrISUsuario->excluir(this->cpf);
+    if (excluiu) {
+        this->logado = false;
+        emit (notifique_situacao(5));
+    }else emit (notifique_situacao(6));
+}

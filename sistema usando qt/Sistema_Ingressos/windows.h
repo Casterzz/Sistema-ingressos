@@ -84,12 +84,16 @@ private slots:
     void on_ir_cadastrar_clicked();
 
     void on_Excluir_clicked();
-
+    void on_Excluir_clicked_logado();
     void on_Dados_clicked();
 
     void on_Compras_clicked();
 
     void on_Eventos_clicked();
+
+    void on_cancelar_exclusao_clicked();
+
+    void on_confirmar_exclusao_clicked();
 
 private:
     Ui::TelaUsuario *ui;
@@ -100,6 +104,7 @@ public slots:
 signals:
     void clicou_ir_cadastrar(EstruturaUsuario, EstruturaCartaoCredito);
     void clicou_excluir_usuario(int);
+    void clicou_confirmar_excluir();
     void clicou_dados_conta(int);
     void clicou_minhas_compras(int);
     void clicou_meus_eventos(int);

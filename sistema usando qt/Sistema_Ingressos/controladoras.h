@@ -58,7 +58,7 @@ void inline CntrGeral::executarAutGUI() {
 
 void inline CntrGeral::executarUsuGUI() {
     if (logado) {
-        cntrIAUsuario->executar_autenticado(this->cpf);
+        this->logado = cntrIAUsuario->executar_autenticado(this->cpf);
     } else {
         cntrIAUsuario->executar_novo();
     }
@@ -112,9 +112,15 @@ class CntrIAUsuario : public QObject, public IAUsuario{
 
   public slots:
     void executarCadastrarGUI(EstruturaUsuario, EstruturaCartaoCredito);
+    void executarExcluirUsuarioGUI();
+    void excluirUsuarioGUI();
+    //void executarDadosContaGUI();
+    //void executarMinhasComprasGUI();
+    //void executarMeusEventosGUI();
 
   signals:
     void notifique_situacao(int);
+    void inicia_exclusao_conta();
 
 };
 

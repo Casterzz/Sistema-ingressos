@@ -1534,9 +1534,12 @@ windows.o: ../Sistema_Ingressos/windows.cpp ../Sistema_Ingressos/windows.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QFormLayout \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qformlayout.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QLayout \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QGridLayout \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QSpacerItem \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QStackedWidget \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qstackedwidget.h
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qstackedwidget.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QMessageBox \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windows.o ../Sistema_Ingressos/windows.cpp
 
 moc_controladoras.o: moc_controladoras.cpp 

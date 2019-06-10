@@ -113,16 +113,23 @@ void TelaUsuario::on_ir_cadastrar_clicked()
 }
 
 void TelaUsuario::on_notificar_situacao(int situacao){
-    if (situacao == 0) ui->infobox->append("Dados inválidos!");
-    else if (situacao == 1) ui->infobox->setText("Conectando ao banco de dados...");
-    else if (situacao == 2) ui->infobox->append("Este CPF já está em uso!");
-    else if (situacao == 3) {
-        ui->infobox->append("Conta criada com sucesso!");
-        QMessageBox::information(this, "","Conta criada com sucesso, favor se autenticar!");
-        close();
-    }
-    else if (situacao == 4) {
-        ui->infobox_usuario->append("Você precisa estar autenticado para executar esta ação!");
+    switch (situacao) {
+        case 0: ui->infobox->append("Dados inválidos!"); break;
+        case 1: ui->infobox->setText("Conectando ao banco de dados..."); break;
+        case 2: ui->infobox->append("Este CPF já está em uso!"); break;
+        case 3:
+            ui->infobox->append("Conta criada com sucesso!");
+            QMessageBox::information(this, "","Conta criada com sucesso, favor se autenticar!");
+            close();
+            break;
+        case 4: ui->infobox_usuario->append("Você precisa estar autenticado para executar esta ação!"); break;
+        case 5:
+            ui->infobox_excluir->append("Conta excluída com sucesso!");
+            QMessageBox::information(this, "","Conta excluída com sucesso! Você será redirecionado à tela inicial.");
+            close();
+            break;
+        case 6: ui->infobox_excluir->append("Erro ao excluir conta: Não foi possível conectar à base de dados."); break;
+        case 7: ui->infobox_excluir->append("Erro ao excluir conta: Sua conta possui ingressos vendidos."); break;
     }
 }
 
@@ -144,4 +151,18 @@ void TelaUsuario::on_Compras_clicked()
 void TelaUsuario::on_Eventos_clicked()
 {
     emit clicou_meus_eventos(4);
+}
+
+void TelaUsuario::on_Excluir_clicked_logado() {
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void TelaUsuario::on_cancelar_exclusao_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void TelaUsuario::on_confirmar_exclusao_clicked()
+{
+    emit (clicou_confirmar_excluir());
 }

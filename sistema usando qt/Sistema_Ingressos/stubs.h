@@ -19,6 +19,7 @@ class StubISUsuario:public QObject, public ISUsuario{
 
 public:
     bool cadastrar(Usuario, CartaoCredito) throw(runtime_error);
+    bool excluir(CPF) throw(runtime_error);
 };
 
 #endif // STUBS_H
