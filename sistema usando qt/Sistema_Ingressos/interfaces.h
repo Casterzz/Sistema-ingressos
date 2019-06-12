@@ -58,13 +58,18 @@ public:
     virtual bool alterar_cpf(CPF) throw(runtime_error) = 0;
     virtual bool alterar_senha(Senha) throw(runtime_error) = 0;
     virtual bool alterar_cartao(CartaoCredito&) throw(runtime_error) = 0;
+
+    virtual list<Ingresso> obter_ingressos_usuario(CPF) throw(runtime_error) = 0;
+    virtual list<Evento> obter_evento_apresentacao(list<Apresentacao>) throw(runtime_error) = 0;
+    virtual list<Apresentacao> obter_apresentacoes_ingresso(list<Ingresso>) throw(runtime_error) = 0;
+    //virtual list<Ingresso> obter_ingressos_vendidos() = 0;
+    virtual list<Evento> obter_eventos_criados(CPF) throw(runtime_error) = 0;
+    //virtual list<Apresentacao> obter_apresentacoes(CodigoEvento) throw(runtime_error) = 0;
+    //virtual list<CPF> obter_compradores(CodigoApresentacao) throw(runtime_error) = 0;
+    //virtual bool excluir_evento(CodigoEvento) throw(runtime_error) = 0;
+
 /*
-    virtual list<Ingresso> obter_ingressos(CPF) throw(runtime_error) = 0;
-    virtual list<Evento> obter_eventos(CPF) throw(runtime_error) = 0;
-    virtual list<Apresentacao> obter_apresentacoes(CodigoEvento) throw(runtime_error) = 0;
-    virtual list<CPF> obter_compradores(CodigoEvento, CodigoApresentacao) throw(runtime_error) = 0;
-    virtual bool atualizar_evento(Evento, list<Apresentacao>) throw(runtime_error) = 0;
-    virtual bool excluir_evento(CodigoEvento) throw(runtime_error) = 0;
+    virtual bool editar_evento(Evento, list<Apresentacao>) throw(runtime_error) = 0;
     virtual bool criar_evento(Evento, list<Apresentacao>) throw(runtime_error) = 0;
 */
     //virtual void setCntrISUsuario(ISUsuario *) = 0;

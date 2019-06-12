@@ -55,7 +55,6 @@ bool CntrIAUsuario::executar_autenticado(CPF cpf) throw(runtime_error) {
 
     QObject::connect(&Tela, SIGNAL (clicou_ir_cadastrar(EstruturaUsuario, EstruturaCartaoCredito)),
                      this, SLOT(executarCadastrarGUI(EstruturaUsuario, EstruturaCartaoCredito)));
-
     QObject::connect(&Tela, SIGNAL (clicou_excluir_usuario(int)), this, SLOT(executarExcluirUsuarioGUI()));
     QObject::connect(this, SIGNAL (inicia_exclusao_conta(string, string)),
                      &Tela, SLOT(on_Excluir_clicked_logado(string, string)));
@@ -68,9 +67,13 @@ bool CntrIAUsuario::executar_autenticado(CPF cpf) throw(runtime_error) {
     QObject::connect(&Tela, SIGNAL (clicou_alterar_cartao(string)), this, SLOT(alterarCartaoGUI(string)));
     QObject::connect(&Tela, SIGNAL (clicou_alterar_codigoCartao(string)), this, SLOT(alterarCartaoCodigoGUI(string)));
     QObject::connect(&Tela, SIGNAL (clicou_alterar_dataCartao(string)), this, SLOT(alterarCartaoDataGUI(string)));
-
-    //QObject::connect(&Tela, SIGNAL (clicou_minhas_compras(int)), this, SLOT(executarMinhasComprasGUI()));
-    //QObject::connect(&Tela, SIGNAL (clicou_meus_eventos(int)), this, SLOT(executarMeusEventosGUI()));
+    QObject::connect(&Tela, SIGNAL (clicou_minhas_compras(int)), this, SLOT(executarMinhasComprasGUI()));
+    QObject::connect(this, SIGNAL (inicia_mostrar_ingressos(list<Ingresso>, list<Apresentacao>, list<Evento>)),
+                     &Tela, SLOT(on_mostre_ingressos(list<Ingresso>, list<Apresentacao>, list<Evento>)));
+    QObject::connect(&Tela, SIGNAL (clicou_meus_eventos(int)), this, SLOT(executarMeusEventosGUI()));
+    QObject::connect(this, SIGNAL (inicia_mostrar_meus_eventos(list<Evento>)),
+                     &Tela, SLOT (on_mostre_meus_eventos(list<Evento>)));
+    QObject::connect(&Tela, SIGNAL(clicou_tabela_meus_eventos(int, int)), this, SLOT (processarMeusEventosGUI(int, int)));
 
     QObject::connect(this, SIGNAL (notifique_situacao(int)), &Tela, SLOT(on_notificar_situacao(int)));
 
@@ -242,5 +245,55 @@ void CntrIAUsuario::alterarCartaoDataGUI(string cartaoDataNovo) {
         emit (notifique_situacao(15));
     } else {
         emit (notifique_situacao(13));
+    }
+}
+
+void CntrIAUsuario::executarMinhasComprasGUI() {
+    list<Ingresso> lista_ingressos =  cntrISUsuario->obter_ingressos_usuario(this->cpf);
+    list<Apresentacao> lista_apresentacao = cntrISUsuario->obter_apresentacoes_ingresso(lista_ingressos);
+    list<Evento> lista_eventos = cntrISUsuario->obter_evento_apresentacao(lista_apresentacao);
+    emit (inicia_mostrar_ingressos(lista_ingressos, lista_apresentacao, lista_eventos));
+}
+
+void CntrIAUsuario::executarMeusEventosGUI() {
+    list<Evento> lista_eventos;
+    lista_eventos = cntrISUsuario->obter_eventos_criados(this->cpf);
+    emit (inicia_mostrar_meus_eventos(lista_eventos));
+}
+
+void CntrIAUsuario::processarMeusEventosGUI(int linha, int coluna) {
+/*
+    list<Evento> lista_eventos = cntrISUsuario->obter_eventos_criados(this->cpf);
+    for (int i = 0; i < linha; i++) {
+        lista_eventos.pop_front();
+    }
+    EstruturaEvento estrutura_evento;
+    lista_eventos.front().getEvento(&estrutura_evento);
+    CodigoEvento codigo;
+    codigo.setCodigo(estrutura_evento.codigo);
+    list<Apresentacao> lista_apresentacao = cntrISUsuario->obter_apresentacoes(codigo);
+*/
+
+    // implementar sinais de escolha do botão de função
+
+    switch (coluna) {
+    case 2:
+        //vendas efetuadas
+            // enviar lista de apresentações
+        qDebug() << "Selecionou: Vendas efetuadas";
+        break;
+
+    case 3:
+        //editar
+        qDebug() << "Selecionou: Editar";
+        break;
+
+    case 4:
+        //excluir
+        qDebug() << "Selecionou: Excluir";
+        break;
+
+    default:
+        break;
     }
 }

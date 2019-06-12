@@ -24,6 +24,10 @@ public:
     bool alterar_cpf(CPF) throw(runtime_error);
     bool alterar_senha(Senha) throw(runtime_error);
     bool alterar_cartao(CartaoCredito&) throw(runtime_error);
+    list<Ingresso> obter_ingressos_usuario(CPF) throw(runtime_error);
+    list<Evento> obter_evento_apresentacao(list<Apresentacao>) throw(runtime_error);
+    list<Apresentacao> obter_apresentacoes_ingresso(list<Ingresso>) throw(runtime_error);
+    list<Evento> obter_eventos_criados(CPF) throw(runtime_error);
 };
 
 #endif // STUBS_H

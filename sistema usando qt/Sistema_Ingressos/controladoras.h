@@ -121,8 +121,9 @@ class CntrIAUsuario : public QObject, public IAUsuario{
     void executarExcluirUsuarioGUI();
     void excluirUsuarioGUI();
     void executarDadosContaGUI();
-    //void executarMinhasComprasGUI();
-    //void executarMeusEventosGUI();
+    void executarMinhasComprasGUI();
+    void executarMeusEventosGUI();
+    void processarMeusEventosGUI(int, int);
 
     void alterarCPFGUI(string);
     void alterarSenhaGUI(string);
@@ -134,6 +135,8 @@ class CntrIAUsuario : public QObject, public IAUsuario{
     void notifique_situacao(int);
     void inicia_exclusao_conta(string, string);
     void mostre_dados_conta(EstruturaUsuario, EstruturaCartaoCredito);
+    void inicia_mostrar_ingressos(list<Ingresso>, list<Apresentacao>, list<Evento>);
+    void inicia_mostrar_meus_eventos(list<Evento>);
 };
 
 void inline CntrIAUsuario::setCntrISUsuario(ISUsuario *cntrISUsuario) {

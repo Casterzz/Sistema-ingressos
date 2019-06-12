@@ -79,34 +79,26 @@ public:
 
 private slots:
     void on_Cadastrar_clicked();
-
     void on_voltar_cadastrar_clicked();
-
     void on_ir_cadastrar_clicked();
-
     void on_Excluir_clicked();
     void on_Excluir_clicked_logado(string, string);
     void on_Dados_clicked();
-
     void on_Compras_clicked();
-
     void on_Eventos_clicked();
-
     void on_cancelar_exclusao_clicked();
-
     void on_confirmar_exclusao_clicked();
-
     void on_alterar_cpf_clicked();
-
     void on_alterar_senha_clicked();
-
     void on_alterar_cartao_clicked();
-
     void on_alterar_codigo_clicked();
-
     void on_alterar_data_clicked();
-
     void on_voltar_conta_clicked();
+    void on_voltar_compras_clicked();
+
+    void on_voltar_meus_eventos_clicked();
+
+    void on_tabelaMeusEventos_cellDoubleClicked(int row, int column);
 
 private:
     Ui::TelaUsuario *ui;
@@ -114,6 +106,8 @@ private:
 public slots:
     void on_notificar_situacao(int);
     void on_mostre_dados_conta(EstruturaUsuario, EstruturaCartaoCredito);
+    void on_mostre_ingressos(list<Ingresso>, list<Apresentacao>, list<Evento>);
+    void on_mostre_meus_eventos(list<Evento>);
 
 signals:
     void clicou_ir_cadastrar(EstruturaUsuario, EstruturaCartaoCredito);
@@ -127,6 +121,7 @@ signals:
     void clicou_alterar_cartao(string);
     void clicou_alterar_codigoCartao(string);
     void clicou_alterar_dataCartao(string);
+    void clicou_tabela_meus_eventos(int, int);
 };
 
 #endif // MAINWINDOW_H

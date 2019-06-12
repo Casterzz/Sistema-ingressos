@@ -1538,8 +1538,26 @@ windows.o: ../Sistema_Ingressos/windows.cpp ../Sistema_Ingressos/windows.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qformlayout.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QLayout \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QGridLayout \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QHeaderView \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtGui/qvalidator.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtCore/qregularexpression.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qslider.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qstyle.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qrubberband.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QStackedWidget \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qstackedwidget.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QTableWidget \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qtablewidget.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qtableview.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QMessageBox \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windows.o ../Sistema_Ingressos/windows.cpp

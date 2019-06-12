@@ -160,6 +160,7 @@ void TelaUsuario::on_Dados_clicked()
 void TelaUsuario::on_Compras_clicked()
 {
     emit clicou_minhas_compras(4);
+    //ui->stackedWidget->setCurrentIndex(4);
 }
 
 void TelaUsuario::on_Eventos_clicked()
@@ -223,4 +224,100 @@ void TelaUsuario::on_alterar_data_clicked()
 void TelaUsuario::on_voltar_conta_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+}
+
+void TelaUsuario::on_voltar_compras_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void TelaUsuario::on_mostre_ingressos(list<Ingresso> lista_ingressos, list<Apresentacao> lista_apresentacoes, list<Evento> lista_eventos) {
+    qDebug() << "entrou mostre compras";
+
+    //ui->tabelaCompras->verticalHeader()->setVisible(false);
+    ui->tabelaCompras->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tabelaCompras->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tabelaCompras->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->stackedWidget->setCurrentIndex(4);
+
+
+    ui->tabelaCompras->setRowCount(int(lista_ingressos.size()));
+    EstruturaIngresso estrutura_ingresso;
+    EstruturaApresentacao estrutura_apresentacao;
+    EstruturaEvento estrutura_evento;
+
+    string eventoString;
+    string apresentacaoString;
+
+    for (int i = 0; i < int(lista_ingressos.size()); i++) {
+        lista_ingressos.front().getIngresso(&estrutura_ingresso);
+        lista_eventos.front().getEvento(&estrutura_evento);
+        lista_apresentacoes.front().getApresentacao(&estrutura_apresentacao);
+
+        eventoString = ("Nome: " + estrutura_evento.nome + "\n" +
+                        "Classe: " + estrutura_evento.classe + "\n" +
+                        "Faixa: " + estrutura_evento.faixa + "\n" +
+                        "Local: " + estrutura_evento.cidade + "/" + estrutura_evento.estado);
+
+        apresentacaoString = ("Código: " + estrutura_apresentacao.codigo + "\n" +
+                              "Data: " + estrutura_apresentacao.data + "\n" +
+                              "Horário: " + estrutura_apresentacao.horario + "\n" +
+                              "Sala: " + estrutura_apresentacao.sala);
+
+        ui->tabelaCompras->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(estrutura_ingresso.codigo)));
+        ui->tabelaCompras->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(eventoString)));
+        ui->tabelaCompras->setItem(i, 2, new QTableWidgetItem(QString::fromStdString(apresentacaoString)));
+
+        lista_ingressos.pop_front();
+        lista_eventos.pop_front();
+        lista_apresentacoes.pop_front();
+    }
+    ui->tabelaCompras->resizeRowsToContents();
+    ui->tabelaCompras->resizeColumnsToContents();
+}
+
+void TelaUsuario::on_mostre_meus_eventos(list<Evento> lista_eventos) {
+    ui->tabelaMeusEventos->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->stackedWidget->setCurrentIndex(5);
+
+    ui->tabelaMeusEventos->setRowCount(int(lista_eventos.size()));
+    EstruturaEvento estrutura_evento;
+
+    string eventoString;
+    QFont font;
+    font.setBold(true);
+    font.setUnderline(true);
+
+    for (int i = 0; i < int(lista_eventos.size()); i++) {
+        lista_eventos.front().getEvento(&estrutura_evento);
+
+        eventoString = ("Nome: " + estrutura_evento.nome + "\n" +
+                        "Classe: " + estrutura_evento.classe + "\n" +
+                        "Faixa: " + estrutura_evento.faixa + "\n" +
+                        "Local: " + estrutura_evento.cidade + "/" + estrutura_evento.estado);
+
+        ui->tabelaMeusEventos->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(estrutura_evento.codigo)));
+        ui->tabelaMeusEventos->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(eventoString)));
+        ui->tabelaMeusEventos->setItem(i, 2, new QTableWidgetItem("Vendas efetuadas"));
+        ui->tabelaMeusEventos->setItem(i, 3, new QTableWidgetItem("Editar"));
+        ui->tabelaMeusEventos->setItem(i, 4, new QTableWidgetItem("Excluir"));
+
+        ui->tabelaMeusEventos->item(i, 2)->setFont(font);
+        ui->tabelaMeusEventos->item(i, 3)->setFont(font);
+        ui->tabelaMeusEventos->item(i, 4)->setFont(font);
+    }
+    ui->tabelaMeusEventos->resizeRowsToContents();
+    ui->tabelaMeusEventos->resizeColumnsToContents();
+
+}
+
+
+void TelaUsuario::on_voltar_meus_eventos_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void TelaUsuario::on_tabelaMeusEventos_cellDoubleClicked(int row, int column)
+{
+    emit(clicou_tabela_meus_eventos(row, column));
 }

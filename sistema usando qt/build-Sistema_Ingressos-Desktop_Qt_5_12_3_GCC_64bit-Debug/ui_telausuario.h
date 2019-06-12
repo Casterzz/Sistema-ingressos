@@ -14,11 +14,13 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -95,7 +97,16 @@ public:
     QLineEdit *campo_codigo_conta;
     QLineEdit *campo_data_conta;
     QWidget *compras;
+    QVBoxLayout *verticalLayout_4;
+    QLabel *label_13;
+    QTableWidget *tabelaCompras;
+    QPushButton *voltar_compras;
     QWidget *eventos;
+    QVBoxLayout *verticalLayout_7;
+    QLabel *label_15;
+    QTableWidget *tabelaMeusEventos;
+    QPushButton *criarNovoEvento;
+    QPushButton *voltar_meus_eventos;
 
     void setupUi(QDialog *TelaUsuario)
     {
@@ -437,9 +448,74 @@ public:
         stackedWidget->addWidget(dados);
         compras = new QWidget();
         compras->setObjectName(QString::fromUtf8("compras"));
+        verticalLayout_4 = new QVBoxLayout(compras);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        label_13 = new QLabel(compras);
+        label_13->setObjectName(QString::fromUtf8("label_13"));
+
+        verticalLayout_4->addWidget(label_13);
+
+        tabelaCompras = new QTableWidget(compras);
+        if (tabelaCompras->columnCount() < 3)
+            tabelaCompras->setColumnCount(3);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        tabelaCompras->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        tabelaCompras->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        tabelaCompras->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        tabelaCompras->setObjectName(QString::fromUtf8("tabelaCompras"));
+
+        verticalLayout_4->addWidget(tabelaCompras);
+
+        voltar_compras = new QPushButton(compras);
+        voltar_compras->setObjectName(QString::fromUtf8("voltar_compras"));
+        sizePolicy2.setHeightForWidth(voltar_compras->sizePolicy().hasHeightForWidth());
+        voltar_compras->setSizePolicy(sizePolicy2);
+
+        verticalLayout_4->addWidget(voltar_compras);
+
         stackedWidget->addWidget(compras);
         eventos = new QWidget();
         eventos->setObjectName(QString::fromUtf8("eventos"));
+        verticalLayout_7 = new QVBoxLayout(eventos);
+        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
+        label_15 = new QLabel(eventos);
+        label_15->setObjectName(QString::fromUtf8("label_15"));
+
+        verticalLayout_7->addWidget(label_15);
+
+        tabelaMeusEventos = new QTableWidget(eventos);
+        if (tabelaMeusEventos->columnCount() < 5)
+            tabelaMeusEventos->setColumnCount(5);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        tabelaMeusEventos->setHorizontalHeaderItem(0, __qtablewidgetitem3);
+        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
+        tabelaMeusEventos->setHorizontalHeaderItem(1, __qtablewidgetitem4);
+        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
+        tabelaMeusEventos->setHorizontalHeaderItem(2, __qtablewidgetitem5);
+        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
+        tabelaMeusEventos->setHorizontalHeaderItem(3, __qtablewidgetitem6);
+        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
+        tabelaMeusEventos->setHorizontalHeaderItem(4, __qtablewidgetitem7);
+        tabelaMeusEventos->setObjectName(QString::fromUtf8("tabelaMeusEventos"));
+
+        verticalLayout_7->addWidget(tabelaMeusEventos);
+
+        criarNovoEvento = new QPushButton(eventos);
+        criarNovoEvento->setObjectName(QString::fromUtf8("criarNovoEvento"));
+        sizePolicy2.setHeightForWidth(criarNovoEvento->sizePolicy().hasHeightForWidth());
+        criarNovoEvento->setSizePolicy(sizePolicy2);
+
+        verticalLayout_7->addWidget(criarNovoEvento);
+
+        voltar_meus_eventos = new QPushButton(eventos);
+        voltar_meus_eventos->setObjectName(QString::fromUtf8("voltar_meus_eventos"));
+        sizePolicy2.setHeightForWidth(voltar_meus_eventos->sizePolicy().hasHeightForWidth());
+        voltar_meus_eventos->setSizePolicy(sizePolicy2);
+
+        verticalLayout_7->addWidget(voltar_meus_eventos);
+
         stackedWidget->addWidget(eventos);
 
         verticalLayout->addWidget(stackedWidget);
@@ -448,7 +524,7 @@ public:
         retranslateUi(TelaUsuario);
         QObject::connect(Voltar, SIGNAL(clicked()), TelaUsuario, SLOT(close()));
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(5);
 
 
         QMetaObject::connectSlotsByName(TelaUsuario);
@@ -488,6 +564,21 @@ public:
         alterar_cartao->setText(QApplication::translate("TelaUsuario", "Alterar N\303\272mero Cart\303\243o", nullptr));
         alterar_codigo->setText(QApplication::translate("TelaUsuario", "Alterar C\303\263digo de Seguran\303\247a", nullptr));
         alterar_data->setText(QApplication::translate("TelaUsuario", "Alterar Data de Validade", nullptr));
+        label_13->setText(QApplication::translate("TelaUsuario", "Minhas Compras", nullptr));
+        QTableWidgetItem *___qtablewidgetitem = tabelaCompras->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QApplication::translate("TelaUsuario", "Ingresso", nullptr));
+        QTableWidgetItem *___qtablewidgetitem1 = tabelaCompras->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QApplication::translate("TelaUsuario", "Evento", nullptr));
+        QTableWidgetItem *___qtablewidgetitem2 = tabelaCompras->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QApplication::translate("TelaUsuario", "Apresenta\303\247\303\243o", nullptr));
+        voltar_compras->setText(QApplication::translate("TelaUsuario", "Voltar", nullptr));
+        label_15->setText(QApplication::translate("TelaUsuario", "Meus Eventos", nullptr));
+        QTableWidgetItem *___qtablewidgetitem3 = tabelaMeusEventos->horizontalHeaderItem(0);
+        ___qtablewidgetitem3->setText(QApplication::translate("TelaUsuario", "C\303\263digo", nullptr));
+        QTableWidgetItem *___qtablewidgetitem4 = tabelaMeusEventos->horizontalHeaderItem(1);
+        ___qtablewidgetitem4->setText(QApplication::translate("TelaUsuario", "Evento", nullptr));
+        criarNovoEvento->setText(QApplication::translate("TelaUsuario", "Criar novo evento", nullptr));
+        voltar_meus_eventos->setText(QApplication::translate("TelaUsuario", "Voltar", nullptr));
     } // retranslateUi
 
 };

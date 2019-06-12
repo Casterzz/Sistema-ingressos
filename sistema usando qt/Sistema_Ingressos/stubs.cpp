@@ -61,3 +61,58 @@ bool StubISUsuario::alterar_senha(Senha) throw(runtime_error){
 bool StubISUsuario::alterar_cartao(CartaoCredito&) throw(runtime_error){
     return true;
 }
+
+list<Ingresso> StubISUsuario::obter_ingressos_usuario(CPF) throw(runtime_error) {
+    list<Ingresso> lista;
+    Ingresso ingresso;
+    EstruturaIngresso estrutura_ingresso;
+    estrutura_ingresso.codigo = "00111";
+    ingresso.setIngresso(estrutura_ingresso);
+    lista.push_back(ingresso);
+    return lista;
+}
+
+list<Apresentacao> StubISUsuario::obter_apresentacoes_ingresso(list<Ingresso>) throw(runtime_error) {
+    list<Apresentacao> lista;
+    Apresentacao apresentacao;
+    EstruturaApresentacao estrutura_apresentacao;
+    estrutura_apresentacao.codigo = "1234";
+    estrutura_apresentacao.data = "12/05/23";
+    estrutura_apresentacao.sala = "2";
+    estrutura_apresentacao.preco = "999,99";
+    estrutura_apresentacao.horario = "22:30";
+    estrutura_apresentacao.disponibilidade = "249";
+    apresentacao.setApresentacao(estrutura_apresentacao);
+    lista.push_back(apresentacao);
+    return lista;
+}
+
+list<Evento> StubISUsuario::obter_evento_apresentacao(list<Apresentacao>) throw(runtime_error) {
+    list<Evento> lista;
+    Evento evento;
+    EstruturaEvento estrutura_evento;
+    estrutura_evento.codigo = "777";
+    estrutura_evento.nome = "Vingadores Ultraball";
+    estrutura_evento.faixa = "18";
+    estrutura_evento.cidade = "Aguas Claras 23";
+    estrutura_evento.classe = "2";
+    estrutura_evento.estado = "DF";
+    evento.setEvento(estrutura_evento);
+    lista.push_back(evento);
+    return lista;
+}
+
+list<Evento> StubISUsuario::obter_eventos_criados(CPF) throw(runtime_error) {
+    list<Evento> lista;
+    Evento evento;
+    EstruturaEvento estrutura_evento;
+    estrutura_evento.codigo = "777";
+    estrutura_evento.nome = "Vingadores Ultraball";
+    estrutura_evento.faixa = "18";
+    estrutura_evento.cidade = "Aguas Claras 23";
+    estrutura_evento.classe = "2";
+    estrutura_evento.estado = "DF";
+    evento.setEvento(estrutura_evento);
+    lista.push_back(evento);
+    return lista;
+}
