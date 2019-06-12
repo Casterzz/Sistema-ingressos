@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Autenticação</string>
   </property>
   <widget class="QLineEdit" name="campoCPF">
    <property name="geometry">
@@ -100,14 +100,14 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>10</y>
+     <x>40</x>
+     <y>20</y>
      <width>271</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Preencha os campos abaixo para logar</string>
+    <string>Log in</string>
    </property>
   </widget>
   <widget class="QTextBrowser" name="status">
@@ -120,6 +120,31 @@
     </rect>
    </property>
   </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>40</y>
+     <width>221</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>campoCPF</zorder>
+  <zorder>campoSenha</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>logar</zorder>
+  <zorder>cancelar</zorder>
+  <zorder>label_3</zorder>
+  <zorder>status</zorder>
  </widget>
  <resources/>
  <connections>

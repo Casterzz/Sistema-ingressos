@@ -49,14 +49,14 @@ public:
     QSpacerItem *verticalSpacer_4;
     QFormLayout *formLayout_2;
     QLabel *label_3;
-    QLabel *label_4;
-    QLabel *label_5;
-    QLabel *label_6;
-    QLabel *label_7;
     QLineEdit *campoCPF_cadastrar;
+    QLabel *label_4;
     QLineEdit *campoSenha_cadastrar;
+    QLabel *label_5;
     QLineEdit *campoCartao_cadastrar;
+    QLabel *label_6;
     QLineEdit *campoCodigo_cadastrar;
+    QLabel *label_7;
     QLineEdit *campoData_cadastrar;
     QSpacerItem *verticalSpacer_7;
     QTextBrowser *infobox;
@@ -72,7 +72,7 @@ public:
     QTextBrowser *infobox_excluir;
     QLabel *label_10;
     QLabel *label_11;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout;
     QLabel *campoCPF_exclusao;
     QLabel *campoCartao_exclusao;
@@ -80,14 +80,14 @@ public:
     QLabel *label_12;
     QPushButton *voltar_conta;
     QTextBrowser *caixa_conta;
-    QWidget *layoutWidget;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_5;
     QPushButton *alterar_cpf;
     QPushButton *alterar_senha;
     QPushButton *alterar_cartao;
     QPushButton *alterar_codigo;
     QPushButton *alterar_data;
-    QWidget *layoutWidget1;
+    QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout_6;
     QLineEdit *campo_cpf_conta;
     QLineEdit *campo_senha_conta;
@@ -193,30 +193,15 @@ public:
 
         formLayout_2->setWidget(0, QFormLayout::LabelRole, label_3);
 
-        label_4 = new QLabel(cadastrar);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-
-        formLayout_2->setWidget(1, QFormLayout::LabelRole, label_4);
-
-        label_5 = new QLabel(cadastrar);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-
-        formLayout_2->setWidget(2, QFormLayout::LabelRole, label_5);
-
-        label_6 = new QLabel(cadastrar);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-
-        formLayout_2->setWidget(3, QFormLayout::LabelRole, label_6);
-
-        label_7 = new QLabel(cadastrar);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
-
-        formLayout_2->setWidget(4, QFormLayout::LabelRole, label_7);
-
         campoCPF_cadastrar = new QLineEdit(cadastrar);
         campoCPF_cadastrar->setObjectName(QString::fromUtf8("campoCPF_cadastrar"));
 
         formLayout_2->setWidget(0, QFormLayout::FieldRole, campoCPF_cadastrar);
+
+        label_4 = new QLabel(cadastrar);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+
+        formLayout_2->setWidget(1, QFormLayout::LabelRole, label_4);
 
         campoSenha_cadastrar = new QLineEdit(cadastrar);
         campoSenha_cadastrar->setObjectName(QString::fromUtf8("campoSenha_cadastrar"));
@@ -224,15 +209,30 @@ public:
 
         formLayout_2->setWidget(1, QFormLayout::FieldRole, campoSenha_cadastrar);
 
+        label_5 = new QLabel(cadastrar);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        formLayout_2->setWidget(2, QFormLayout::LabelRole, label_5);
+
         campoCartao_cadastrar = new QLineEdit(cadastrar);
         campoCartao_cadastrar->setObjectName(QString::fromUtf8("campoCartao_cadastrar"));
 
         formLayout_2->setWidget(2, QFormLayout::FieldRole, campoCartao_cadastrar);
 
+        label_6 = new QLabel(cadastrar);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+
+        formLayout_2->setWidget(3, QFormLayout::LabelRole, label_6);
+
         campoCodigo_cadastrar = new QLineEdit(cadastrar);
         campoCodigo_cadastrar->setObjectName(QString::fromUtf8("campoCodigo_cadastrar"));
 
         formLayout_2->setWidget(3, QFormLayout::FieldRole, campoCodigo_cadastrar);
+
+        label_7 = new QLabel(cadastrar);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+
+        formLayout_2->setWidget(4, QFormLayout::LabelRole, label_7);
 
         campoData_cadastrar = new QLineEdit(cadastrar);
         campoData_cadastrar->setObjectName(QString::fromUtf8("campoData_cadastrar"));
@@ -289,7 +289,7 @@ public:
         label_9->setSizePolicy(sizePolicy1);
         label_8 = new QLabel(exclusao);
         label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setGeometry(QRect(9, 344, 210, 17));
+        label_8->setGeometry(QRect(9, 344, 231, 17));
         sizePolicy1.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
         label_8->setSizePolicy(sizePolicy1);
         confirmar_exclusao = new QPushButton(exclusao);
@@ -319,18 +319,18 @@ public:
         label_11 = new QLabel(exclusao);
         label_11->setObjectName(QString::fromUtf8("label_11"));
         label_11->setGeometry(QRect(10, 127, 125, 17));
-        widget = new QWidget(exclusao);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(161, 104, 231, 42));
-        gridLayout = new QGridLayout(widget);
+        layoutWidget = new QWidget(exclusao);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(161, 104, 231, 42));
+        gridLayout = new QGridLayout(layoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        campoCPF_exclusao = new QLabel(widget);
+        campoCPF_exclusao = new QLabel(layoutWidget);
         campoCPF_exclusao->setObjectName(QString::fromUtf8("campoCPF_exclusao"));
 
         gridLayout->addWidget(campoCPF_exclusao, 0, 0, 1, 1);
 
-        campoCartao_exclusao = new QLabel(widget);
+        campoCartao_exclusao = new QLabel(layoutWidget);
         campoCartao_exclusao->setObjectName(QString::fromUtf8("campoCartao_exclusao"));
 
         gridLayout->addWidget(campoCartao_exclusao, 1, 0, 1, 1);
@@ -349,13 +349,13 @@ public:
         caixa_conta = new QTextBrowser(dados);
         caixa_conta->setObjectName(QString::fromUtf8("caixa_conta"));
         caixa_conta->setGeometry(QRect(10, 280, 551, 71));
-        layoutWidget = new QWidget(dados);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(350, 70, 211, 151));
-        verticalLayout_5 = new QVBoxLayout(layoutWidget);
+        layoutWidget1 = new QWidget(dados);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(350, 70, 211, 151));
+        verticalLayout_5 = new QVBoxLayout(layoutWidget1);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
-        alterar_cpf = new QPushButton(layoutWidget);
+        alterar_cpf = new QPushButton(layoutWidget1);
         alterar_cpf->setObjectName(QString::fromUtf8("alterar_cpf"));
         QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy5.setHorizontalStretch(0);
@@ -365,69 +365,69 @@ public:
 
         verticalLayout_5->addWidget(alterar_cpf);
 
-        alterar_senha = new QPushButton(layoutWidget);
+        alterar_senha = new QPushButton(layoutWidget1);
         alterar_senha->setObjectName(QString::fromUtf8("alterar_senha"));
         sizePolicy5.setHeightForWidth(alterar_senha->sizePolicy().hasHeightForWidth());
         alterar_senha->setSizePolicy(sizePolicy5);
 
         verticalLayout_5->addWidget(alterar_senha);
 
-        alterar_cartao = new QPushButton(layoutWidget);
+        alterar_cartao = new QPushButton(layoutWidget1);
         alterar_cartao->setObjectName(QString::fromUtf8("alterar_cartao"));
         sizePolicy5.setHeightForWidth(alterar_cartao->sizePolicy().hasHeightForWidth());
         alterar_cartao->setSizePolicy(sizePolicy5);
 
         verticalLayout_5->addWidget(alterar_cartao);
 
-        alterar_codigo = new QPushButton(layoutWidget);
+        alterar_codigo = new QPushButton(layoutWidget1);
         alterar_codigo->setObjectName(QString::fromUtf8("alterar_codigo"));
         sizePolicy5.setHeightForWidth(alterar_codigo->sizePolicy().hasHeightForWidth());
         alterar_codigo->setSizePolicy(sizePolicy5);
 
         verticalLayout_5->addWidget(alterar_codigo);
 
-        alterar_data = new QPushButton(layoutWidget);
+        alterar_data = new QPushButton(layoutWidget1);
         alterar_data->setObjectName(QString::fromUtf8("alterar_data"));
         sizePolicy5.setHeightForWidth(alterar_data->sizePolicy().hasHeightForWidth());
         alterar_data->setSizePolicy(sizePolicy5);
 
         verticalLayout_5->addWidget(alterar_data);
 
-        layoutWidget1 = new QWidget(dados);
-        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(12, 70, 331, 151));
-        verticalLayout_6 = new QVBoxLayout(layoutWidget1);
+        layoutWidget2 = new QWidget(dados);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(12, 70, 331, 151));
+        verticalLayout_6 = new QVBoxLayout(layoutWidget2);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         verticalLayout_6->setContentsMargins(0, 0, 0, 0);
-        campo_cpf_conta = new QLineEdit(layoutWidget1);
+        campo_cpf_conta = new QLineEdit(layoutWidget2);
         campo_cpf_conta->setObjectName(QString::fromUtf8("campo_cpf_conta"));
         sizePolicy5.setHeightForWidth(campo_cpf_conta->sizePolicy().hasHeightForWidth());
         campo_cpf_conta->setSizePolicy(sizePolicy5);
 
         verticalLayout_6->addWidget(campo_cpf_conta);
 
-        campo_senha_conta = new QLineEdit(layoutWidget1);
+        campo_senha_conta = new QLineEdit(layoutWidget2);
         campo_senha_conta->setObjectName(QString::fromUtf8("campo_senha_conta"));
         sizePolicy5.setHeightForWidth(campo_senha_conta->sizePolicy().hasHeightForWidth());
         campo_senha_conta->setSizePolicy(sizePolicy5);
 
         verticalLayout_6->addWidget(campo_senha_conta);
 
-        campo_cartao_conta = new QLineEdit(layoutWidget1);
+        campo_cartao_conta = new QLineEdit(layoutWidget2);
         campo_cartao_conta->setObjectName(QString::fromUtf8("campo_cartao_conta"));
         sizePolicy5.setHeightForWidth(campo_cartao_conta->sizePolicy().hasHeightForWidth());
         campo_cartao_conta->setSizePolicy(sizePolicy5);
 
         verticalLayout_6->addWidget(campo_cartao_conta);
 
-        campo_codigo_conta = new QLineEdit(layoutWidget1);
+        campo_codigo_conta = new QLineEdit(layoutWidget2);
         campo_codigo_conta->setObjectName(QString::fromUtf8("campo_codigo_conta"));
         sizePolicy5.setHeightForWidth(campo_codigo_conta->sizePolicy().hasHeightForWidth());
         campo_codigo_conta->setSizePolicy(sizePolicy5);
 
         verticalLayout_6->addWidget(campo_codigo_conta);
 
-        campo_data_conta = new QLineEdit(layoutWidget1);
+        campo_data_conta = new QLineEdit(layoutWidget2);
         campo_data_conta->setObjectName(QString::fromUtf8("campo_data_conta"));
         sizePolicy5.setHeightForWidth(campo_data_conta->sizePolicy().hasHeightForWidth());
         campo_data_conta->setSizePolicy(sizePolicy5);
@@ -448,7 +448,7 @@ public:
         retranslateUi(TelaUsuario);
         QObject::connect(Voltar, SIGNAL(clicked()), TelaUsuario, SLOT(close()));
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(TelaUsuario);
@@ -456,7 +456,7 @@ public:
 
     void retranslateUi(QDialog *TelaUsuario)
     {
-        TelaUsuario->setWindowTitle(QApplication::translate("TelaUsuario", "Dialog", nullptr));
+        TelaUsuario->setWindowTitle(QApplication::translate("TelaUsuario", "Minha Conta", nullptr));
         label->setText(QApplication::translate("TelaUsuario", "Usu\303\241rio", nullptr));
         Cadastrar->setText(QApplication::translate("TelaUsuario", "Cadastrar", nullptr));
         Excluir->setText(QApplication::translate("TelaUsuario", "Excluir Conta", nullptr));

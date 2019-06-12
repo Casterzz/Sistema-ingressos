@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
@@ -30,6 +31,7 @@ public:
     QPushButton *cancelar;
     QLabel *label_3;
     QTextBrowser *status;
+    QFrame *frame;
 
     void setupUi(QDialog *Autenticacao)
     {
@@ -58,10 +60,24 @@ public:
         cancelar->setGeometry(QRect(190, 160, 89, 25));
         label_3 = new QLabel(Autenticacao);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(30, 10, 271, 20));
+        label_3->setGeometry(QRect(40, 20, 271, 20));
         status = new QTextBrowser(Autenticacao);
         status->setObjectName(QString::fromUtf8("status"));
         status->setGeometry(QRect(30, 200, 256, 41));
+        frame = new QFrame(Autenticacao);
+        frame->setObjectName(QString::fromUtf8("frame"));
+        frame->setGeometry(QRect(40, 40, 221, 101));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
+        frame->raise();
+        campoCPF->raise();
+        campoSenha->raise();
+        label->raise();
+        label_2->raise();
+        logar->raise();
+        cancelar->raise();
+        label_3->raise();
+        status->raise();
 
         retranslateUi(Autenticacao);
         QObject::connect(cancelar, SIGNAL(clicked()), Autenticacao, SLOT(close()));
@@ -71,14 +87,14 @@ public:
 
     void retranslateUi(QDialog *Autenticacao)
     {
-        Autenticacao->setWindowTitle(QApplication::translate("Autenticacao", "Dialog", nullptr));
+        Autenticacao->setWindowTitle(QApplication::translate("Autenticacao", "Autentica\303\247\303\243o", nullptr));
         campoCPF->setText(QString());
         campoSenha->setText(QString());
         label->setText(QApplication::translate("Autenticacao", "CPF:", nullptr));
         label_2->setText(QApplication::translate("Autenticacao", "Senha:", nullptr));
         logar->setText(QApplication::translate("Autenticacao", "Logar", nullptr));
         cancelar->setText(QApplication::translate("Autenticacao", "Cancelar", nullptr));
-        label_3->setText(QApplication::translate("Autenticacao", "Preencha os campos abaixo para logar", nullptr));
+        label_3->setText(QApplication::translate("Autenticacao", "Log in", nullptr));
     } // retranslateUi
 
 };

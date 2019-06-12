@@ -54,11 +54,11 @@ public:
 
     virtual bool cadastrar(Usuario, CartaoCredito) throw(runtime_error) = 0;
     virtual bool excluir(CPF) throw(runtime_error) = 0; //fazer deslogar
-/*
     virtual bool mostrar_dados(Usuario&, CartaoCredito&) throw(runtime_error) = 0;
     virtual bool alterar_cpf(CPF) throw(runtime_error) = 0;
-    virtual bool alterar_senha(Senha&) throw(runtime_error) = 0;
+    virtual bool alterar_senha(Senha) throw(runtime_error) = 0;
     virtual bool alterar_cartao(CartaoCredito&) throw(runtime_error) = 0;
+/*
     virtual list<Ingresso> obter_ingressos(CPF) throw(runtime_error) = 0;
     virtual list<Evento> obter_eventos(CPF) throw(runtime_error) = 0;
     virtual list<Apresentacao> obter_apresentacoes(CodigoEvento) throw(runtime_error) = 0;

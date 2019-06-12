@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
     QObject::connect(&telaInicial, SIGNAL (clicou_autenticar()), &cntrGeral, SLOT(executarAutGUI()));
     QObject::connect(&telaInicial, SIGNAL (clicou_conta()), &cntrGeral, SLOT(executarUsuGUI()));
     QObject::connect(&telaInicial, SIGNAL (clicou_eventos()), &cntrGeral, SLOT(executarEveGUI()));
+    QObject::connect(&telaInicial, SIGNAL (clicou_deslogar()), &cntrGeral, SLOT(executarDeslogarGUI()));
 
     QObject::connect(&cntrGeral, SIGNAL (altere_statusGUI(bool)), &telaInicial, SLOT(on_status_alterado(bool)));
 

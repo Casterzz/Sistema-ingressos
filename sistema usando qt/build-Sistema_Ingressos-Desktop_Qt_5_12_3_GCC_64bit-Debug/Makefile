@@ -1495,9 +1495,10 @@ windows.o: ../Sistema_Ingressos/windows.cpp ../Sistema_Ingressos/windows.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qdialog.h \
 		ui_autenticacao.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtCore/QVariant \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QFrame \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qframe.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QLabel \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qlabel.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qframe.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QLineEdit \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qlineedit.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtGui/qtextcursor.h \
@@ -1516,26 +1517,27 @@ windows.o: ../Sistema_Ingressos/windows.cpp ../Sistema_Ingressos/windows.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QAction \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qaction.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QHBoxLayout \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qboxlayout.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qlayout.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qgridlayout.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QMenu \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qmenu.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QMenuBar \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qmenubar.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QSpacerItem \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QStatusBar \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qstatusbar.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QToolBar \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qtoolbar.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QVBoxLayout \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qboxlayout.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qlayout.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qgridlayout.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QWidget \
 		ui_telausuario.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QFormLayout \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qformlayout.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QLayout \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QGridLayout \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QSpacerItem \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QStackedWidget \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qstackedwidget.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QMessageBox \

@@ -32,6 +32,7 @@ class CntrGeral : public QObject{
     void executarAutGUI();
     void executarUsuGUI();
     void executarEveGUI();
+    void executarDeslogarGUI();
 
   signals:
     void altere_statusGUI(bool);
@@ -68,6 +69,11 @@ void inline CntrGeral::executarUsuGUI() {
 void inline CntrGeral::executarEveGUI() {
 //    cntrIAAutenticacao->executar_autenticacao(CPF&);
     qDebug() << "Eventos";
+}
+
+void inline CntrGeral::executarDeslogarGUI() {
+    qDebug() << "deslogou";
+    logado = false;
 }
 
 class CntrIAAutenticacao : public QObject, public IAAutenticacao{
@@ -114,14 +120,20 @@ class CntrIAUsuario : public QObject, public IAUsuario{
     void executarCadastrarGUI(EstruturaUsuario, EstruturaCartaoCredito);
     void executarExcluirUsuarioGUI();
     void excluirUsuarioGUI();
-    //void executarDadosContaGUI();
+    void executarDadosContaGUI();
     //void executarMinhasComprasGUI();
     //void executarMeusEventosGUI();
 
+    void alterarCPFGUI(string);
+    void alterarSenhaGUI(string);
+    void alterarCartaoGUI(string);
+    void alterarCartaoCodigoGUI(string);
+    void alterarCartaoDataGUI(string);
+
   signals:
     void notifique_situacao(int);
-    void inicia_exclusao_conta();
-
+    void inicia_exclusao_conta(string, string);
+    void mostre_dados_conta(EstruturaUsuario, EstruturaCartaoCredito);
 };
 
 void inline CntrIAUsuario::setCntrISUsuario(ISUsuario *cntrISUsuario) {

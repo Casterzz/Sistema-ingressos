@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Minha Conta</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="usuario">
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -170,10 +170,20 @@
            </property>
           </widget>
          </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="campoCPF_cadastrar"/>
+         </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_4">
            <property name="text">
             <string>Senha:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="campoSenha_cadastrar">
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
            </property>
           </widget>
          </item>
@@ -184,6 +194,9 @@
            </property>
           </widget>
          </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="campoCartao_cadastrar"/>
+         </item>
          <item row="3" column="0">
           <widget class="QLabel" name="label_6">
            <property name="text">
@@ -191,28 +204,15 @@
            </property>
           </widget>
          </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="campoCodigo_cadastrar"/>
+         </item>
          <item row="4" column="0">
           <widget class="QLabel" name="label_7">
            <property name="text">
             <string>Data de Validade:</string>
            </property>
           </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="campoCPF_cadastrar"/>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLineEdit" name="campoSenha_cadastrar">
-           <property name="echoMode">
-            <enum>QLineEdit::Password</enum>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLineEdit" name="campoCartao_cadastrar"/>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLineEdit" name="campoCodigo_cadastrar"/>
          </item>
          <item row="4" column="1">
           <widget class="QLineEdit" name="campoData_cadastrar"/>
@@ -333,7 +333,7 @@
         <rect>
          <x>9</x>
          <y>344</y>
-         <width>210</width>
+         <width>231</width>
          <height>17</height>
         </rect>
        </property>
@@ -427,7 +427,7 @@
         <string>Cartão de Crédito:</string>
        </property>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>161</x>
@@ -652,8 +652,8 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>257</x>
-     <y>416</y>
+     <x>99</x>
+     <y>37</y>
     </hint>
     <hint type="destinationlabel">
      <x>235</x>
