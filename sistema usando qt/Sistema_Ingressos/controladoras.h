@@ -132,6 +132,12 @@ class CntrIAUsuario : public QObject, public IAUsuario{
     void alterarCartaoCodigoGUI(string);
     void alterarCartaoDataGUI(string);
 
+    void alterarNomeEventoGUI(string, string);
+    void alterarClasseEventoGUI(string, string);
+    void alterarFaixaEventoGUI(string, string);
+    void alterarCidadeEventoGUI(string, string);
+    void alterarEstadoEventoGUI(string, string);
+
   signals:
     void notifique_situacao(int);
     void inicia_exclusao_conta(string, string);
@@ -139,7 +145,7 @@ class CntrIAUsuario : public QObject, public IAUsuario{
     void inicia_mostrar_ingressos(list<Ingresso>, list<Apresentacao>, list<Evento>);
     void inicia_mostrar_meus_eventos(list<Evento>);
     void inicia_vendas_efetuadas(string, list<Apresentacao>);
-    void inicia_editar_evento(Evento, list<Apresentacao>);
+    void inicia_editar_evento(EstruturaEvento, list<Apresentacao>);
     void status_exclusao_evento(bool);
     void inicia_mostrar_compradores(list<CPF>, CodigoApresentacao);
 };

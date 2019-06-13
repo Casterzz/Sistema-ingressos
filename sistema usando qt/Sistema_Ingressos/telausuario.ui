@@ -17,7 +17,7 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>7</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="usuario">
       <widget class="QLabel" name="label">
@@ -1169,6 +1169,12 @@
        <layout class="QVBoxLayout" name="verticalLayout_10">
         <item>
          <widget class="QLineEdit" name="caixa_nome_evento">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>//Nome do evento//</string>
           </property>
@@ -1176,6 +1182,12 @@
         </item>
         <item>
          <widget class="QLineEdit" name="caixa_classe_evento">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>//Classe do Evento//</string>
           </property>
@@ -1183,6 +1195,12 @@
         </item>
         <item>
          <widget class="QLineEdit" name="caixa_faixa_evento">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>//Faixa do evento//</string>
           </property>
@@ -1190,6 +1208,12 @@
         </item>
         <item>
          <widget class="QLineEdit" name="caixa_cidade_evento">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>//Cidade do evento//</string>
           </property>
@@ -1197,6 +1221,12 @@
         </item>
         <item>
          <widget class="QLineEdit" name="caixa_estado_evento">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>//Estado do evento//</string>
           </property>
@@ -1216,6 +1246,12 @@
        <layout class="QVBoxLayout" name="verticalLayout_11">
         <item>
          <widget class="QPushButton" name="alterar_nome_evento">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>Alterar Nome</string>
           </property>
@@ -1223,6 +1259,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="alterar_classe_evento">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>Alterar Classe</string>
           </property>
@@ -1230,6 +1272,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="alterar_faixa_evento">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>Alterar Faixa</string>
           </property>
@@ -1237,6 +1285,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="alterar_cidade_evento">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>Alterar Cidade</string>
           </property>
@@ -1244,12 +1298,54 @@
         </item>
         <item>
          <widget class="QPushButton" name="alterar_estado_evento">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>Alterar Estado</string>
           </property>
          </widget>
         </item>
        </layout>
+      </widget>
+      <widget class="QTextBrowser" name="status_editar_evento">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>260</y>
+         <width>541</width>
+         <height>71</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_18">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>40</y>
+         <width>67</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Código:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="codigo_evento_editar">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>40</y>
+         <width>67</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
       </widget>
      </widget>
     </widget>

@@ -30,6 +30,9 @@ public:
     list<Evento> obter_eventos_criados(CPF) throw(runtime_error);
     list<Apresentacao> obter_apresentacoes(CodigoEvento) throw(runtime_error);
     list<CPF> obter_compradores(CodigoApresentacao) throw(runtime_error);
+    bool excluir_evento(CodigoEvento) throw(runtime_error);
+    Evento mostrar_evento(CodigoEvento) throw(runtime_error);
+    bool alterar_evento(Evento) throw(runtime_error);
 };
 
 #endif // STUBS_H

@@ -1527,8 +1527,6 @@ windows.o: ../Sistema_Ingressos/windows.cpp ../Sistema_Ingressos/windows.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QSpacerItem \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QStatusBar \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qstatusbar.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QToolBar \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qtoolbar.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QVBoxLayout \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QWidget \
 		ui_telausuario.h \

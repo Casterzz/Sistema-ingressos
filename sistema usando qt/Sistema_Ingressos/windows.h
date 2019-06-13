@@ -104,6 +104,22 @@ private slots:
 
     void on_voltar_compradores_clicked();
 
+    void on_criarNovoEvento_clicked();
+
+    void on_cancelar_editar_evento_clicked();
+
+    void on_confirmar_editar_evento_clicked();
+
+    void on_alterar_nome_evento_clicked();
+
+    void on_alterar_classe_evento_clicked();
+
+    void on_alterar_faixa_evento_clicked();
+
+    void on_alterar_cidade_evento_clicked();
+
+    void on_alterar_estado_evento_clicked();
+
 private:
     Ui::TelaUsuario *ui;
 
@@ -113,7 +129,7 @@ public slots:
     void on_mostre_ingressos(list<Ingresso>, list<Apresentacao>, list<Evento>);
     void on_mostre_meus_eventos(list<Evento>);
     void on_vendas_efetuadas(string, list<Apresentacao>);
-    void on_editar_evento(Evento, list<Apresentacao>);
+    void on_editar_evento(EstruturaEvento, list<Apresentacao>);
     void on_status_exclusao_evento(bool);
     void on_mostre_compradores(list<CPF>, CodigoApresentacao);
 
@@ -131,6 +147,11 @@ signals:
     void clicou_alterar_dataCartao(string);
     void clicou_tabela_meus_eventos(int, int);
     void clicou_tabela_vendas_efetuadas(int, int, CodigoApresentacao);
+    void clicou_alterar_nome_evento(string, string);
+    void clicou_alterar_classe_evento(string, string);
+    void clicou_alterar_faixa_evento(string, string);
+    void clicou_alterar_cidade_evento(string, string);
+    void clicou_alterar_estado_evento(string, string);
 };
 
 #endif // MAINWINDOW_H

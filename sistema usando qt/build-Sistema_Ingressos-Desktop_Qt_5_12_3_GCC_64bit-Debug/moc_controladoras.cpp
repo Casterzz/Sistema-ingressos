@@ -272,8 +272,8 @@ void CntrIAAutenticacao::notifique_situacao(int _t1)
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 struct qt_meta_stringdata_CntrIAUsuario_t {
-    QByteArrayData data[33];
-    char stringdata0[627];
+    QByteArrayData data[38];
+    char stringdata0[748];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -297,24 +297,29 @@ QT_MOC_LITERAL(11, 181, 12), // "list<Evento>"
 QT_MOC_LITERAL(12, 194, 27), // "inicia_mostrar_meus_eventos"
 QT_MOC_LITERAL(13, 222, 23), // "inicia_vendas_efetuadas"
 QT_MOC_LITERAL(14, 246, 20), // "inicia_editar_evento"
-QT_MOC_LITERAL(15, 267, 6), // "Evento"
-QT_MOC_LITERAL(16, 274, 22), // "status_exclusao_evento"
-QT_MOC_LITERAL(17, 297, 26), // "inicia_mostrar_compradores"
-QT_MOC_LITERAL(18, 324, 9), // "list<CPF>"
-QT_MOC_LITERAL(19, 334, 18), // "CodigoApresentacao"
-QT_MOC_LITERAL(20, 353, 20), // "executarCadastrarGUI"
-QT_MOC_LITERAL(21, 374, 25), // "executarExcluirUsuarioGUI"
-QT_MOC_LITERAL(22, 400, 17), // "excluirUsuarioGUI"
-QT_MOC_LITERAL(23, 418, 21), // "executarDadosContaGUI"
-QT_MOC_LITERAL(24, 440, 24), // "executarMinhasComprasGUI"
-QT_MOC_LITERAL(25, 465, 22), // "executarMeusEventosGUI"
-QT_MOC_LITERAL(26, 488, 23), // "processarMeusEventosGUI"
-QT_MOC_LITERAL(27, 512, 23), // "processarCompradoresGUI"
-QT_MOC_LITERAL(28, 536, 13), // "alterarCPFGUI"
-QT_MOC_LITERAL(29, 550, 15), // "alterarSenhaGUI"
-QT_MOC_LITERAL(30, 566, 16), // "alterarCartaoGUI"
-QT_MOC_LITERAL(31, 583, 22), // "alterarCartaoCodigoGUI"
-QT_MOC_LITERAL(32, 606, 20) // "alterarCartaoDataGUI"
+QT_MOC_LITERAL(15, 267, 15), // "EstruturaEvento"
+QT_MOC_LITERAL(16, 283, 22), // "status_exclusao_evento"
+QT_MOC_LITERAL(17, 306, 26), // "inicia_mostrar_compradores"
+QT_MOC_LITERAL(18, 333, 9), // "list<CPF>"
+QT_MOC_LITERAL(19, 343, 18), // "CodigoApresentacao"
+QT_MOC_LITERAL(20, 362, 20), // "executarCadastrarGUI"
+QT_MOC_LITERAL(21, 383, 25), // "executarExcluirUsuarioGUI"
+QT_MOC_LITERAL(22, 409, 17), // "excluirUsuarioGUI"
+QT_MOC_LITERAL(23, 427, 21), // "executarDadosContaGUI"
+QT_MOC_LITERAL(24, 449, 24), // "executarMinhasComprasGUI"
+QT_MOC_LITERAL(25, 474, 22), // "executarMeusEventosGUI"
+QT_MOC_LITERAL(26, 497, 23), // "processarMeusEventosGUI"
+QT_MOC_LITERAL(27, 521, 23), // "processarCompradoresGUI"
+QT_MOC_LITERAL(28, 545, 13), // "alterarCPFGUI"
+QT_MOC_LITERAL(29, 559, 15), // "alterarSenhaGUI"
+QT_MOC_LITERAL(30, 575, 16), // "alterarCartaoGUI"
+QT_MOC_LITERAL(31, 592, 22), // "alterarCartaoCodigoGUI"
+QT_MOC_LITERAL(32, 615, 20), // "alterarCartaoDataGUI"
+QT_MOC_LITERAL(33, 636, 20), // "alterarNomeEventoGUI"
+QT_MOC_LITERAL(34, 657, 22), // "alterarClasseEventoGUI"
+QT_MOC_LITERAL(35, 680, 21), // "alterarFaixaEventoGUI"
+QT_MOC_LITERAL(36, 702, 22), // "alterarCidadeEventoGUI"
+QT_MOC_LITERAL(37, 725, 22) // "alterarEstadoEventoGUI"
 
     },
     "CntrIAUsuario\0notifique_situacao\0\0"
@@ -324,7 +329,7 @@ QT_MOC_LITERAL(32, 606, 20) // "alterarCartaoDataGUI"
     "list<Ingresso>\0list<Apresentacao>\0"
     "list<Evento>\0inicia_mostrar_meus_eventos\0"
     "inicia_vendas_efetuadas\0inicia_editar_evento\0"
-    "Evento\0status_exclusao_evento\0"
+    "EstruturaEvento\0status_exclusao_evento\0"
     "inicia_mostrar_compradores\0list<CPF>\0"
     "CodigoApresentacao\0executarCadastrarGUI\0"
     "executarExcluirUsuarioGUI\0excluirUsuarioGUI\0"
@@ -332,7 +337,10 @@ QT_MOC_LITERAL(32, 606, 20) // "alterarCartaoDataGUI"
     "executarMeusEventosGUI\0processarMeusEventosGUI\0"
     "processarCompradoresGUI\0alterarCPFGUI\0"
     "alterarSenhaGUI\0alterarCartaoGUI\0"
-    "alterarCartaoCodigoGUI\0alterarCartaoDataGUI"
+    "alterarCartaoCodigoGUI\0alterarCartaoDataGUI\0"
+    "alterarNomeEventoGUI\0alterarClasseEventoGUI\0"
+    "alterarFaixaEventoGUI\0alterarCidadeEventoGUI\0"
+    "alterarEstadoEventoGUI"
 };
 #undef QT_MOC_LITERAL
 
@@ -342,7 +350,7 @@ static const uint qt_meta_data_CntrIAUsuario[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      22,   14, // methods
+      27,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -350,30 +358,35 @@ static const uint qt_meta_data_CntrIAUsuario[] = {
        9,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  124,    2, 0x06 /* Public */,
-       3,    2,  127,    2, 0x06 /* Public */,
-       5,    2,  132,    2, 0x06 /* Public */,
-       8,    3,  137,    2, 0x06 /* Public */,
-      12,    1,  144,    2, 0x06 /* Public */,
-      13,    2,  147,    2, 0x06 /* Public */,
-      14,    2,  152,    2, 0x06 /* Public */,
-      16,    1,  157,    2, 0x06 /* Public */,
-      17,    2,  160,    2, 0x06 /* Public */,
+       1,    1,  149,    2, 0x06 /* Public */,
+       3,    2,  152,    2, 0x06 /* Public */,
+       5,    2,  157,    2, 0x06 /* Public */,
+       8,    3,  162,    2, 0x06 /* Public */,
+      12,    1,  169,    2, 0x06 /* Public */,
+      13,    2,  172,    2, 0x06 /* Public */,
+      14,    2,  177,    2, 0x06 /* Public */,
+      16,    1,  182,    2, 0x06 /* Public */,
+      17,    2,  185,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      20,    2,  165,    2, 0x0a /* Public */,
-      21,    0,  170,    2, 0x0a /* Public */,
-      22,    0,  171,    2, 0x0a /* Public */,
-      23,    0,  172,    2, 0x0a /* Public */,
-      24,    0,  173,    2, 0x0a /* Public */,
-      25,    0,  174,    2, 0x0a /* Public */,
-      26,    2,  175,    2, 0x0a /* Public */,
-      27,    3,  180,    2, 0x0a /* Public */,
-      28,    1,  187,    2, 0x0a /* Public */,
-      29,    1,  190,    2, 0x0a /* Public */,
-      30,    1,  193,    2, 0x0a /* Public */,
-      31,    1,  196,    2, 0x0a /* Public */,
-      32,    1,  199,    2, 0x0a /* Public */,
+      20,    2,  190,    2, 0x0a /* Public */,
+      21,    0,  195,    2, 0x0a /* Public */,
+      22,    0,  196,    2, 0x0a /* Public */,
+      23,    0,  197,    2, 0x0a /* Public */,
+      24,    0,  198,    2, 0x0a /* Public */,
+      25,    0,  199,    2, 0x0a /* Public */,
+      26,    2,  200,    2, 0x0a /* Public */,
+      27,    3,  205,    2, 0x0a /* Public */,
+      28,    1,  212,    2, 0x0a /* Public */,
+      29,    1,  215,    2, 0x0a /* Public */,
+      30,    1,  218,    2, 0x0a /* Public */,
+      31,    1,  221,    2, 0x0a /* Public */,
+      32,    1,  224,    2, 0x0a /* Public */,
+      33,    2,  227,    2, 0x0a /* Public */,
+      34,    2,  232,    2, 0x0a /* Public */,
+      35,    2,  237,    2, 0x0a /* Public */,
+      36,    2,  242,    2, 0x0a /* Public */,
+      37,    2,  247,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,
@@ -400,6 +413,11 @@ static const uint qt_meta_data_CntrIAUsuario[] = {
     QMetaType::Void, 0x80000000 | 4,    2,
     QMetaType::Void, 0x80000000 | 4,    2,
     QMetaType::Void, 0x80000000 | 4,    2,
+    QMetaType::Void, 0x80000000 | 4, 0x80000000 | 4,    2,    2,
+    QMetaType::Void, 0x80000000 | 4, 0x80000000 | 4,    2,    2,
+    QMetaType::Void, 0x80000000 | 4, 0x80000000 | 4,    2,    2,
+    QMetaType::Void, 0x80000000 | 4, 0x80000000 | 4,    2,    2,
+    QMetaType::Void, 0x80000000 | 4, 0x80000000 | 4,    2,    2,
 
        0        // eod
 };
@@ -416,7 +434,7 @@ void CntrIAUsuario::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 3: _t->inicia_mostrar_ingressos((*reinterpret_cast< list<Ingresso>(*)>(_a[1])),(*reinterpret_cast< list<Apresentacao>(*)>(_a[2])),(*reinterpret_cast< list<Evento>(*)>(_a[3]))); break;
         case 4: _t->inicia_mostrar_meus_eventos((*reinterpret_cast< list<Evento>(*)>(_a[1]))); break;
         case 5: _t->inicia_vendas_efetuadas((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< list<Apresentacao>(*)>(_a[2]))); break;
-        case 6: _t->inicia_editar_evento((*reinterpret_cast< Evento(*)>(_a[1])),(*reinterpret_cast< list<Apresentacao>(*)>(_a[2]))); break;
+        case 6: _t->inicia_editar_evento((*reinterpret_cast< EstruturaEvento(*)>(_a[1])),(*reinterpret_cast< list<Apresentacao>(*)>(_a[2]))); break;
         case 7: _t->status_exclusao_evento((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 8: _t->inicia_mostrar_compradores((*reinterpret_cast< list<CPF>(*)>(_a[1])),(*reinterpret_cast< CodigoApresentacao(*)>(_a[2]))); break;
         case 9: _t->executarCadastrarGUI((*reinterpret_cast< EstruturaUsuario(*)>(_a[1])),(*reinterpret_cast< EstruturaCartaoCredito(*)>(_a[2]))); break;
@@ -432,6 +450,11 @@ void CntrIAUsuario::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 19: _t->alterarCartaoGUI((*reinterpret_cast< string(*)>(_a[1]))); break;
         case 20: _t->alterarCartaoCodigoGUI((*reinterpret_cast< string(*)>(_a[1]))); break;
         case 21: _t->alterarCartaoDataGUI((*reinterpret_cast< string(*)>(_a[1]))); break;
+        case 22: _t->alterarNomeEventoGUI((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2]))); break;
+        case 23: _t->alterarClasseEventoGUI((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2]))); break;
+        case 24: _t->alterarFaixaEventoGUI((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2]))); break;
+        case 25: _t->alterarCidadeEventoGUI((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2]))); break;
+        case 26: _t->alterarEstadoEventoGUI((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -479,7 +502,7 @@ void CntrIAUsuario::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
             }
         }
         {
-            using _t = void (CntrIAUsuario::*)(Evento , list<Apresentacao> );
+            using _t = void (CntrIAUsuario::*)(EstruturaEvento , list<Apresentacao> );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CntrIAUsuario::inicia_editar_evento)) {
                 *result = 6;
                 return;
@@ -533,13 +556,13 @@ int CntrIAUsuario::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 22)
+        if (_id < 27)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 22;
+        _id -= 27;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 22)
+        if (_id < 27)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 22;
+        _id -= 27;
     }
     return _id;
 }
@@ -587,7 +610,7 @@ void CntrIAUsuario::inicia_vendas_efetuadas(string _t1, list<Apresentacao> _t2)
 }
 
 // SIGNAL 6
-void CntrIAUsuario::inicia_editar_evento(Evento _t1, list<Apresentacao> _t2)
+void CntrIAUsuario::inicia_editar_evento(EstruturaEvento _t1, list<Apresentacao> _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 6, _a);

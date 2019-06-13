@@ -139,3 +139,23 @@ list<CPF> StubISUsuario::obter_compradores(CodigoApresentacao) throw(runtime_err
     lista.push_back(cpf);
     return lista;
 }
+
+bool StubISUsuario::excluir_evento(CodigoEvento) throw(runtime_error) {
+    return false;
+}
+
+Evento StubISUsuario::mostrar_evento(CodigoEvento) throw(runtime_error) {
+    Evento evento;
+    EstruturaEvento estrutura_evento;
+    estrutura_evento.codigo = "777";
+    estrutura_evento.nome = "Vingadores Ultraball";
+    estrutura_evento.faixa = "18";
+    estrutura_evento.cidade = "Aguas Claras 23";
+    estrutura_evento.classe = "2";
+    estrutura_evento.estado = "DF";
+    evento.setEvento(estrutura_evento);
+    return evento;
+}
+bool StubISUsuario::alterar_evento(Evento) throw(runtime_error) {
+    return true;
+}

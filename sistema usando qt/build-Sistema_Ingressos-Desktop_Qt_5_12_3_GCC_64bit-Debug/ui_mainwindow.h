@@ -12,13 +12,12 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTextBrowser>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -28,7 +27,6 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QTextBrowser *status;
     QPushButton *pushButton;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
@@ -44,8 +42,8 @@ public:
     QSpacerItem *horizontalSpacer_4;
     QPushButton *eventos;
     QSpacerItem *horizontalSpacer_6;
+    QLabel *labelPrincipal;
     QMenuBar *menuBar;
-    QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -55,17 +53,9 @@ public:
         MainWindow->resize(600, 450);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        status = new QTextBrowser(centralWidget);
-        status->setObjectName(QString::fromUtf8("status"));
-        status->setGeometry(QRect(10, 210, 582, 61));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(status->sizePolicy().hasHeightForWidth());
-        status->setSizePolicy(sizePolicy);
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(240, 310, 121, 51));
+        pushButton->setGeometry(QRect(240, 330, 121, 51));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
         layoutWidget->setGeometry(QRect(20, 30, 551, 151));
@@ -83,11 +73,11 @@ public:
 
         autenticar = new QPushButton(layoutWidget);
         autenticar->setObjectName(QString::fromUtf8("autenticar"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(autenticar->sizePolicy().hasHeightForWidth());
-        autenticar->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(autenticar->sizePolicy().hasHeightForWidth());
+        autenticar->setSizePolicy(sizePolicy);
 
         horizontalLayout->addWidget(autenticar);
 
@@ -107,8 +97,8 @@ public:
 
         conta = new QPushButton(layoutWidget);
         conta->setObjectName(QString::fromUtf8("conta"));
-        sizePolicy1.setHeightForWidth(conta->sizePolicy().hasHeightForWidth());
-        conta->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(conta->sizePolicy().hasHeightForWidth());
+        conta->setSizePolicy(sizePolicy);
 
         horizontalLayout_2->addWidget(conta);
 
@@ -128,8 +118,8 @@ public:
 
         eventos = new QPushButton(layoutWidget);
         eventos->setObjectName(QString::fromUtf8("eventos"));
-        sizePolicy1.setHeightForWidth(eventos->sizePolicy().hasHeightForWidth());
-        eventos->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(eventos->sizePolicy().hasHeightForWidth());
+        eventos->setSizePolicy(sizePolicy);
 
         horizontalLayout_3->addWidget(eventos);
 
@@ -140,14 +130,14 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
+        labelPrincipal = new QLabel(centralWidget);
+        labelPrincipal->setObjectName(QString::fromUtf8("labelPrincipal"));
+        labelPrincipal->setGeometry(QRect(50, 280, 141, 17));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 600, 22));
         MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         MainWindow->setStatusBar(statusBar);
@@ -161,15 +151,11 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Tela Inicial", nullptr));
-        status->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Status: N\303\243o Autenticado</p></body></html>", nullptr));
         pushButton->setText(QApplication::translate("MainWindow", "Sair", nullptr));
         autenticar->setText(QApplication::translate("MainWindow", "Logar", nullptr));
         conta->setText(QApplication::translate("MainWindow", "Minha Conta", nullptr));
         eventos->setText(QApplication::translate("MainWindow", "Explorar Eventos", nullptr));
+        labelPrincipal->setText(QApplication::translate("MainWindow", "Status: N\303\243o Logado", nullptr));
     } // retranslateUi
 
 };

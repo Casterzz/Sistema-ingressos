@@ -76,13 +76,18 @@ bool CntrIAUsuario::executar_autenticado(CPF cpf) throw(runtime_error) {
     QObject::connect(&Tela, SIGNAL(clicou_tabela_meus_eventos(int, int)), this, SLOT (processarMeusEventosGUI(int, int)));
     QObject::connect(this, SIGNAL(inicia_vendas_efetuadas(string, list<Apresentacao>)),
                      &Tela, SLOT (on_vendas_efetuadas(string, list<Apresentacao>)));
-    QObject::connect(this, SIGNAL(inicia_editar_evento(Evento, list<Apresentacao>)),
-                     &Tela, SLOT (on_editar_evento(Evento, list<Apresentacao>)));
+    QObject::connect(this, SIGNAL(inicia_editar_evento(EstruturaEvento, list<Apresentacao>)),
+                     &Tela, SLOT (on_editar_evento(EstruturaEvento, list<Apresentacao>)));
     QObject::connect(this, SIGNAL(status_exclusao_evento(bool)), &Tela, SLOT (on_status_exclusao_evento(bool)));
     QObject::connect(&Tela, SIGNAL(clicou_tabela_vendas_efetuadas(int, int, CodigoApresentacao)),
                      this, SLOT (processarCompradoresGUI(int, int, CodigoApresentacao)));
     QObject::connect(this, SIGNAL(inicia_mostrar_compradores(list<CPF>, CodigoApresentacao)),
                      &Tela, SLOT (on_mostre_compradores(list<CPF>, CodigoApresentacao)));
+    QObject::connect(&Tela, SIGNAL(clicou_alterar_nome_evento(string, string)), this, SLOT (alterarNomeEventoGUI(string, string)));
+    QObject::connect(&Tela, SIGNAL(clicou_alterar_classe_evento(string, string)), this, SLOT (alterarClasseEventoGUI(string, string)));
+    QObject::connect(&Tela, SIGNAL(clicou_alterar_faixa_evento(string, string)), this, SLOT (alterarFaixaEventoGUI(string, string)));
+    QObject::connect(&Tela, SIGNAL(clicou_alterar_estado_evento(string, string)), this, SLOT (alterarEstadoEventoGUI(string, string)));
+    QObject::connect(&Tela, SIGNAL(clicou_alterar_cidade_evento(string, string)), this, SLOT (alterarCidadeEventoGUI(string, string)));
 
     QObject::connect(this, SIGNAL (notifique_situacao(int)), &Tela, SLOT(on_notificar_situacao(int)));
 
@@ -297,12 +302,12 @@ void CntrIAUsuario::processarMeusEventosGUI(int linha, int coluna) {
         break;
 
     case 3:
-        emit inicia_editar_evento(lista_eventos.front(), lista_apresentacao);
+        emit inicia_editar_evento(estrutura_evento, lista_apresentacao);
         qDebug() << "Selecionou: Editar";
         break;
 
     case 4:
-        //emit status_exclusao_evento(cntrISUsuario->excluir_evento(codigo));
+        emit status_exclusao_evento(cntrISUsuario->excluir_evento(codigo));
         qDebug() << "Selecionou: Excluir";
         break;
 
@@ -315,4 +320,144 @@ void CntrIAUsuario::processarCompradoresGUI(int linha, int coluna, CodigoApresen
     list<CPF> lista_cpf = cntrISUsuario->obter_compradores(codigo);
 
     emit(inicia_mostrar_compradores(lista_cpf, codigo));
+}
+
+void CntrIAUsuario::alterarNomeEventoGUI(string novoNome, string codigo_evento) {
+    CodigoEvento codigo;
+    codigo.setCodigo(codigo_evento);
+
+    NomeEvento nome;
+    try {
+        nome.setNome(novoNome);
+        emit (notifique_situacao(16));
+    } catch (const invalid_argument &exp) {
+        emit (notifique_situacao(18));
+        return;
+    }
+
+    Evento evento = cntrISUsuario->mostrar_evento(codigo);
+    EstruturaEvento estrutura_evento;
+    evento.getEvento(&estrutura_evento);
+
+    estrutura_evento.nome = novoNome;
+    evento.setEvento(estrutura_evento);
+
+    if(!cntrISUsuario->alterar_evento(evento)) {
+        emit (notifique_situacao(19));
+    } else {
+        emit (notifique_situacao(17));
+    }
+}
+
+void CntrIAUsuario::alterarClasseEventoGUI(string novaClasse, string codigo_evento) {
+    CodigoEvento codigo;
+    codigo.setCodigo(codigo_evento);
+
+    ClasseEvento classe;
+
+    try {
+        classe.setClasseEvento(novaClasse);
+        emit (notifique_situacao(16));
+    } catch (const invalid_argument &exp) {
+        emit (notifique_situacao(18));
+        return;
+    }
+
+    Evento evento = cntrISUsuario->mostrar_evento(codigo);
+    EstruturaEvento estrutura_evento;
+    evento.getEvento(&estrutura_evento);
+
+    estrutura_evento.classe = novaClasse;
+    evento.setEvento(estrutura_evento);
+
+    if(!cntrISUsuario->alterar_evento(evento)) {
+        emit (notifique_situacao(19));
+    } else {
+        emit (notifique_situacao(17));
+    }
+}
+
+void CntrIAUsuario::alterarFaixaEventoGUI(string novaFaixa, string codigo_evento) {
+    CodigoEvento codigo;
+    codigo.setCodigo(codigo_evento);
+
+    FaixaEtaria faixa;
+
+    try {
+        faixa.setFaixa(novaFaixa);
+        emit (notifique_situacao(16));
+    } catch (const invalid_argument &exp) {
+        emit (notifique_situacao(18));
+        return;
+    }
+
+    Evento evento = cntrISUsuario->mostrar_evento(codigo);
+    EstruturaEvento estrutura_evento;
+    evento.getEvento(&estrutura_evento);
+
+    estrutura_evento.faixa = novaFaixa;
+    evento.setEvento(estrutura_evento);
+
+    if(!cntrISUsuario->alterar_evento(evento)) {
+        emit (notifique_situacao(19));
+    } else {
+        emit (notifique_situacao(17));
+    }
+}
+
+void CntrIAUsuario::alterarCidadeEventoGUI(string novaCidade, string codigo_evento) {
+    qDebug() << "entrou aquiiiii";
+    CodigoEvento codigo;
+    codigo.setCodigo(codigo_evento);
+
+    Cidade cidade;
+
+    try {
+        cidade.setCidade(novaCidade);
+        emit (notifique_situacao(16));
+    } catch (const invalid_argument &exp) {
+        emit (notifique_situacao(18));
+        return;
+    }
+
+    Evento evento = cntrISUsuario->mostrar_evento(codigo);
+    EstruturaEvento estrutura_evento;
+    evento.getEvento(&estrutura_evento);
+
+    estrutura_evento.cidade = novaCidade;
+    evento.setEvento(estrutura_evento);
+
+    if(!cntrISUsuario->alterar_evento(evento)) {
+        emit (notifique_situacao(19));
+    } else {
+        emit (notifique_situacao(17));
+    }
+}
+
+void CntrIAUsuario::alterarEstadoEventoGUI(string novoEstado, string codigo_evento) {
+    CodigoEvento codigo;
+    codigo.setCodigo(codigo_evento);
+
+    Estado estado;
+
+    try {
+        estado.setEstado(novoEstado);
+        emit (notifique_situacao(16));
+    } catch (const invalid_argument &exp) {
+        emit (notifique_situacao(18));
+        return;
+    }
+
+    Evento evento = cntrISUsuario->mostrar_evento(codigo);
+    EstruturaEvento estrutura_evento;
+    evento.getEvento(&estrutura_evento);
+
+    estrutura_evento.estado = novoEstado;
+    evento.setEvento(estrutura_evento);
+
+    if(!cntrISUsuario->alterar_evento(evento)) {
+        emit (notifique_situacao(19));
+    } else {
+        emit (notifique_situacao(17));
+    }
 }

@@ -325,8 +325,8 @@ void Autenticacao::clicou_logar(QString _t1, QString _t2)
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 struct qt_meta_stringdata_TelaUsuario_t {
-    QByteArrayData data[56];
-    char stringdata0[1213];
+    QByteArrayData data[69];
+    char stringdata0[1622];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -354,43 +354,56 @@ QT_MOC_LITERAL(15, 279, 25), // "clicou_alterar_dataCartao"
 QT_MOC_LITERAL(16, 305, 26), // "clicou_tabela_meus_eventos"
 QT_MOC_LITERAL(17, 332, 30), // "clicou_tabela_vendas_efetuadas"
 QT_MOC_LITERAL(18, 363, 18), // "CodigoApresentacao"
-QT_MOC_LITERAL(19, 382, 20), // "on_Cadastrar_clicked"
-QT_MOC_LITERAL(20, 403, 27), // "on_voltar_cadastrar_clicked"
-QT_MOC_LITERAL(21, 431, 23), // "on_ir_cadastrar_clicked"
-QT_MOC_LITERAL(22, 455, 18), // "on_Excluir_clicked"
-QT_MOC_LITERAL(23, 474, 25), // "on_Excluir_clicked_logado"
-QT_MOC_LITERAL(24, 500, 16), // "on_Dados_clicked"
-QT_MOC_LITERAL(25, 517, 18), // "on_Compras_clicked"
-QT_MOC_LITERAL(26, 536, 18), // "on_Eventos_clicked"
-QT_MOC_LITERAL(27, 555, 28), // "on_cancelar_exclusao_clicked"
-QT_MOC_LITERAL(28, 584, 29), // "on_confirmar_exclusao_clicked"
-QT_MOC_LITERAL(29, 614, 22), // "on_alterar_cpf_clicked"
-QT_MOC_LITERAL(30, 637, 24), // "on_alterar_senha_clicked"
-QT_MOC_LITERAL(31, 662, 25), // "on_alterar_cartao_clicked"
-QT_MOC_LITERAL(32, 688, 25), // "on_alterar_codigo_clicked"
-QT_MOC_LITERAL(33, 714, 23), // "on_alterar_data_clicked"
-QT_MOC_LITERAL(34, 738, 23), // "on_voltar_conta_clicked"
-QT_MOC_LITERAL(35, 762, 25), // "on_voltar_compras_clicked"
-QT_MOC_LITERAL(36, 788, 30), // "on_voltar_meus_eventos_clicked"
-QT_MOC_LITERAL(37, 819, 38), // "on_tabelaMeusEventos_cellDoub..."
-QT_MOC_LITERAL(38, 858, 3), // "row"
-QT_MOC_LITERAL(39, 862, 6), // "column"
-QT_MOC_LITERAL(40, 869, 34), // "on_voltar_vendas_efetuadas_cl..."
-QT_MOC_LITERAL(41, 904, 42), // "on_tabelaVendasEfetuadas_cell..."
-QT_MOC_LITERAL(42, 947, 29), // "on_voltar_compradores_clicked"
-QT_MOC_LITERAL(43, 977, 21), // "on_notificar_situacao"
-QT_MOC_LITERAL(44, 999, 21), // "on_mostre_dados_conta"
-QT_MOC_LITERAL(45, 1021, 19), // "on_mostre_ingressos"
-QT_MOC_LITERAL(46, 1041, 14), // "list<Ingresso>"
-QT_MOC_LITERAL(47, 1056, 18), // "list<Apresentacao>"
-QT_MOC_LITERAL(48, 1075, 12), // "list<Evento>"
-QT_MOC_LITERAL(49, 1088, 22), // "on_mostre_meus_eventos"
-QT_MOC_LITERAL(50, 1111, 19), // "on_vendas_efetuadas"
-QT_MOC_LITERAL(51, 1131, 16), // "on_editar_evento"
-QT_MOC_LITERAL(52, 1148, 6), // "Evento"
-QT_MOC_LITERAL(53, 1155, 25), // "on_status_exclusao_evento"
-QT_MOC_LITERAL(54, 1181, 21), // "on_mostre_compradores"
-QT_MOC_LITERAL(55, 1203, 9) // "list<CPF>"
+QT_MOC_LITERAL(19, 382, 26), // "clicou_alterar_nome_evento"
+QT_MOC_LITERAL(20, 409, 28), // "clicou_alterar_classe_evento"
+QT_MOC_LITERAL(21, 438, 27), // "clicou_alterar_faixa_evento"
+QT_MOC_LITERAL(22, 466, 28), // "clicou_alterar_cidade_evento"
+QT_MOC_LITERAL(23, 495, 28), // "clicou_alterar_estado_evento"
+QT_MOC_LITERAL(24, 524, 20), // "on_Cadastrar_clicked"
+QT_MOC_LITERAL(25, 545, 27), // "on_voltar_cadastrar_clicked"
+QT_MOC_LITERAL(26, 573, 23), // "on_ir_cadastrar_clicked"
+QT_MOC_LITERAL(27, 597, 18), // "on_Excluir_clicked"
+QT_MOC_LITERAL(28, 616, 25), // "on_Excluir_clicked_logado"
+QT_MOC_LITERAL(29, 642, 16), // "on_Dados_clicked"
+QT_MOC_LITERAL(30, 659, 18), // "on_Compras_clicked"
+QT_MOC_LITERAL(31, 678, 18), // "on_Eventos_clicked"
+QT_MOC_LITERAL(32, 697, 28), // "on_cancelar_exclusao_clicked"
+QT_MOC_LITERAL(33, 726, 29), // "on_confirmar_exclusao_clicked"
+QT_MOC_LITERAL(34, 756, 22), // "on_alterar_cpf_clicked"
+QT_MOC_LITERAL(35, 779, 24), // "on_alterar_senha_clicked"
+QT_MOC_LITERAL(36, 804, 25), // "on_alterar_cartao_clicked"
+QT_MOC_LITERAL(37, 830, 25), // "on_alterar_codigo_clicked"
+QT_MOC_LITERAL(38, 856, 23), // "on_alterar_data_clicked"
+QT_MOC_LITERAL(39, 880, 23), // "on_voltar_conta_clicked"
+QT_MOC_LITERAL(40, 904, 25), // "on_voltar_compras_clicked"
+QT_MOC_LITERAL(41, 930, 30), // "on_voltar_meus_eventos_clicked"
+QT_MOC_LITERAL(42, 961, 38), // "on_tabelaMeusEventos_cellDoub..."
+QT_MOC_LITERAL(43, 1000, 3), // "row"
+QT_MOC_LITERAL(44, 1004, 6), // "column"
+QT_MOC_LITERAL(45, 1011, 34), // "on_voltar_vendas_efetuadas_cl..."
+QT_MOC_LITERAL(46, 1046, 42), // "on_tabelaVendasEfetuadas_cell..."
+QT_MOC_LITERAL(47, 1089, 29), // "on_voltar_compradores_clicked"
+QT_MOC_LITERAL(48, 1119, 26), // "on_criarNovoEvento_clicked"
+QT_MOC_LITERAL(49, 1146, 33), // "on_cancelar_editar_evento_cli..."
+QT_MOC_LITERAL(50, 1180, 34), // "on_confirmar_editar_evento_cl..."
+QT_MOC_LITERAL(51, 1215, 30), // "on_alterar_nome_evento_clicked"
+QT_MOC_LITERAL(52, 1246, 32), // "on_alterar_classe_evento_clicked"
+QT_MOC_LITERAL(53, 1279, 31), // "on_alterar_faixa_evento_clicked"
+QT_MOC_LITERAL(54, 1311, 32), // "on_alterar_cidade_evento_clicked"
+QT_MOC_LITERAL(55, 1344, 32), // "on_alterar_estado_evento_clicked"
+QT_MOC_LITERAL(56, 1377, 21), // "on_notificar_situacao"
+QT_MOC_LITERAL(57, 1399, 21), // "on_mostre_dados_conta"
+QT_MOC_LITERAL(58, 1421, 19), // "on_mostre_ingressos"
+QT_MOC_LITERAL(59, 1441, 14), // "list<Ingresso>"
+QT_MOC_LITERAL(60, 1456, 18), // "list<Apresentacao>"
+QT_MOC_LITERAL(61, 1475, 12), // "list<Evento>"
+QT_MOC_LITERAL(62, 1488, 22), // "on_mostre_meus_eventos"
+QT_MOC_LITERAL(63, 1511, 19), // "on_vendas_efetuadas"
+QT_MOC_LITERAL(64, 1531, 16), // "on_editar_evento"
+QT_MOC_LITERAL(65, 1548, 15), // "EstruturaEvento"
+QT_MOC_LITERAL(66, 1564, 25), // "on_status_exclusao_evento"
+QT_MOC_LITERAL(67, 1590, 21), // "on_mostre_compradores"
+QT_MOC_LITERAL(68, 1612, 9) // "list<CPF>"
 
     },
     "TelaUsuario\0clicou_ir_cadastrar\0\0"
@@ -403,8 +416,12 @@ QT_MOC_LITERAL(55, 1203, 9) // "list<CPF>"
     "clicou_alterar_dataCartao\0"
     "clicou_tabela_meus_eventos\0"
     "clicou_tabela_vendas_efetuadas\0"
-    "CodigoApresentacao\0on_Cadastrar_clicked\0"
-    "on_voltar_cadastrar_clicked\0"
+    "CodigoApresentacao\0clicou_alterar_nome_evento\0"
+    "clicou_alterar_classe_evento\0"
+    "clicou_alterar_faixa_evento\0"
+    "clicou_alterar_cidade_evento\0"
+    "clicou_alterar_estado_evento\0"
+    "on_Cadastrar_clicked\0on_voltar_cadastrar_clicked\0"
     "on_ir_cadastrar_clicked\0on_Excluir_clicked\0"
     "on_Excluir_clicked_logado\0on_Dados_clicked\0"
     "on_Compras_clicked\0on_Eventos_clicked\0"
@@ -420,11 +437,19 @@ QT_MOC_LITERAL(55, 1203, 9) // "list<CPF>"
     "row\0column\0on_voltar_vendas_efetuadas_clicked\0"
     "on_tabelaVendasEfetuadas_cellDoubleClicked\0"
     "on_voltar_compradores_clicked\0"
+    "on_criarNovoEvento_clicked\0"
+    "on_cancelar_editar_evento_clicked\0"
+    "on_confirmar_editar_evento_clicked\0"
+    "on_alterar_nome_evento_clicked\0"
+    "on_alterar_classe_evento_clicked\0"
+    "on_alterar_faixa_evento_clicked\0"
+    "on_alterar_cidade_evento_clicked\0"
+    "on_alterar_estado_evento_clicked\0"
     "on_notificar_situacao\0on_mostre_dados_conta\0"
     "on_mostre_ingressos\0list<Ingresso>\0"
     "list<Apresentacao>\0list<Evento>\0"
     "on_mostre_meus_eventos\0on_vendas_efetuadas\0"
-    "on_editar_evento\0Evento\0"
+    "on_editar_evento\0EstruturaEvento\0"
     "on_status_exclusao_evento\0"
     "on_mostre_compradores\0list<CPF>"
 };
@@ -436,59 +461,72 @@ static const uint qt_meta_data_TelaUsuario[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      43,   14, // methods
+      56,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-      13,       // signalCount
+      18,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,  229,    2, 0x06 /* Public */,
-       5,    1,  234,    2, 0x06 /* Public */,
-       6,    0,  237,    2, 0x06 /* Public */,
-       7,    1,  238,    2, 0x06 /* Public */,
-       8,    1,  241,    2, 0x06 /* Public */,
-       9,    1,  244,    2, 0x06 /* Public */,
-      10,    1,  247,    2, 0x06 /* Public */,
-      12,    1,  250,    2, 0x06 /* Public */,
-      13,    1,  253,    2, 0x06 /* Public */,
-      14,    1,  256,    2, 0x06 /* Public */,
-      15,    1,  259,    2, 0x06 /* Public */,
-      16,    2,  262,    2, 0x06 /* Public */,
-      17,    3,  267,    2, 0x06 /* Public */,
+       1,    2,  294,    2, 0x06 /* Public */,
+       5,    1,  299,    2, 0x06 /* Public */,
+       6,    0,  302,    2, 0x06 /* Public */,
+       7,    1,  303,    2, 0x06 /* Public */,
+       8,    1,  306,    2, 0x06 /* Public */,
+       9,    1,  309,    2, 0x06 /* Public */,
+      10,    1,  312,    2, 0x06 /* Public */,
+      12,    1,  315,    2, 0x06 /* Public */,
+      13,    1,  318,    2, 0x06 /* Public */,
+      14,    1,  321,    2, 0x06 /* Public */,
+      15,    1,  324,    2, 0x06 /* Public */,
+      16,    2,  327,    2, 0x06 /* Public */,
+      17,    3,  332,    2, 0x06 /* Public */,
+      19,    2,  339,    2, 0x06 /* Public */,
+      20,    2,  344,    2, 0x06 /* Public */,
+      21,    2,  349,    2, 0x06 /* Public */,
+      22,    2,  354,    2, 0x06 /* Public */,
+      23,    2,  359,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      19,    0,  274,    2, 0x08 /* Private */,
-      20,    0,  275,    2, 0x08 /* Private */,
-      21,    0,  276,    2, 0x08 /* Private */,
-      22,    0,  277,    2, 0x08 /* Private */,
-      23,    2,  278,    2, 0x08 /* Private */,
-      24,    0,  283,    2, 0x08 /* Private */,
-      25,    0,  284,    2, 0x08 /* Private */,
-      26,    0,  285,    2, 0x08 /* Private */,
-      27,    0,  286,    2, 0x08 /* Private */,
-      28,    0,  287,    2, 0x08 /* Private */,
-      29,    0,  288,    2, 0x08 /* Private */,
-      30,    0,  289,    2, 0x08 /* Private */,
-      31,    0,  290,    2, 0x08 /* Private */,
-      32,    0,  291,    2, 0x08 /* Private */,
-      33,    0,  292,    2, 0x08 /* Private */,
-      34,    0,  293,    2, 0x08 /* Private */,
-      35,    0,  294,    2, 0x08 /* Private */,
-      36,    0,  295,    2, 0x08 /* Private */,
-      37,    2,  296,    2, 0x08 /* Private */,
-      40,    0,  301,    2, 0x08 /* Private */,
-      41,    2,  302,    2, 0x08 /* Private */,
-      42,    0,  307,    2, 0x08 /* Private */,
-      43,    1,  308,    2, 0x0a /* Public */,
-      44,    2,  311,    2, 0x0a /* Public */,
-      45,    3,  316,    2, 0x0a /* Public */,
-      49,    1,  323,    2, 0x0a /* Public */,
-      50,    2,  326,    2, 0x0a /* Public */,
-      51,    2,  331,    2, 0x0a /* Public */,
-      53,    1,  336,    2, 0x0a /* Public */,
-      54,    2,  339,    2, 0x0a /* Public */,
+      24,    0,  364,    2, 0x08 /* Private */,
+      25,    0,  365,    2, 0x08 /* Private */,
+      26,    0,  366,    2, 0x08 /* Private */,
+      27,    0,  367,    2, 0x08 /* Private */,
+      28,    2,  368,    2, 0x08 /* Private */,
+      29,    0,  373,    2, 0x08 /* Private */,
+      30,    0,  374,    2, 0x08 /* Private */,
+      31,    0,  375,    2, 0x08 /* Private */,
+      32,    0,  376,    2, 0x08 /* Private */,
+      33,    0,  377,    2, 0x08 /* Private */,
+      34,    0,  378,    2, 0x08 /* Private */,
+      35,    0,  379,    2, 0x08 /* Private */,
+      36,    0,  380,    2, 0x08 /* Private */,
+      37,    0,  381,    2, 0x08 /* Private */,
+      38,    0,  382,    2, 0x08 /* Private */,
+      39,    0,  383,    2, 0x08 /* Private */,
+      40,    0,  384,    2, 0x08 /* Private */,
+      41,    0,  385,    2, 0x08 /* Private */,
+      42,    2,  386,    2, 0x08 /* Private */,
+      45,    0,  391,    2, 0x08 /* Private */,
+      46,    2,  392,    2, 0x08 /* Private */,
+      47,    0,  397,    2, 0x08 /* Private */,
+      48,    0,  398,    2, 0x08 /* Private */,
+      49,    0,  399,    2, 0x08 /* Private */,
+      50,    0,  400,    2, 0x08 /* Private */,
+      51,    0,  401,    2, 0x08 /* Private */,
+      52,    0,  402,    2, 0x08 /* Private */,
+      53,    0,  403,    2, 0x08 /* Private */,
+      54,    0,  404,    2, 0x08 /* Private */,
+      55,    0,  405,    2, 0x08 /* Private */,
+      56,    1,  406,    2, 0x0a /* Public */,
+      57,    2,  409,    2, 0x0a /* Public */,
+      58,    3,  414,    2, 0x0a /* Public */,
+      62,    1,  421,    2, 0x0a /* Public */,
+      63,    2,  424,    2, 0x0a /* Public */,
+      64,    2,  429,    2, 0x0a /* Public */,
+      66,    1,  434,    2, 0x0a /* Public */,
+      67,    2,  437,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3, 0x80000000 | 4,    2,    2,
@@ -504,6 +542,11 @@ static const uint qt_meta_data_TelaUsuario[] = {
     QMetaType::Void, 0x80000000 | 11,    2,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
     QMetaType::Void, QMetaType::Int, QMetaType::Int, 0x80000000 | 18,    2,    2,    2,
+    QMetaType::Void, 0x80000000 | 11, 0x80000000 | 11,    2,    2,
+    QMetaType::Void, 0x80000000 | 11, 0x80000000 | 11,    2,    2,
+    QMetaType::Void, 0x80000000 | 11, 0x80000000 | 11,    2,    2,
+    QMetaType::Void, 0x80000000 | 11, 0x80000000 | 11,    2,    2,
+    QMetaType::Void, 0x80000000 | 11, 0x80000000 | 11,    2,    2,
 
  // slots: parameters
     QMetaType::Void,
@@ -524,18 +567,26 @@ static const uint qt_meta_data_TelaUsuario[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int,   38,   39,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,   43,   44,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int,   38,   39,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,   43,   44,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, 0x80000000 | 3, 0x80000000 | 4,    2,    2,
-    QMetaType::Void, 0x80000000 | 46, 0x80000000 | 47, 0x80000000 | 48,    2,    2,    2,
-    QMetaType::Void, 0x80000000 | 48,    2,
-    QMetaType::Void, 0x80000000 | 11, 0x80000000 | 47,    2,    2,
-    QMetaType::Void, 0x80000000 | 52, 0x80000000 | 47,    2,    2,
+    QMetaType::Void, 0x80000000 | 59, 0x80000000 | 60, 0x80000000 | 61,    2,    2,    2,
+    QMetaType::Void, 0x80000000 | 61,    2,
+    QMetaType::Void, 0x80000000 | 11, 0x80000000 | 60,    2,    2,
+    QMetaType::Void, 0x80000000 | 65, 0x80000000 | 60,    2,    2,
     QMetaType::Void, QMetaType::Bool,    2,
-    QMetaType::Void, 0x80000000 | 55, 0x80000000 | 18,    2,    2,
+    QMetaType::Void, 0x80000000 | 68, 0x80000000 | 18,    2,    2,
 
        0        // eod
 };
@@ -559,36 +610,49 @@ void TelaUsuario::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 10: _t->clicou_alterar_dataCartao((*reinterpret_cast< string(*)>(_a[1]))); break;
         case 11: _t->clicou_tabela_meus_eventos((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 12: _t->clicou_tabela_vendas_efetuadas((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< CodigoApresentacao(*)>(_a[3]))); break;
-        case 13: _t->on_Cadastrar_clicked(); break;
-        case 14: _t->on_voltar_cadastrar_clicked(); break;
-        case 15: _t->on_ir_cadastrar_clicked(); break;
-        case 16: _t->on_Excluir_clicked(); break;
-        case 17: _t->on_Excluir_clicked_logado((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2]))); break;
-        case 18: _t->on_Dados_clicked(); break;
-        case 19: _t->on_Compras_clicked(); break;
-        case 20: _t->on_Eventos_clicked(); break;
-        case 21: _t->on_cancelar_exclusao_clicked(); break;
-        case 22: _t->on_confirmar_exclusao_clicked(); break;
-        case 23: _t->on_alterar_cpf_clicked(); break;
-        case 24: _t->on_alterar_senha_clicked(); break;
-        case 25: _t->on_alterar_cartao_clicked(); break;
-        case 26: _t->on_alterar_codigo_clicked(); break;
-        case 27: _t->on_alterar_data_clicked(); break;
-        case 28: _t->on_voltar_conta_clicked(); break;
-        case 29: _t->on_voltar_compras_clicked(); break;
-        case 30: _t->on_voltar_meus_eventos_clicked(); break;
-        case 31: _t->on_tabelaMeusEventos_cellDoubleClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 32: _t->on_voltar_vendas_efetuadas_clicked(); break;
-        case 33: _t->on_tabelaVendasEfetuadas_cellDoubleClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 34: _t->on_voltar_compradores_clicked(); break;
-        case 35: _t->on_notificar_situacao((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 36: _t->on_mostre_dados_conta((*reinterpret_cast< EstruturaUsuario(*)>(_a[1])),(*reinterpret_cast< EstruturaCartaoCredito(*)>(_a[2]))); break;
-        case 37: _t->on_mostre_ingressos((*reinterpret_cast< list<Ingresso>(*)>(_a[1])),(*reinterpret_cast< list<Apresentacao>(*)>(_a[2])),(*reinterpret_cast< list<Evento>(*)>(_a[3]))); break;
-        case 38: _t->on_mostre_meus_eventos((*reinterpret_cast< list<Evento>(*)>(_a[1]))); break;
-        case 39: _t->on_vendas_efetuadas((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< list<Apresentacao>(*)>(_a[2]))); break;
-        case 40: _t->on_editar_evento((*reinterpret_cast< Evento(*)>(_a[1])),(*reinterpret_cast< list<Apresentacao>(*)>(_a[2]))); break;
-        case 41: _t->on_status_exclusao_evento((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 42: _t->on_mostre_compradores((*reinterpret_cast< list<CPF>(*)>(_a[1])),(*reinterpret_cast< CodigoApresentacao(*)>(_a[2]))); break;
+        case 13: _t->clicou_alterar_nome_evento((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2]))); break;
+        case 14: _t->clicou_alterar_classe_evento((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2]))); break;
+        case 15: _t->clicou_alterar_faixa_evento((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2]))); break;
+        case 16: _t->clicou_alterar_cidade_evento((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2]))); break;
+        case 17: _t->clicou_alterar_estado_evento((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2]))); break;
+        case 18: _t->on_Cadastrar_clicked(); break;
+        case 19: _t->on_voltar_cadastrar_clicked(); break;
+        case 20: _t->on_ir_cadastrar_clicked(); break;
+        case 21: _t->on_Excluir_clicked(); break;
+        case 22: _t->on_Excluir_clicked_logado((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2]))); break;
+        case 23: _t->on_Dados_clicked(); break;
+        case 24: _t->on_Compras_clicked(); break;
+        case 25: _t->on_Eventos_clicked(); break;
+        case 26: _t->on_cancelar_exclusao_clicked(); break;
+        case 27: _t->on_confirmar_exclusao_clicked(); break;
+        case 28: _t->on_alterar_cpf_clicked(); break;
+        case 29: _t->on_alterar_senha_clicked(); break;
+        case 30: _t->on_alterar_cartao_clicked(); break;
+        case 31: _t->on_alterar_codigo_clicked(); break;
+        case 32: _t->on_alterar_data_clicked(); break;
+        case 33: _t->on_voltar_conta_clicked(); break;
+        case 34: _t->on_voltar_compras_clicked(); break;
+        case 35: _t->on_voltar_meus_eventos_clicked(); break;
+        case 36: _t->on_tabelaMeusEventos_cellDoubleClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 37: _t->on_voltar_vendas_efetuadas_clicked(); break;
+        case 38: _t->on_tabelaVendasEfetuadas_cellDoubleClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 39: _t->on_voltar_compradores_clicked(); break;
+        case 40: _t->on_criarNovoEvento_clicked(); break;
+        case 41: _t->on_cancelar_editar_evento_clicked(); break;
+        case 42: _t->on_confirmar_editar_evento_clicked(); break;
+        case 43: _t->on_alterar_nome_evento_clicked(); break;
+        case 44: _t->on_alterar_classe_evento_clicked(); break;
+        case 45: _t->on_alterar_faixa_evento_clicked(); break;
+        case 46: _t->on_alterar_cidade_evento_clicked(); break;
+        case 47: _t->on_alterar_estado_evento_clicked(); break;
+        case 48: _t->on_notificar_situacao((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 49: _t->on_mostre_dados_conta((*reinterpret_cast< EstruturaUsuario(*)>(_a[1])),(*reinterpret_cast< EstruturaCartaoCredito(*)>(_a[2]))); break;
+        case 50: _t->on_mostre_ingressos((*reinterpret_cast< list<Ingresso>(*)>(_a[1])),(*reinterpret_cast< list<Apresentacao>(*)>(_a[2])),(*reinterpret_cast< list<Evento>(*)>(_a[3]))); break;
+        case 51: _t->on_mostre_meus_eventos((*reinterpret_cast< list<Evento>(*)>(_a[1]))); break;
+        case 52: _t->on_vendas_efetuadas((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< list<Apresentacao>(*)>(_a[2]))); break;
+        case 53: _t->on_editar_evento((*reinterpret_cast< EstruturaEvento(*)>(_a[1])),(*reinterpret_cast< list<Apresentacao>(*)>(_a[2]))); break;
+        case 54: _t->on_status_exclusao_evento((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 55: _t->on_mostre_compradores((*reinterpret_cast< list<CPF>(*)>(_a[1])),(*reinterpret_cast< CodigoApresentacao(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -684,6 +748,41 @@ void TelaUsuario::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
                 return;
             }
         }
+        {
+            using _t = void (TelaUsuario::*)(string , string );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TelaUsuario::clicou_alterar_nome_evento)) {
+                *result = 13;
+                return;
+            }
+        }
+        {
+            using _t = void (TelaUsuario::*)(string , string );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TelaUsuario::clicou_alterar_classe_evento)) {
+                *result = 14;
+                return;
+            }
+        }
+        {
+            using _t = void (TelaUsuario::*)(string , string );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TelaUsuario::clicou_alterar_faixa_evento)) {
+                *result = 15;
+                return;
+            }
+        }
+        {
+            using _t = void (TelaUsuario::*)(string , string );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TelaUsuario::clicou_alterar_cidade_evento)) {
+                *result = 16;
+                return;
+            }
+        }
+        {
+            using _t = void (TelaUsuario::*)(string , string );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TelaUsuario::clicou_alterar_estado_evento)) {
+                *result = 17;
+                return;
+            }
+        }
     }
 }
 
@@ -716,13 +815,13 @@ int TelaUsuario::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 43)
+        if (_id < 56)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 43;
+        _id -= 56;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 43)
+        if (_id < 56)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 43;
+        _id -= 56;
     }
     return _id;
 }
@@ -815,6 +914,41 @@ void TelaUsuario::clicou_tabela_vendas_efetuadas(int _t1, int _t2, CodigoApresen
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 12, _a);
+}
+
+// SIGNAL 13
+void TelaUsuario::clicou_alterar_nome_evento(string _t1, string _t2)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 13, _a);
+}
+
+// SIGNAL 14
+void TelaUsuario::clicou_alterar_classe_evento(string _t1, string _t2)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 14, _a);
+}
+
+// SIGNAL 15
+void TelaUsuario::clicou_alterar_faixa_evento(string _t1, string _t2)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 15, _a);
+}
+
+// SIGNAL 16
+void TelaUsuario::clicou_alterar_cidade_evento(string _t1, string _t2)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 16, _a);
+}
+
+// SIGNAL 17
+void TelaUsuario::clicou_alterar_estado_evento(string _t1, string _t2)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 17, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

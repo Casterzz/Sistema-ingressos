@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->labelPrincipal->setStyleSheet("QLabel { color : red; }");
 }
 
 MainWindow::~MainWindow()
@@ -19,34 +20,38 @@ MainWindow::~MainWindow()
 void MainWindow::on_autenticar_clicked()
 {
     if (ui->autenticar->text().toStdString() == "Logar") {
-         ui->status->setText("Autenticando...");
+        ui->labelPrincipal->setText("Autenticando...");
+        ui->labelPrincipal->setStyleSheet("QLabel { color : black; }");
         emit clicou_autenticar();
     } else {
         ui->autenticar->setText("Logar");
-        ui->status->setText("Status: Não Logado!");
+        ui->labelPrincipal->setText("Status: Não Logado");
+        ui->labelPrincipal->setStyleSheet("QLabel { color : red; }");
         emit clicou_deslogar();
     }
 }
 
 void MainWindow::on_conta_clicked()
 {
-    ui->status->setText("Ver conta");
+    //ui->status->setText("Ver conta");
     emit clicou_conta();
 }
 
 void MainWindow::on_eventos_clicked()
 {
-    ui->status->setText("Ver eventos");
+    //ui->status->setText("Ver eventos");
     emit clicou_eventos();
 }
 
 void MainWindow::on_status_alterado(bool logado)
 {
     if (logado) {
-        ui->status->setText("Status: Logado!");
+        ui->labelPrincipal->setText("Status: Logado");
         ui->autenticar->setText("Deslogar");
+        ui->labelPrincipal->setStyleSheet("QLabel { color : green; }");
     } else {
-        ui->status->setText("Status: Não Logado!");
+        ui->labelPrincipal->setText("Status: Não Logado");
+        ui->labelPrincipal->setStyleSheet("QLabel { color : red; }");
     }
 }
 
@@ -144,6 +149,10 @@ void TelaUsuario::on_notificar_situacao(int situacao){
     case 13: ui->caixa_conta->setText("Informação alterada com sucesso!"); break;
     case 14: ui->caixa_conta->setText("Alterando Informação..."); break;
     case 15: ui->caixa_conta->setText("Erro ao acessar banco de dados!"); break;
+    case 16: ui->status_editar_evento->setText("Alterando Informação..."); break;
+    case 17: ui->status_editar_evento->append("Informação alterada com sucesso!"); break;
+    case 18: ui->status_editar_evento->append("Formato inválido."); break;
+    case 19: ui->status_editar_evento->setText("Erro ao acessar banco de dados!"); break;
     }
 }
 
@@ -358,12 +367,22 @@ void TelaUsuario::on_vendas_efetuadas(string nome_evento, list<Apresentacao> lis
     ui->tabelaVendasEfetuadas->resizeColumnsToContents();
 }
 
-void TelaUsuario::on_editar_evento(Evento evento, list<Apresentacao> lista_apresentacao) {
-
+void TelaUsuario::on_editar_evento(EstruturaEvento evento, list<Apresentacao> lista_apresentacao) {
+    ui->stackedWidget->setCurrentIndex(8);
+    ui->caixa_nome_evento->setText(QString::fromStdString(evento.nome));
+    ui->caixa_faixa_evento->setText(QString::fromStdString(evento.faixa));
+    ui->caixa_cidade_evento->setText(QString::fromStdString(evento.cidade));
+    ui->caixa_classe_evento->setText(QString::fromStdString(evento.classe));
+    ui->caixa_estado_evento->setText(QString::fromStdString(evento.estado));
+    ui->codigo_evento_editar->setText(QString::fromStdString(evento.codigo));
 }
 
 void TelaUsuario::on_status_exclusao_evento(bool status) {
-
+    if (status == true) {
+        QMessageBox::information(this, "", "Evento excluído com sucesso!");
+    } else {
+        QMessageBox::warning(this, "", "Evento não pôde ser excluído!\nHá ingressos vendidos.");
+    }
 }
 
 void TelaUsuario::on_voltar_vendas_efetuadas_clicked()
@@ -405,4 +424,56 @@ void TelaUsuario::on_mostre_compradores(list<CPF> lista, CodigoApresentacao codi
 void TelaUsuario::on_voltar_compradores_clicked()
 {
     ui->stackedWidget->setCurrentIndex(6);
+}
+
+void TelaUsuario::on_criarNovoEvento_clicked()
+{
+    qDebug() << "Criar novo evento";
+}
+
+void TelaUsuario::on_cancelar_editar_evento_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(5);
+}
+
+void TelaUsuario::on_confirmar_editar_evento_clicked()
+{
+    qDebug() << "Confirmar e ir para apresentações";
+    //ui->stackedWidget->setCurrentIndex(9);
+}
+
+void TelaUsuario::on_alterar_nome_evento_clicked()
+{
+    string novo_nome = ui->caixa_nome_evento->text().toStdString();
+    string codigo_evento = ui->codigo_evento_editar->text().toStdString();
+    emit (clicou_alterar_nome_evento(novo_nome, codigo_evento));
+}
+
+void TelaUsuario::on_alterar_classe_evento_clicked()
+{
+    string nova_classe = ui->caixa_classe_evento->text().toStdString();
+    string codigo_evento = ui->codigo_evento_editar->text().toStdString();
+    emit (clicou_alterar_classe_evento(nova_classe, codigo_evento));
+}
+
+void TelaUsuario::on_alterar_faixa_evento_clicked()
+{
+    string nova_faixa = ui->caixa_faixa_evento->text().toStdString();
+    string codigo_evento = ui->codigo_evento_editar->text().toStdString();
+    emit (clicou_alterar_faixa_evento(nova_faixa, codigo_evento));
+}
+
+void TelaUsuario::on_alterar_cidade_evento_clicked()
+{
+    qDebug() << "foioooio";
+    string nova_cidade = ui->caixa_cidade_evento->text().toStdString();
+    string codigo_evento = ui->codigo_evento_editar->text().toStdString();
+    emit (clicou_alterar_cidade_evento(nova_cidade, codigo_evento));
+}
+
+void TelaUsuario::on_alterar_estado_evento_clicked()
+{
+    string novo_estado = ui->caixa_estado_evento->text().toStdString();
+    string codigo_evento = ui->codigo_evento_editar->text().toStdString();
+    emit (clicou_alterar_estado_evento(novo_estado, codigo_evento));
 }

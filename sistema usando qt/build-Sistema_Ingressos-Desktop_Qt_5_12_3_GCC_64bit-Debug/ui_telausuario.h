@@ -154,6 +154,9 @@ public:
     QPushButton *alterar_faixa_evento;
     QPushButton *alterar_cidade_evento;
     QPushButton *alterar_estado_evento;
+    QTextBrowser *status_editar_evento;
+    QLabel *label_18;
+    QLabel *codigo_evento_editar;
 
     void setupUi(QDialog *TelaUsuario)
     {
@@ -747,26 +750,39 @@ public:
         verticalLayout_10->setContentsMargins(0, 0, 0, 0);
         caixa_nome_evento = new QLineEdit(layoutWidget4);
         caixa_nome_evento->setObjectName(QString::fromUtf8("caixa_nome_evento"));
+        QSizePolicy sizePolicy7(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy7.setHorizontalStretch(0);
+        sizePolicy7.setVerticalStretch(0);
+        sizePolicy7.setHeightForWidth(caixa_nome_evento->sizePolicy().hasHeightForWidth());
+        caixa_nome_evento->setSizePolicy(sizePolicy7);
 
         verticalLayout_10->addWidget(caixa_nome_evento);
 
         caixa_classe_evento = new QLineEdit(layoutWidget4);
         caixa_classe_evento->setObjectName(QString::fromUtf8("caixa_classe_evento"));
+        sizePolicy7.setHeightForWidth(caixa_classe_evento->sizePolicy().hasHeightForWidth());
+        caixa_classe_evento->setSizePolicy(sizePolicy7);
 
         verticalLayout_10->addWidget(caixa_classe_evento);
 
         caixa_faixa_evento = new QLineEdit(layoutWidget4);
         caixa_faixa_evento->setObjectName(QString::fromUtf8("caixa_faixa_evento"));
+        sizePolicy7.setHeightForWidth(caixa_faixa_evento->sizePolicy().hasHeightForWidth());
+        caixa_faixa_evento->setSizePolicy(sizePolicy7);
 
         verticalLayout_10->addWidget(caixa_faixa_evento);
 
         caixa_cidade_evento = new QLineEdit(layoutWidget4);
         caixa_cidade_evento->setObjectName(QString::fromUtf8("caixa_cidade_evento"));
+        sizePolicy7.setHeightForWidth(caixa_cidade_evento->sizePolicy().hasHeightForWidth());
+        caixa_cidade_evento->setSizePolicy(sizePolicy7);
 
         verticalLayout_10->addWidget(caixa_cidade_evento);
 
         caixa_estado_evento = new QLineEdit(layoutWidget4);
         caixa_estado_evento->setObjectName(QString::fromUtf8("caixa_estado_evento"));
+        sizePolicy7.setHeightForWidth(caixa_estado_evento->sizePolicy().hasHeightForWidth());
+        caixa_estado_evento->setSizePolicy(sizePolicy7);
 
         verticalLayout_10->addWidget(caixa_estado_evento);
 
@@ -778,29 +794,51 @@ public:
         verticalLayout_11->setContentsMargins(0, 0, 0, 0);
         alterar_nome_evento = new QPushButton(layoutWidget5);
         alterar_nome_evento->setObjectName(QString::fromUtf8("alterar_nome_evento"));
+        QSizePolicy sizePolicy8(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy8.setHorizontalStretch(0);
+        sizePolicy8.setVerticalStretch(0);
+        sizePolicy8.setHeightForWidth(alterar_nome_evento->sizePolicy().hasHeightForWidth());
+        alterar_nome_evento->setSizePolicy(sizePolicy8);
 
         verticalLayout_11->addWidget(alterar_nome_evento);
 
         alterar_classe_evento = new QPushButton(layoutWidget5);
         alterar_classe_evento->setObjectName(QString::fromUtf8("alterar_classe_evento"));
+        sizePolicy8.setHeightForWidth(alterar_classe_evento->sizePolicy().hasHeightForWidth());
+        alterar_classe_evento->setSizePolicy(sizePolicy8);
 
         verticalLayout_11->addWidget(alterar_classe_evento);
 
         alterar_faixa_evento = new QPushButton(layoutWidget5);
         alterar_faixa_evento->setObjectName(QString::fromUtf8("alterar_faixa_evento"));
+        sizePolicy8.setHeightForWidth(alterar_faixa_evento->sizePolicy().hasHeightForWidth());
+        alterar_faixa_evento->setSizePolicy(sizePolicy8);
 
         verticalLayout_11->addWidget(alterar_faixa_evento);
 
         alterar_cidade_evento = new QPushButton(layoutWidget5);
         alterar_cidade_evento->setObjectName(QString::fromUtf8("alterar_cidade_evento"));
+        sizePolicy8.setHeightForWidth(alterar_cidade_evento->sizePolicy().hasHeightForWidth());
+        alterar_cidade_evento->setSizePolicy(sizePolicy8);
 
         verticalLayout_11->addWidget(alterar_cidade_evento);
 
         alterar_estado_evento = new QPushButton(layoutWidget5);
         alterar_estado_evento->setObjectName(QString::fromUtf8("alterar_estado_evento"));
+        sizePolicy8.setHeightForWidth(alterar_estado_evento->sizePolicy().hasHeightForWidth());
+        alterar_estado_evento->setSizePolicy(sizePolicy8);
 
         verticalLayout_11->addWidget(alterar_estado_evento);
 
+        status_editar_evento = new QTextBrowser(editarEvento);
+        status_editar_evento->setObjectName(QString::fromUtf8("status_editar_evento"));
+        status_editar_evento->setGeometry(QRect(20, 260, 541, 71));
+        label_18 = new QLabel(editarEvento);
+        label_18->setObjectName(QString::fromUtf8("label_18"));
+        label_18->setGeometry(QRect(40, 40, 67, 17));
+        codigo_evento_editar = new QLabel(editarEvento);
+        codigo_evento_editar->setObjectName(QString::fromUtf8("codigo_evento_editar"));
+        codigo_evento_editar->setGeometry(QRect(100, 40, 67, 17));
         stackedWidget->addWidget(editarEvento);
 
         verticalLayout->addWidget(stackedWidget);
@@ -809,7 +847,7 @@ public:
         retranslateUi(TelaUsuario);
         QObject::connect(Voltar, SIGNAL(clicked()), TelaUsuario, SLOT(close()));
 
-        stackedWidget->setCurrentIndex(7);
+        stackedWidget->setCurrentIndex(5);
 
 
         QMetaObject::connectSlotsByName(TelaUsuario);
@@ -890,6 +928,8 @@ public:
         alterar_faixa_evento->setText(QApplication::translate("TelaUsuario", "Alterar Faixa", nullptr));
         alterar_cidade_evento->setText(QApplication::translate("TelaUsuario", "Alterar Cidade", nullptr));
         alterar_estado_evento->setText(QApplication::translate("TelaUsuario", "Alterar Estado", nullptr));
+        label_18->setText(QApplication::translate("TelaUsuario", "C\303\263digo:", nullptr));
+        codigo_evento_editar->setText(QApplication::translate("TelaUsuario", "TextLabel", nullptr));
     } // retranslateUi
 
 };

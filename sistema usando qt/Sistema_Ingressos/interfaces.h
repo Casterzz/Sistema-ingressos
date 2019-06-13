@@ -66,7 +66,9 @@ public:
     virtual list<Evento> obter_eventos_criados(CPF) throw(runtime_error) = 0;
     virtual list<Apresentacao> obter_apresentacoes(CodigoEvento) throw(runtime_error) = 0;
     virtual list<CPF> obter_compradores(CodigoApresentacao) throw(runtime_error) = 0;
-    //virtual bool excluir_evento(CodigoEvento) throw(runtime_error) = 0;
+    virtual bool excluir_evento(CodigoEvento) throw(runtime_error) = 0;
+    virtual Evento mostrar_evento(CodigoEvento) throw(runtime_error) = 0;
+    virtual bool alterar_evento(Evento) throw(runtime_error) = 0;
 
 /*
     virtual bool editar_evento(Evento, list<Apresentacao>) throw(runtime_error) = 0;
