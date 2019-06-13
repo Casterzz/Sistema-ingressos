@@ -305,6 +305,7 @@ void TelaUsuario::on_mostre_meus_eventos(list<Evento> lista_eventos) {
         ui->tabelaMeusEventos->item(i, 2)->setFont(font);
         ui->tabelaMeusEventos->item(i, 3)->setFont(font);
         ui->tabelaMeusEventos->item(i, 4)->setFont(font);
+        lista_eventos.pop_front();
     }
     ui->tabelaMeusEventos->resizeRowsToContents();
     ui->tabelaMeusEventos->resizeColumnsToContents();
@@ -320,4 +321,88 @@ void TelaUsuario::on_voltar_meus_eventos_clicked()
 void TelaUsuario::on_tabelaMeusEventos_cellDoubleClicked(int row, int column)
 {
     emit(clicou_tabela_meus_eventos(row, column));
+}
+
+void TelaUsuario::on_vendas_efetuadas(string nome_evento, list<Apresentacao> lista_apresentacao) {
+    ui->stackedWidget->setCurrentIndex(6);
+    ui->tabelaVendasEfetuadas->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tabelaVendasEfetuadas->setRowCount(int(lista_apresentacao.size()));
+    ui->label_evento_vendas_efetuadas->setText(QString::fromStdString("EVENTO: " + nome_evento));
+
+    EstruturaApresentacao estrutura_apresentacao;
+
+    string apresentacaoString;
+    string disponibilidadeString;
+    QFont font;
+    font.setBold(true);
+    font.setUnderline(true);
+
+    for (int i = 0; i < int(lista_apresentacao.size()); i++) {
+        lista_apresentacao.front().getApresentacao(&estrutura_apresentacao);
+
+        apresentacaoString = ("Código: " + estrutura_apresentacao.codigo + "\n" +
+                              "Data: " + estrutura_apresentacao.data + "\n" +
+                              "Horário: " + estrutura_apresentacao.horario + "\n" +
+                              "Sala: " + estrutura_apresentacao.sala);
+
+        disponibilidadeString = (estrutura_apresentacao.disponibilidade + "/250");
+
+        ui->tabelaVendasEfetuadas->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(apresentacaoString)));
+        ui->tabelaVendasEfetuadas->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(disponibilidadeString)));
+        ui->tabelaVendasEfetuadas->setItem(i, 2, new QTableWidgetItem("Mostrar compradores"));
+
+        ui->tabelaVendasEfetuadas->item(i, 2)->setFont(font);
+        lista_apresentacao.pop_front();
+    }
+    ui->tabelaVendasEfetuadas->resizeRowsToContents();
+    ui->tabelaVendasEfetuadas->resizeColumnsToContents();
+}
+
+void TelaUsuario::on_editar_evento(Evento evento, list<Apresentacao> lista_apresentacao) {
+
+}
+
+void TelaUsuario::on_status_exclusao_evento(bool status) {
+
+}
+
+void TelaUsuario::on_voltar_vendas_efetuadas_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(5);
+}
+
+void TelaUsuario::on_tabelaVendasEfetuadas_cellDoubleClicked(int row, int column)
+{
+    CodigoApresentacao codigo;
+    string item = ui->tabelaVendasEfetuadas->item(row, 0)->text().toStdString();
+    int pos = int(item.find("Código: ") + 9);
+    string codigo_apr = item.substr(size_t(pos), 4);
+    qDebug() << QString::fromStdString(codigo_apr);
+    codigo.setCodigo(codigo_apr);
+    emit(clicou_tabela_vendas_efetuadas(row, column, codigo));
+}
+
+void TelaUsuario::on_mostre_compradores(list<CPF> lista, CodigoApresentacao codigo) {
+    ui->stackedWidget->setCurrentIndex(7);
+    ui->tabelaCompradores->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tabelaCompradores->setRowCount(int(lista.size()));
+    ui->label_evento_compradores->setText(ui->label_evento_vendas_efetuadas->text());
+    ui->label_apresentacao_compradores->setText(QString::fromStdString("Apresentação: " + codigo.getCodigo()));
+
+    string stringCPF;
+
+    for (int i = 0; i < int(lista.size()); i++) {
+        stringCPF = lista.front().getCPF();
+
+        ui->tabelaCompradores->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(stringCPF)));
+
+        lista.pop_front();
+    }
+    ui->tabelaCompradores->resizeRowsToContents();
+    ui->tabelaCompradores->resizeColumnsToContents();
+}
+
+void TelaUsuario::on_voltar_compradores_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(6);
 }

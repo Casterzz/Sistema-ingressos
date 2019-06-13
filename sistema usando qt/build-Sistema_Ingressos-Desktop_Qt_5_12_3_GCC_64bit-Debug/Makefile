@@ -1514,18 +1514,16 @@ windows.o: ../Sistema_Ingressos/windows.cpp ../Sistema_Ingressos/windows.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtGui/qtextdocument.h \
 		ui_mainwindow.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QAction \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qaction.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qactiongroup.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QHBoxLayout \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qboxlayout.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qlayout.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qlayoutitem.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qgridlayout.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QMenu \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qmenu.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QMenuBar \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qmenubar.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qmenu.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qaction.h \
+		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qactiongroup.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QSpacerItem \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QStatusBar \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qstatusbar.h \

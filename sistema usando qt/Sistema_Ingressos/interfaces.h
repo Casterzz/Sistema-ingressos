@@ -64,8 +64,8 @@ public:
     virtual list<Apresentacao> obter_apresentacoes_ingresso(list<Ingresso>) throw(runtime_error) = 0;
     //virtual list<Ingresso> obter_ingressos_vendidos() = 0;
     virtual list<Evento> obter_eventos_criados(CPF) throw(runtime_error) = 0;
-    //virtual list<Apresentacao> obter_apresentacoes(CodigoEvento) throw(runtime_error) = 0;
-    //virtual list<CPF> obter_compradores(CodigoApresentacao) throw(runtime_error) = 0;
+    virtual list<Apresentacao> obter_apresentacoes(CodigoEvento) throw(runtime_error) = 0;
+    virtual list<CPF> obter_compradores(CodigoApresentacao) throw(runtime_error) = 0;
     //virtual bool excluir_evento(CodigoEvento) throw(runtime_error) = 0;
 
 /*

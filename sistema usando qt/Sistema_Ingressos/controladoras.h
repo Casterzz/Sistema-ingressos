@@ -124,6 +124,7 @@ class CntrIAUsuario : public QObject, public IAUsuario{
     void executarMinhasComprasGUI();
     void executarMeusEventosGUI();
     void processarMeusEventosGUI(int, int);
+    void processarCompradoresGUI(int, int, CodigoApresentacao);
 
     void alterarCPFGUI(string);
     void alterarSenhaGUI(string);
@@ -137,6 +138,10 @@ class CntrIAUsuario : public QObject, public IAUsuario{
     void mostre_dados_conta(EstruturaUsuario, EstruturaCartaoCredito);
     void inicia_mostrar_ingressos(list<Ingresso>, list<Apresentacao>, list<Evento>);
     void inicia_mostrar_meus_eventos(list<Evento>);
+    void inicia_vendas_efetuadas(string, list<Apresentacao>);
+    void inicia_editar_evento(Evento, list<Apresentacao>);
+    void status_exclusao_evento(bool);
+    void inicia_mostrar_compradores(list<CPF>, CodigoApresentacao);
 };
 
 void inline CntrIAUsuario::setCntrISUsuario(ISUsuario *cntrISUsuario) {

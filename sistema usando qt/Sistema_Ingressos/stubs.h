@@ -28,6 +28,8 @@ public:
     list<Evento> obter_evento_apresentacao(list<Apresentacao>) throw(runtime_error);
     list<Apresentacao> obter_apresentacoes_ingresso(list<Ingresso>) throw(runtime_error);
     list<Evento> obter_eventos_criados(CPF) throw(runtime_error);
+    list<Apresentacao> obter_apresentacoes(CodigoEvento) throw(runtime_error);
+    list<CPF> obter_compradores(CodigoApresentacao) throw(runtime_error);
 };
 
 #endif // STUBS_H

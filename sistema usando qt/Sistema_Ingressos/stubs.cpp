@@ -116,3 +116,26 @@ list<Evento> StubISUsuario::obter_eventos_criados(CPF) throw(runtime_error) {
     lista.push_back(evento);
     return lista;
 }
+
+list<Apresentacao> StubISUsuario::obter_apresentacoes(CodigoEvento) throw(runtime_error) {
+    list<Apresentacao> lista;
+    Apresentacao apresentacao;
+    EstruturaApresentacao estrutura_apresentacao;
+    estrutura_apresentacao.codigo = "1234";
+    estrutura_apresentacao.data = "12/05/23";
+    estrutura_apresentacao.sala = "2";
+    estrutura_apresentacao.preco = "999,99";
+    estrutura_apresentacao.horario = "22:30";
+    estrutura_apresentacao.disponibilidade = "249";
+    apresentacao.setApresentacao(estrutura_apresentacao);
+    lista.push_back(apresentacao);
+    return lista;
+}
+
+list<CPF> StubISUsuario::obter_compradores(CodigoApresentacao) throw(runtime_error) {
+    list<CPF> lista;
+    CPF cpf;
+    cpf.setCPF("529.982.247-25");
+    lista.push_back(cpf);
+    return lista;
+}

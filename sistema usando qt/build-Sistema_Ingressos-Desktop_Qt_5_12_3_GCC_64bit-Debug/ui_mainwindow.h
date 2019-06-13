@@ -10,11 +10,9 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -47,7 +45,6 @@ public:
     QPushButton *eventos;
     QSpacerItem *horizontalSpacer_6;
     QMenuBar *menuBar;
-    QMenu *menuTela_Inicial;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -60,7 +57,7 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         status = new QTextBrowser(centralWidget);
         status->setObjectName(QString::fromUtf8("status"));
-        status->setGeometry(QRect(10, 310, 582, 61));
+        status->setGeometry(QRect(10, 210, 582, 61));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -68,7 +65,7 @@ public:
         status->setSizePolicy(sizePolicy);
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(240, 230, 121, 51));
+        pushButton->setGeometry(QRect(240, 310, 121, 51));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
         layoutWidget->setGeometry(QRect(20, 30, 551, 151));
@@ -147,8 +144,6 @@ public:
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 600, 22));
-        menuTela_Inicial = new QMenu(menuBar);
-        menuTela_Inicial->setObjectName(QString::fromUtf8("menuTela_Inicial"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -156,8 +151,6 @@ public:
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         MainWindow->setStatusBar(statusBar);
-
-        menuBar->addAction(menuTela_Inicial->menuAction());
 
         retranslateUi(MainWindow);
         QObject::connect(pushButton, SIGNAL(clicked()), MainWindow, SLOT(close()));
@@ -177,7 +170,6 @@ public:
         autenticar->setText(QApplication::translate("MainWindow", "Logar", nullptr));
         conta->setText(QApplication::translate("MainWindow", "Minha Conta", nullptr));
         eventos->setText(QApplication::translate("MainWindow", "Explorar Eventos", nullptr));
-        menuTela_Inicial->setTitle(QApplication::translate("MainWindow", "Tela Inicial", nullptr));
     } // retranslateUi
 
 };

@@ -95,10 +95,14 @@ private slots:
     void on_alterar_data_clicked();
     void on_voltar_conta_clicked();
     void on_voltar_compras_clicked();
-
     void on_voltar_meus_eventos_clicked();
-
     void on_tabelaMeusEventos_cellDoubleClicked(int row, int column);
+
+    void on_voltar_vendas_efetuadas_clicked();
+
+    void on_tabelaVendasEfetuadas_cellDoubleClicked(int row, int column);
+
+    void on_voltar_compradores_clicked();
 
 private:
     Ui::TelaUsuario *ui;
@@ -108,6 +112,10 @@ public slots:
     void on_mostre_dados_conta(EstruturaUsuario, EstruturaCartaoCredito);
     void on_mostre_ingressos(list<Ingresso>, list<Apresentacao>, list<Evento>);
     void on_mostre_meus_eventos(list<Evento>);
+    void on_vendas_efetuadas(string, list<Apresentacao>);
+    void on_editar_evento(Evento, list<Apresentacao>);
+    void on_status_exclusao_evento(bool);
+    void on_mostre_compradores(list<CPF>, CodigoApresentacao);
 
 signals:
     void clicou_ir_cadastrar(EstruturaUsuario, EstruturaCartaoCredito);
@@ -122,6 +130,7 @@ signals:
     void clicou_alterar_codigoCartao(string);
     void clicou_alterar_dataCartao(string);
     void clicou_tabela_meus_eventos(int, int);
+    void clicou_tabela_vendas_efetuadas(int, int, CodigoApresentacao);
 };
 
 #endif // MAINWINDOW_H

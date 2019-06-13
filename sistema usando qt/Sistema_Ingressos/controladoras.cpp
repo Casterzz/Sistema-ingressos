@@ -74,6 +74,15 @@ bool CntrIAUsuario::executar_autenticado(CPF cpf) throw(runtime_error) {
     QObject::connect(this, SIGNAL (inicia_mostrar_meus_eventos(list<Evento>)),
                      &Tela, SLOT (on_mostre_meus_eventos(list<Evento>)));
     QObject::connect(&Tela, SIGNAL(clicou_tabela_meus_eventos(int, int)), this, SLOT (processarMeusEventosGUI(int, int)));
+    QObject::connect(this, SIGNAL(inicia_vendas_efetuadas(string, list<Apresentacao>)),
+                     &Tela, SLOT (on_vendas_efetuadas(string, list<Apresentacao>)));
+    QObject::connect(this, SIGNAL(inicia_editar_evento(Evento, list<Apresentacao>)),
+                     &Tela, SLOT (on_editar_evento(Evento, list<Apresentacao>)));
+    QObject::connect(this, SIGNAL(status_exclusao_evento(bool)), &Tela, SLOT (on_status_exclusao_evento(bool)));
+    QObject::connect(&Tela, SIGNAL(clicou_tabela_vendas_efetuadas(int, int, CodigoApresentacao)),
+                     this, SLOT (processarCompradoresGUI(int, int, CodigoApresentacao)));
+    QObject::connect(this, SIGNAL(inicia_mostrar_compradores(list<CPF>, CodigoApresentacao)),
+                     &Tela, SLOT (on_mostre_compradores(list<CPF>, CodigoApresentacao)));
 
     QObject::connect(this, SIGNAL (notifique_situacao(int)), &Tela, SLOT(on_notificar_situacao(int)));
 
@@ -262,38 +271,48 @@ void CntrIAUsuario::executarMeusEventosGUI() {
 }
 
 void CntrIAUsuario::processarMeusEventosGUI(int linha, int coluna) {
-/*
+    // obtem eventos do usuario
     list<Evento> lista_eventos = cntrISUsuario->obter_eventos_criados(this->cpf);
+
+    // pega evento selecionado pelo numero da linha
     for (int i = 0; i < linha; i++) {
         lista_eventos.pop_front();
     }
+
+    // criacao do objeto da classe CodigoEvento
     EstruturaEvento estrutura_evento;
     lista_eventos.front().getEvento(&estrutura_evento);
     CodigoEvento codigo;
     codigo.setCodigo(estrutura_evento.codigo);
+
+    // pega lista de apresentacoes do evento selecionado
     list<Apresentacao> lista_apresentacao = cntrISUsuario->obter_apresentacoes(codigo);
-*/
 
     // implementar sinais de escolha do botão de função
 
     switch (coluna) {
     case 2:
-        //vendas efetuadas
-            // enviar lista de apresentações
+        emit inicia_vendas_efetuadas(estrutura_evento.nome, lista_apresentacao);
         qDebug() << "Selecionou: Vendas efetuadas";
         break;
 
     case 3:
-        //editar
+        emit inicia_editar_evento(lista_eventos.front(), lista_apresentacao);
         qDebug() << "Selecionou: Editar";
         break;
 
     case 4:
-        //excluir
+        //emit status_exclusao_evento(cntrISUsuario->excluir_evento(codigo));
         qDebug() << "Selecionou: Excluir";
         break;
 
     default:
         break;
     }
+}
+
+void CntrIAUsuario::processarCompradoresGUI(int linha, int coluna, CodigoApresentacao codigo) {
+    list<CPF> lista_cpf = cntrISUsuario->obter_compradores(codigo);
+
+    emit(inicia_mostrar_compradores(lista_cpf, codigo));
 }
