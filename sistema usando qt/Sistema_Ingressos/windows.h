@@ -97,28 +97,31 @@ private slots:
     void on_voltar_compras_clicked();
     void on_voltar_meus_eventos_clicked();
     void on_tabelaMeusEventos_cellDoubleClicked(int row, int column);
-
     void on_voltar_vendas_efetuadas_clicked();
-
     void on_tabelaVendasEfetuadas_cellDoubleClicked(int row, int column);
-
     void on_voltar_compradores_clicked();
-
     void on_criarNovoEvento_clicked();
-
     void on_cancelar_editar_evento_clicked();
-
     void on_confirmar_editar_evento_clicked();
-
     void on_alterar_nome_evento_clicked();
-
     void on_alterar_classe_evento_clicked();
-
     void on_alterar_faixa_evento_clicked();
-
     void on_alterar_cidade_evento_clicked();
-
     void on_alterar_estado_evento_clicked();
+    void on_voltar_edit_apresent_clicked();
+    void on_tabelaEditApresent_cellDoubleClicked(int row, int column);
+    void on_voltar_edit_apresent_unica_clicked();
+    void on_alterar_data_apresent_clicked();
+    void on_alterar_horario_apresent_clicked();
+    void on_alterar_preco_apresent_clicked();
+    void on_alterar_sala_apresent_clicked();
+    void on_confirmar_edit_apresent_clicked();
+    void on_cancelar_criar_evento_clicked();
+    void on_cancelar_nova_apresent_clicked();
+    void on_concluir_nova_apresent_clicked();
+    void on_add_edit_apresent_clicked();
+    void on_finalizar_criar_evento_clicked();
+    void on_add_apresent_criar_evento_clicked();
 
 private:
     Ui::TelaUsuario *ui;
@@ -136,6 +139,7 @@ public slots:
 signals:
     void clicou_ir_cadastrar(EstruturaUsuario, EstruturaCartaoCredito);
     void clicou_excluir_usuario(int);
+    void excluiu_usuario();
     void clicou_confirmar_excluir();
     void clicou_dados_conta(int);
     void clicou_minhas_compras(int);
@@ -152,6 +156,79 @@ signals:
     void clicou_alterar_faixa_evento(string, string);
     void clicou_alterar_cidade_evento(string, string);
     void clicou_alterar_estado_evento(string, string);
+    void clicou_confirmar_editar_evento(string);
+    void clicou_excluir_apresentacao(string);
+    void clicou_alterar_dataApresentacao(string, string);
+    void clicou_alterar_horarioApresentacao(string, string);
+    void clicou_alterar_precoApresentacao(string, string);
+    void clicou_alterar_salaApresentacao(string, string);
+    void clicou_concluir_nova_apresent(EstruturaApresentacao);
+    void clicou_finalizar_criar_evento(EstruturaEvento);
+};
+
+//---------------------------------------
+
+
+namespace Ui {
+class telaEventos;
+}
+
+class telaEventos : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit telaEventos(QWidget *parent = nullptr);
+    ~telaEventos();
+
+private slots:
+    void on_PesquisarEventos_clicked();
+    void on_voltarPesquisaEventos_clicked();
+    void on_irPesquisarEventos_clicked();
+    void on_notificar_situacao(int);
+    void on_tabelaEventosDisp_cellDoubleClicked(int row, int column);
+    void on_voltarEventoApresentacoes_clicked();
+    void on_tabelaApresentacoes_cellDoubleClicked(int row, int column);
+
+private:
+    Ui::telaEventos *ui;
+
+public slots:
+    void mostrar_todos_eventos(list<Evento>);
+    void mostrar_eventos(list<Evento>);
+    void mostre_apresentacoes(list<Apresentacao>);
+
+signals:
+    void pesquisar_por_evento(string);
+    void clicou_tabela_eventos_pesquisados(CodigoEvento);
+    void comprar(CodigoEvento, CodigoApresentacao);
+};
+
+//-----------------------------------------
+
+namespace Ui {
+class telaVendas;
+}
+
+class telaVendas : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit telaVendas(QWidget *parent = nullptr);
+    ~telaVendas();
+
+private:
+    Ui::telaVendas *ui;
+
+public slots:
+    void atualizar_dados(CartaoCredito, Evento, Apresentacao);
+    void mostrar_lista_ingressos(list<Ingresso>);
+private slots:
+    void on_confirmarCompra_clicked();
+    void on_concluirIngressos_clicked();
+signals:
+    void clicouConfirmarCompra(CodigoEvento, CodigoApresentacao);
 };
 
 #endif // MAINWINDOW_H

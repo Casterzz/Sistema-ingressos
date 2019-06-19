@@ -14,12 +14,22 @@ int main(int argc, char *argv[])
     CntrIAAutenticacao cntrIAAutenticacao;
     StubISAutenticacao cntrISAutenticacao;
     StubISUsuario cntrISUsuario;
+    StubISEventos cntrISEventos;
+    StubISVendas cntrISVendas;
     CntrIAUsuario cntrIAUsuario;
+    CntrIAEventos cntrIAEventos;
+    CntrIAVendas cntrIAvendas;
+
 
     cntrGeral.setCntrIAAutenticacao(&cntrIAAutenticacao);
     cntrGeral.setCntrIAUsuario(&cntrIAUsuario);
+    cntrGeral.setCntrIAEventos(&cntrIAEventos);
     cntrIAAutenticacao.setCntrISAutenticacao(&cntrISAutenticacao);
     cntrIAUsuario.setCntrISUsuario(&cntrISUsuario);
+    cntrIAEventos.setCntrISEventos(&cntrISEventos);
+    cntrIAEventos.setCntrIAVendas(&cntrIAvendas);
+    cntrIAvendas.setCntrISVendas(&cntrISVendas);
+
 
     QObject::connect(&telaInicial, SIGNAL (clicou_autenticar()), &cntrGeral, SLOT(executarAutGUI()));
     QObject::connect(&telaInicial, SIGNAL (clicou_conta()), &cntrGeral, SLOT(executarUsuGUI()));

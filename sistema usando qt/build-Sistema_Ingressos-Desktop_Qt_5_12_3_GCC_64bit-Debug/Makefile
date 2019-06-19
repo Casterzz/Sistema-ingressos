@@ -242,7 +242,6 @@ DIST          = /home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/spec_pre.prf 
 		/home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/qt_config.prf \
 		/home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/spec_post.prf \
-		../Sistema_Ingressos/.qmake.stash \
 		/home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/toolchain.prf \
 		/home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/default_pre.prf \
@@ -281,7 +280,7 @@ TARGET        = Sistema_Ingressos
 first: all
 ####### Build rules
 
-Sistema_Ingressos: ui_autenticacao.h ui_mainwindow.h ui_telausuario.h $(OBJECTS)  
+Sistema_Ingressos: ui_autenticacao.h ui_mainwindow.h ui_telaeventos.h ui_telausuario.h ui_telavendas.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../Sistema_Ingressos/Sistema_Ingressos.pro /home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/linux-g++/qmake.conf /home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/spec_pre.prf \
@@ -457,7 +456,6 @@ Makefile: ../Sistema_Ingressos/Sistema_Ingressos.pro /home/castorzaum/Qt/5.12.3/
 		/home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/qt_config.prf \
 		/home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/toolchain.prf \
 		/home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/default_pre.prf \
@@ -655,7 +653,6 @@ Makefile: ../Sistema_Ingressos/Sistema_Ingressos.pro /home/castorzaum/Qt/5.12.3/
 /home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/qt_config.prf:
 /home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 /home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/toolchain.prf:
 /home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/default_pre.prf:
@@ -696,7 +693,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents /home/castorzaum/Qt/5.12.3/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Sistema_Ingressos/controladoras.h ../Sistema_Ingressos/dominios.h ../Sistema_Ingressos/entidades.h ../Sistema_Ingressos/interfaces.h ../Sistema_Ingressos/stubs.h ../Sistema_Ingressos/windows.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../Sistema_Ingressos/controladoras.cpp ../Sistema_Ingressos/dominios.cpp ../Sistema_Ingressos/entidades.cpp ../Sistema_Ingressos/main.cpp ../Sistema_Ingressos/stubs.cpp ../Sistema_Ingressos/windows.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Sistema_Ingressos/autenticacao.ui ../Sistema_Ingressos/mainwindow.ui ../Sistema_Ingressos/telausuario.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Sistema_Ingressos/autenticacao.ui ../Sistema_Ingressos/mainwindow.ui ../Sistema_Ingressos/telaeventos.ui ../Sistema_Ingressos/telausuario.ui ../Sistema_Ingressos/telavendas.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1036,9 +1033,9 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_autenticacao.h ui_mainwindow.h ui_telausuario.h
+compiler_uic_make_all: ui_autenticacao.h ui_mainwindow.h ui_telaeventos.h ui_telausuario.h ui_telavendas.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_autenticacao.h ui_mainwindow.h ui_telausuario.h
+	-$(DEL_FILE) ui_autenticacao.h ui_mainwindow.h ui_telaeventos.h ui_telausuario.h ui_telavendas.h
 ui_autenticacao.h: ../Sistema_Ingressos/autenticacao.ui \
 		/home/castorzaum/Qt/5.12.3/gcc_64/bin/uic
 	/home/castorzaum/Qt/5.12.3/gcc_64/bin/uic ../Sistema_Ingressos/autenticacao.ui -o ui_autenticacao.h
@@ -1047,9 +1044,17 @@ ui_mainwindow.h: ../Sistema_Ingressos/mainwindow.ui \
 		/home/castorzaum/Qt/5.12.3/gcc_64/bin/uic
 	/home/castorzaum/Qt/5.12.3/gcc_64/bin/uic ../Sistema_Ingressos/mainwindow.ui -o ui_mainwindow.h
 
+ui_telaeventos.h: ../Sistema_Ingressos/telaeventos.ui \
+		/home/castorzaum/Qt/5.12.3/gcc_64/bin/uic
+	/home/castorzaum/Qt/5.12.3/gcc_64/bin/uic ../Sistema_Ingressos/telaeventos.ui -o ui_telaeventos.h
+
 ui_telausuario.h: ../Sistema_Ingressos/telausuario.ui \
 		/home/castorzaum/Qt/5.12.3/gcc_64/bin/uic
 	/home/castorzaum/Qt/5.12.3/gcc_64/bin/uic ../Sistema_Ingressos/telausuario.ui -o ui_telausuario.h
+
+ui_telavendas.h: ../Sistema_Ingressos/telavendas.ui \
+		/home/castorzaum/Qt/5.12.3/gcc_64/bin/uic
+	/home/castorzaum/Qt/5.12.3/gcc_64/bin/uic ../Sistema_Ingressos/telavendas.ui -o ui_telavendas.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1494,66 +1499,10 @@ windows.o: ../Sistema_Ingressos/windows.cpp ../Sistema_Ingressos/windows.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QDialog \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qdialog.h \
 		ui_autenticacao.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtCore/QVariant \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QFrame \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qframe.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QLabel \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qlabel.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QLineEdit \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qlineedit.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtGui/qtextcursor.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtGui/qtextformat.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtGui/qpen.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtGui/qtextoption.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QPushButton \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QTextBrowser \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qtextbrowser.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qtextedit.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtGui/qtextdocument.h \
 		ui_mainwindow.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QHBoxLayout \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qboxlayout.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qlayout.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qgridlayout.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QMenuBar \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qmenubar.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qmenu.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qaction.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qactiongroup.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QSpacerItem \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QStatusBar \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qstatusbar.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QVBoxLayout \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QWidget \
 		ui_telausuario.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QFormLayout \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qformlayout.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QLayout \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QGridLayout \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QHeaderView \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qheaderview.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qabstractitemview.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtCore/qabstractitemmodel.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtCore/qitemselectionmodel.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qstyleoption.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtGui/qvalidator.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtCore/qregularexpression.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qslider.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qabstractslider.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qstyle.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qtabbar.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qrubberband.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QStackedWidget \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qstackedwidget.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QTableWidget \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qtablewidget.h \
-		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qtableview.h \
+		ui_telaeventos.h \
+		ui_telavendas.h \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/QMessageBox \
 		/home/castorzaum/Qt/5.12.3/gcc_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windows.o ../Sistema_Ingressos/windows.cpp

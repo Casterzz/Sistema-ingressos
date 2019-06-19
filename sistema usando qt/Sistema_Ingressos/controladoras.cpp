@@ -16,9 +16,6 @@ bool CntrIAAutenticacao::executar_autenticacao(CPF &cpf) throw(runtime_error) {
 }
 
 void CntrIAAutenticacao::logarGUI(QString cpf, QString senha){
-    qDebug() << "CPF: " << cpf;
-    qDebug() << "Senha: " << senha;
-
     this->cpf = cpf.toStdString();
     this->senha = senha.toStdString();
 
@@ -30,7 +27,6 @@ void CntrIAAutenticacao::logarGUI(QString cpf, QString senha){
         senhaInput.setSenha(this->senha);
         emit (notifique_situacao(1));
     } catch (const invalid_argument &exp) {
-        qDebug() << "Erro no formato";
         emit (notifique_situacao(0));
         this->logado = false;
         return;
@@ -44,7 +40,12 @@ void CntrIAAutenticacao::logarGUI(QString cpf, QString senha){
     this->logado = cntrISAutenticacao->autenticar(usuario);
     if (this->logado == true) emit (notifique_situacao(3));
     else emit (notifique_situacao(2));
-    qDebug() << "Logado:" << this->logado;
+}
+
+CPF CntrIAAutenticacao::fornecer_cpf() throw(runtime_error){
+    CPF cpf;
+    cpf.setCPF(this->cpf);
+    return cpf;
 }
 
 bool CntrIAUsuario::executar_autenticado(CPF cpf) throw(runtime_error) {
@@ -52,6 +53,8 @@ bool CntrIAUsuario::executar_autenticado(CPF cpf) throw(runtime_error) {
     Tela.setModal(true);
     logado = true;
     this->cpf = cpf;
+
+    // Início conexões ------------------------------------------------------------------------------------------
 
     QObject::connect(&Tela, SIGNAL (clicou_ir_cadastrar(EstruturaUsuario, EstruturaCartaoCredito)),
                      this, SLOT(executarCadastrarGUI(EstruturaUsuario, EstruturaCartaoCredito)));
@@ -88,8 +91,20 @@ bool CntrIAUsuario::executar_autenticado(CPF cpf) throw(runtime_error) {
     QObject::connect(&Tela, SIGNAL(clicou_alterar_faixa_evento(string, string)), this, SLOT (alterarFaixaEventoGUI(string, string)));
     QObject::connect(&Tela, SIGNAL(clicou_alterar_estado_evento(string, string)), this, SLOT (alterarEstadoEventoGUI(string, string)));
     QObject::connect(&Tela, SIGNAL(clicou_alterar_cidade_evento(string, string)), this, SLOT (alterarCidadeEventoGUI(string, string)));
+    QObject::connect(&Tela, SIGNAL(clicou_confirmar_editar_evento(string)), &Tela, SLOT (inicia_mostrar_apresentacoes_evento(string)));
+    QObject::connect(&Tela, SIGNAL(clicou_alterar_dataApresentacao(string, string)), this, SLOT(alterarDataApresentacaoGUI(string, string)));
+    QObject::connect(&Tela, SIGNAL(clicou_alterar_horarioApresentacao(string, string)), this, SLOT(alterarHorarioApresentacaoGUI(string, string)));
+    QObject::connect(&Tela, SIGNAL(clicou_alterar_precoApresentacao(string, string)), this, SLOT(alterarPrecoApresentacaoGUI(string, string)));
+    QObject::connect(&Tela, SIGNAL(clicou_alterar_salaApresentacao(string, string)), this, SLOT(alterarSalaApresentacaoGUI(string, string)));
+    QObject::connect(&Tela, SIGNAL(clicou_excluir_apresentacao(string)), this, SLOT(excluirApresentacaoGUI(string)));
+    QObject::connect(&Tela, SIGNAL(clicou_concluir_nova_apresent(EstruturaApresentacao)),
+                     this, SLOT(addApresentacaoGUI(EstruturaApresentacao)));
+    QObject::connect(&Tela, SIGNAL(clicou_finalizar_criar_evento(EstruturaEvento)),
+                     this, SLOT(addEventoGUI(EstruturaEvento)));
 
     QObject::connect(this, SIGNAL (notifique_situacao(int)), &Tela, SLOT(on_notificar_situacao(int)));
+
+    // Fim conexões ---------------------------------------------------------------------------------------
 
     Tela.exec();
 
@@ -124,7 +139,6 @@ void CntrIAUsuario::executarCadastrarGUI(EstruturaUsuario estrutura_usuario, Est
         emit (notifique_situacao(1));
     } catch (const invalid_argument &exp) {
         emit (notifique_situacao(0));
-        qDebug() << "Erro no formato";
         return;
     }
 
@@ -151,7 +165,7 @@ void CntrIAUsuario::excluirUsuarioGUI() {
     if (excluiu) {
         this->logado = false;
         emit (notifique_situacao(5));
-    }else emit (notifique_situacao(6));
+    } else emit (notifique_situacao(7));
 }
 
 void CntrIAUsuario::executarDadosContaGUI() {
@@ -219,7 +233,6 @@ void CntrIAUsuario::alterarCartaoGUI(string cartaoNovo) {
 }
 
 void CntrIAUsuario::alterarCartaoCodigoGUI(string cartaoCodigoNovo) {
-    qDebug() << "Entrou alterar cartao codigo";
     Usuario usuario;
     CartaoCredito cartao;
     EstruturaCartaoCredito estruturaCartao;
@@ -241,7 +254,6 @@ void CntrIAUsuario::alterarCartaoCodigoGUI(string cartaoCodigoNovo) {
 }
 
 void CntrIAUsuario::alterarCartaoDataGUI(string cartaoDataNovo) {
-    qDebug() << "Entrou alterar cartao data";
     Usuario usuario;
     CartaoCredito cartao;
     EstruturaCartaoCredito estruturaCartao;
@@ -293,22 +305,17 @@ void CntrIAUsuario::processarMeusEventosGUI(int linha, int coluna) {
     // pega lista de apresentacoes do evento selecionado
     list<Apresentacao> lista_apresentacao = cntrISUsuario->obter_apresentacoes(codigo);
 
-    // implementar sinais de escolha do botão de função
-
     switch (coluna) {
     case 2:
         emit inicia_vendas_efetuadas(estrutura_evento.nome, lista_apresentacao);
-        qDebug() << "Selecionou: Vendas efetuadas";
         break;
 
     case 3:
         emit inicia_editar_evento(estrutura_evento, lista_apresentacao);
-        qDebug() << "Selecionou: Editar";
         break;
 
     case 4:
         emit status_exclusao_evento(cntrISUsuario->excluir_evento(codigo));
-        qDebug() << "Selecionou: Excluir";
         break;
 
     default:
@@ -346,6 +353,7 @@ void CntrIAUsuario::alterarNomeEventoGUI(string novoNome, string codigo_evento) 
         emit (notifique_situacao(19));
     } else {
         emit (notifique_situacao(17));
+
     }
 }
 
@@ -406,7 +414,6 @@ void CntrIAUsuario::alterarFaixaEventoGUI(string novaFaixa, string codigo_evento
 }
 
 void CntrIAUsuario::alterarCidadeEventoGUI(string novaCidade, string codigo_evento) {
-    qDebug() << "entrou aquiiiii";
     CodigoEvento codigo;
     codigo.setCodigo(codigo_evento);
 
@@ -461,3 +468,275 @@ void CntrIAUsuario::alterarEstadoEventoGUI(string novoEstado, string codigo_even
         emit (notifique_situacao(17));
     }
 }
+
+void CntrIAUsuario::alterarDataApresentacaoGUI(string nova_data, string codigo_apresentacao) {
+    CodigoApresentacao codigo;
+    codigo.setCodigo(codigo_apresentacao);
+
+    Data data;
+
+    try {
+        data.setData(nova_data);
+        emit notifique_situacao(23);
+    } catch (const invalid_argument &exp) {
+        emit notifique_situacao(24);
+        return;
+    }
+
+    Apresentacao apresentacao = cntrISUsuario->mostrar_apresentacao(codigo);
+    EstruturaApresentacao estrutura_apresentacao;
+    apresentacao.getApresentacao(&estrutura_apresentacao);
+
+    estrutura_apresentacao.data = nova_data;
+
+    if(!cntrISUsuario->alterar_apresentacao(apresentacao)) {
+        emit (notifique_situacao(21));
+    } else {
+        emit (notifique_situacao(22));
+    }
+}
+
+void CntrIAUsuario::alterarHorarioApresentacaoGUI(string novo_horario, string codigo_apresentacao) {
+    CodigoApresentacao codigo;
+    codigo.setCodigo(codigo_apresentacao);
+
+    Horario horario;
+
+    try {
+        horario.setHorario(novo_horario);
+        emit notifique_situacao(23);
+    } catch (const invalid_argument &exp) {
+        emit notifique_situacao(24);
+        return;
+    }
+
+    Apresentacao apresentacao = cntrISUsuario->mostrar_apresentacao(codigo);
+    EstruturaApresentacao estrutura_apresentacao;
+    apresentacao.getApresentacao(&estrutura_apresentacao);
+
+    estrutura_apresentacao.horario = novo_horario;
+
+    if(!cntrISUsuario->alterar_apresentacao(apresentacao)) {
+        emit (notifique_situacao(21));
+    } else {
+        emit (notifique_situacao(22));
+    }
+}
+
+void CntrIAUsuario::alterarPrecoApresentacaoGUI(string novo_preco, string codigo_apresentacao) {
+    CodigoApresentacao codigo;
+    codigo.setCodigo(codigo_apresentacao);
+
+    Preco preco;
+
+    try {
+        preco.setPreco(novo_preco);
+        emit notifique_situacao(23);
+    } catch (const invalid_argument &exp) {
+        emit notifique_situacao(24);
+        return;
+    }
+
+    Apresentacao apresentacao = cntrISUsuario->mostrar_apresentacao(codigo);
+    EstruturaApresentacao estrutura_apresentacao;
+    apresentacao.getApresentacao(&estrutura_apresentacao);
+
+    estrutura_apresentacao.preco = novo_preco;
+
+    if(!cntrISUsuario->alterar_apresentacao(apresentacao)) {
+        emit (notifique_situacao(21));
+    } else {
+        emit (notifique_situacao(22));
+    }
+}
+
+void CntrIAUsuario::alterarSalaApresentacaoGUI(string nova_sala, string codigo_apresentacao) {
+    CodigoApresentacao codigo;
+    codigo.setCodigo(codigo_apresentacao);
+
+    NumeroSala sala;
+
+    try {
+        sala.setSala(nova_sala);
+        emit notifique_situacao(23);
+    } catch (const invalid_argument &exp) {
+        emit notifique_situacao(24);
+        return;
+    }
+
+    Apresentacao apresentacao = cntrISUsuario->mostrar_apresentacao(codigo);
+    EstruturaApresentacao estrutura_apresentacao;
+    apresentacao.getApresentacao(&estrutura_apresentacao);
+
+    estrutura_apresentacao.sala = nova_sala;
+
+    if(!cntrISUsuario->alterar_apresentacao(apresentacao)) {
+        emit (notifique_situacao(21));
+    } else {
+        emit (notifique_situacao(22));
+    }
+}
+
+void CntrIAUsuario::excluirApresentacaoGUI(string codigo) {
+    CodigoApresentacao codigo_apr;
+    codigo_apr.setCodigo(codigo);
+
+    if (!cntrISUsuario->excluir_apresentacao(codigo_apr)) {
+        emit(notifique_situacao(25));
+    } else {
+        emit(notifique_situacao(26));
+    }
+}
+
+void CntrIAUsuario::addApresentacaoGUI(EstruturaApresentacao estrutura_apresentacao) {
+    estrutura_apresentacao.codigo = cntrISUsuario->gera_codigo_apresentacao();
+    Apresentacao nova_apresent;
+    try {
+        nova_apresent.setApresentacao(estrutura_apresentacao);
+        emit(notifique_situacao(27)); // sinal de adicionando
+    } catch (const invalid_argument(&exp)) {
+        emit(notifique_situacao(28)); // sinal de formato invalido
+        return;
+    }
+
+    if (!cntrISUsuario->add_apresentacao(nova_apresent)) {
+        emit(notifique_situacao(29)); // sinal de falha
+    } else {
+        emit(notifique_situacao(30)); // sinal de sucesso
+    }
+}
+
+void CntrIAUsuario::addEventoGUI(EstruturaEvento estrutura_evento) {
+    estrutura_evento.codigo = cntrISUsuario->gera_codigo_evento();
+    Evento novo_evento;
+    try {
+        novo_evento.setEvento(estrutura_evento);
+        emit(notifique_situacao(31)); // sinal de adicionando
+    } catch (const invalid_argument(&exp)) {
+        emit(notifique_situacao(32)); // sinal de formato invalido
+        return;
+    }
+
+    if (!cntrISUsuario->criar_evento(novo_evento)) {
+        emit(notifique_situacao(33)); // sinal de falha
+    } else {
+        emit(notifique_situacao(34)); // sinal de sucesso
+    }
+}
+
+
+void CntrIAEventos::executar(CPF cpf, bool logado) throw(runtime_error) {
+    this->logado = logado;
+    this->cpf = cpf.getCPF();
+
+    telaEventos Tela;
+    Tela.setModal(true);
+
+    QObject::connect(this, SIGNAL (notifique_situacao(int)),&Tela, SLOT(on_notificar_situacao(int)));
+    QObject::connect(this, SIGNAL (mostre_todos_eventos(list<Evento>)),&Tela, SLOT(mostrar_todos_eventos(list<Evento>)));
+    QObject::connect(this, SIGNAL (mostre_eventos(list<Evento>)),&Tela, SLOT(mostrar_eventos(list<Evento>)));
+    QObject::connect(&Tela, SIGNAL (pesquisar_por_evento(string)),
+                                    this, SLOT(executarMostrarEventosEspGUI(string)));
+    QObject::connect(&Tela, SIGNAL (clicou_tabela_eventos_pesquisados(CodigoEvento)),
+                                    this, SLOT(processarApresentacoesGUI(CodigoEvento)));
+    QObject::connect(this, SIGNAL (inicia_apresentacoes_disponiveis(list<Apresentacao>)),
+                                    &Tela, SLOT(mostre_apresentacoes(list<Apresentacao>)));
+    QObject::connect(&Tela, SIGNAL (comprar(CodigoEvento, CodigoApresentacao)),
+                                   this, SLOT(pre_compra(CodigoEvento, CodigoApresentacao)));
+
+    executarMostrarEventosGUI();
+    Tela.exec();
+}
+
+void CntrIAEventos::executarMostrarEventosGUI() {
+    list<Evento> lista;
+    lista = cntrISEventos->pesquisar_todos_eventos();
+    emit mostre_todos_eventos(lista);
+}
+
+void CntrIAEventos::executarMostrarEventosEspGUI(string pesquisa) {
+    list<Evento> lista;
+    NomeEvento nome;
+    ClasseEvento classe;
+    FaixaEtaria faixa;
+    Estado estado;
+    int tipo = 0;
+
+    try {
+        nome.setNome(pesquisa);
+        tipo = 1;
+    } catch (const invalid_argument &exp) {
+        try {
+            classe.setClasseEvento(pesquisa);
+            tipo = 2;
+        } catch (const invalid_argument &exp) {
+            try {
+                faixa.setFaixa(pesquisa);
+                tipo = 3;
+            } catch (const invalid_argument &exp) {
+                try {
+                    estado.setEstado(pesquisa);
+                    tipo = 4;
+                } catch (const invalid_argument &exp) {
+                    emit (notifique_situacao(0));
+                    return;
+                }
+            }
+        }
+    }
+
+    lista = cntrISEventos->pesquisar_eventos(pesquisa, tipo);
+    emit mostre_eventos(lista);
+}
+
+void CntrIAEventos::processarApresentacoesGUI(CodigoEvento codigo) {
+
+    list<Apresentacao> lista_apresentacao = cntrISEventos->obter_apresentacoes(codigo);
+    emit inicia_apresentacoes_disponiveis(lista_apresentacao);
+}
+
+void CntrIAEventos::pre_compra(CodigoEvento codigoEvento, CodigoApresentacao codigoApresentacao) {
+    if (logado == false) {
+        emit (notifique_situacao(1));
+    } else {
+        CPF cpf;
+        cpf.setCPF(this->cpf);
+        cntrIAVendas->executar(cpf, codigoEvento, codigoApresentacao);
+    }
+}
+
+//-----------------------------------------
+
+void CntrIAVendas::executar(CPF cpf, CodigoEvento codigoEvento, CodigoApresentacao codigoApresentacao) throw(runtime_error) {
+    telaVendas Tela;
+    Tela.setModal(true);
+
+    QObject::connect(this, SIGNAL (atualize_dados(CartaoCredito, Evento, Apresentacao)),
+                                    &Tela, SLOT(atualizar_dados(CartaoCredito, Evento, Apresentacao)));
+    QObject::connect(&Tela, SIGNAL (clicouConfirmarCompra(CodigoEvento, CodigoApresentacao)),
+                                    this, SLOT(executarCompraGUI(CodigoEvento, CodigoApresentacao)));
+    QObject::connect(this, SIGNAL (lista_ingressos_adquiridos(list<Ingresso>)),
+                                    &Tela, SLOT(mostrar_lista_ingressos(list<Ingresso>)));
+
+    executarMostrarDadosGUI(cpf, codigoEvento, codigoApresentacao);
+    Tela.exec();
+}
+
+void CntrIAVendas::executarMostrarDadosGUI(CPF cpf, CodigoEvento codigoEvento, CodigoApresentacao codigoApresentacao) {
+    CartaoCredito cartao;
+    Evento evento;
+    Apresentacao apresentacao;
+    cartao = cntrISVendas->obterCartao(cpf);
+    evento = cntrISVendas->obterEvento(codigoEvento);
+    apresentacao = cntrISVendas->obterApresentacao(codigoApresentacao);
+    emit atualize_dados(cartao, evento, apresentacao);
+}
+
+void CntrIAVendas::executarCompraGUI(CodigoEvento codigoEvento, CodigoApresentacao codigoApresentacao) {
+    list<Ingresso> lista;
+    lista = cntrISVendas->atualizar_apresentacao(codigoEvento, codigoApresentacao);
+    emit lista_ingressos_adquiridos(lista);
+}
+
+
+

@@ -31,8 +31,36 @@ public:
     list<Apresentacao> obter_apresentacoes(CodigoEvento) throw(runtime_error);
     list<CPF> obter_compradores(CodigoApresentacao) throw(runtime_error);
     bool excluir_evento(CodigoEvento) throw(runtime_error);
+    bool excluir_apresentacao(CodigoApresentacao) throw(runtime_error);
     Evento mostrar_evento(CodigoEvento) throw(runtime_error);
+    Apresentacao mostrar_apresentacao(CodigoApresentacao) throw(runtime_error);
     bool alterar_evento(Evento) throw(runtime_error);
+    bool alterar_apresentacao(Apresentacao) throw(runtime_error);
+    bool criar_evento(Evento) throw(runtime_error);
+    bool add_apresentacao(Apresentacao) throw(runtime_error);
+    string gera_codigo_evento() throw(runtime_error);
+    string gera_codigo_apresentacao() throw(runtime_error);
+};
+
+class StubISEventos:public QObject, public ISEventos{
+
+    Q_OBJECT
+
+public:
+    list<Evento> pesquisar_todos_eventos() throw(runtime_error);
+    list<Evento> pesquisar_eventos(string, int) throw(runtime_error);
+    list<Apresentacao> obter_apresentacoes(CodigoEvento) throw(runtime_error);
+};
+
+class StubISVendas:public QObject, public ISVendas{
+
+    Q_OBJECT
+
+public:
+    CartaoCredito obterCartao(CPF) throw(runtime_error);
+    list<Ingresso> atualizar_apresentacao(CodigoEvento, CodigoApresentacao) throw(runtime_error);
+    Apresentacao obterApresentacao(CodigoApresentacao) throw(runtime_error);
+    Evento obterEvento(CodigoEvento) throw(runtime_error);
 };
 
 #endif // STUBS_H

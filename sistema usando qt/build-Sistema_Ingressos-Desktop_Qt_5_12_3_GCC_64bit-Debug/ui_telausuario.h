@@ -32,7 +32,6 @@ QT_BEGIN_NAMESPACE
 class Ui_TelaUsuario
 {
 public:
-    QVBoxLayout *verticalLayout;
     QStackedWidget *stackedWidget;
     QWidget *usuario;
     QLabel *label;
@@ -157,21 +156,83 @@ public:
     QTextBrowser *status_editar_evento;
     QLabel *label_18;
     QLabel *codigo_evento_editar;
+    QWidget *apresentacoesEvento;
+    QLabel *label_19;
+    QTableWidget *tabelaEditApresent;
+    QPushButton *add_edit_apresent;
+    QPushButton *voltar_edit_apresent;
+    QPushButton *confirmar_edit_apresent;
+    QWidget *editarApresentacao;
+    QLabel *label_20;
+    QPushButton *voltar_edit_apresent_unica;
+    QTextBrowser *status_edit_apresent;
+    QWidget *layoutWidget6;
+    QVBoxLayout *verticalLayout_12;
+    QLineEdit *caixa_data_apresent;
+    QLineEdit *caixa_horario_apresent;
+    QLineEdit *caixa_preco_apresent;
+    QLineEdit *caixa_sala_apresent;
+    QWidget *layoutWidget7;
+    QVBoxLayout *verticalLayout_13;
+    QPushButton *alterar_data_apresent;
+    QPushButton *alterar_horario_apresent;
+    QPushButton *alterar_preco_apresent;
+    QPushButton *alterar_sala_apresent;
+    QWidget *layoutWidget8;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *label_22;
+    QLabel *label_codigo_apresent_edit;
+    QWidget *criarEvento;
+    QLabel *label_23;
+    QPushButton *add_apresent_criar_evento;
+    QPushButton *finalizar_criar_evento;
+    QPushButton *cancelar_criar_evento;
+    QTextBrowser *status_criar_evento;
+    QWidget *layoutWidget9;
+    QHBoxLayout *horizontalLayout_7;
+    QVBoxLayout *verticalLayout_14;
+    QLabel *label_24;
+    QLabel *label_25;
+    QLabel *label_26;
+    QLabel *label_27;
+    QLabel *label_28;
+    QVBoxLayout *verticalLayout_15;
+    QLineEdit *caixa_nome_novo_evento;
+    QLineEdit *caixa_classe_novo_evento;
+    QLineEdit *caixa_faixa_novo_evento;
+    QLineEdit *caixa_estado_novo_evento;
+    QLineEdit *caixa_cidade_novo_evento;
+    QWidget *addApresentacao;
+    QLabel *label_29;
+    QPushButton *concluir_nova_apresent;
+    QPushButton *cancelar_nova_apresent;
+    QTextBrowser *status_nova_apresent;
+    QWidget *layoutWidget10;
+    QHBoxLayout *horizontalLayout_9;
+    QVBoxLayout *verticalLayout_16;
+    QLabel *label_30;
+    QLabel *label_31;
+    QLabel *label_32;
+    QLabel *label_33;
+    QVBoxLayout *verticalLayout_17;
+    QLineEdit *caixa_data_nova_apresent;
+    QLineEdit *caixa_horario_nova_apresent;
+    QLineEdit *caixa_preco_nova_apresent;
+    QLineEdit *caixa_sala_nova_apresent;
 
     void setupUi(QDialog *TelaUsuario)
     {
         if (TelaUsuario->objectName().isEmpty())
             TelaUsuario->setObjectName(QString::fromUtf8("TelaUsuario"));
         TelaUsuario->resize(600, 450);
-        verticalLayout = new QVBoxLayout(TelaUsuario);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         stackedWidget = new QStackedWidget(TelaUsuario);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
+        stackedWidget->setGeometry(QRect(10, 10, 582, 431));
         usuario = new QWidget();
         usuario->setObjectName(QString::fromUtf8("usuario"));
         label = new QLabel(usuario);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(261, 0, 61, 20));
+        label->setGeometry(QRect(270, 0, 61, 20));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -547,7 +608,7 @@ public:
 
         layoutWidget3 = new QWidget(dados);
         layoutWidget3->setObjectName(QString::fromUtf8("layoutWidget3"));
-        layoutWidget3->setGeometry(QRect(12, 70, 331, 151));
+        layoutWidget3->setGeometry(QRect(10, 70, 331, 151));
         verticalLayout_6 = new QVBoxLayout(layoutWidget3);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         verticalLayout_6->setContentsMargins(0, 0, 0, 0);
@@ -733,12 +794,12 @@ public:
         editarEvento->setObjectName(QString::fromUtf8("editarEvento"));
         label_21 = new QLabel(editarEvento);
         label_21->setObjectName(QString::fromUtf8("label_21"));
-        label_21->setGeometry(QRect(245, 9, 92, 17));
+        label_21->setGeometry(QRect(260, 10, 92, 17));
         sizePolicy.setHeightForWidth(label_21->sizePolicy().hasHeightForWidth());
         label_21->setSizePolicy(sizePolicy);
         confirmar_editar_evento = new QPushButton(editarEvento);
         confirmar_editar_evento->setObjectName(QString::fromUtf8("confirmar_editar_evento"));
-        confirmar_editar_evento->setGeometry(QRect(9, 367, 238, 25));
+        confirmar_editar_evento->setGeometry(QRect(9, 367, 231, 25));
         cancelar_editar_evento = new QPushButton(editarEvento);
         cancelar_editar_evento->setObjectName(QString::fromUtf8("cancelar_editar_evento"));
         cancelar_editar_evento->setGeometry(QRect(9, 398, 80, 25));
@@ -840,14 +901,298 @@ public:
         codigo_evento_editar->setObjectName(QString::fromUtf8("codigo_evento_editar"));
         codigo_evento_editar->setGeometry(QRect(100, 40, 67, 17));
         stackedWidget->addWidget(editarEvento);
+        apresentacoesEvento = new QWidget();
+        apresentacoesEvento->setObjectName(QString::fromUtf8("apresentacoesEvento"));
+        label_19 = new QLabel(apresentacoesEvento);
+        label_19->setObjectName(QString::fromUtf8("label_19"));
+        label_19->setGeometry(QRect(190, 10, 181, 16));
+        tabelaEditApresent = new QTableWidget(apresentacoesEvento);
+        if (tabelaEditApresent->columnCount() < 4)
+            tabelaEditApresent->setColumnCount(4);
+        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
+        tabelaEditApresent->setHorizontalHeaderItem(0, __qtablewidgetitem12);
+        QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
+        tabelaEditApresent->setHorizontalHeaderItem(1, __qtablewidgetitem13);
+        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
+        tabelaEditApresent->setHorizontalHeaderItem(2, __qtablewidgetitem14);
+        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
+        tabelaEditApresent->setHorizontalHeaderItem(3, __qtablewidgetitem15);
+        tabelaEditApresent->setObjectName(QString::fromUtf8("tabelaEditApresent"));
+        tabelaEditApresent->setGeometry(QRect(9, 38, 561, 341));
+        QSizePolicy sizePolicy9(QSizePolicy::Expanding, QSizePolicy::Minimum);
+        sizePolicy9.setHorizontalStretch(0);
+        sizePolicy9.setVerticalStretch(0);
+        sizePolicy9.setHeightForWidth(tabelaEditApresent->sizePolicy().hasHeightForWidth());
+        tabelaEditApresent->setSizePolicy(sizePolicy9);
+        add_edit_apresent = new QPushButton(apresentacoesEvento);
+        add_edit_apresent->setObjectName(QString::fromUtf8("add_edit_apresent"));
+        add_edit_apresent->setGeometry(QRect(230, 210, 181, 23));
+        sizePolicy2.setHeightForWidth(add_edit_apresent->sizePolicy().hasHeightForWidth());
+        add_edit_apresent->setSizePolicy(sizePolicy2);
+        voltar_edit_apresent = new QPushButton(apresentacoesEvento);
+        voltar_edit_apresent->setObjectName(QString::fromUtf8("voltar_edit_apresent"));
+        voltar_edit_apresent->setGeometry(QRect(9, 400, 211, 23));
+        sizePolicy8.setHeightForWidth(voltar_edit_apresent->sizePolicy().hasHeightForWidth());
+        voltar_edit_apresent->setSizePolicy(sizePolicy8);
+        confirmar_edit_apresent = new QPushButton(apresentacoesEvento);
+        confirmar_edit_apresent->setObjectName(QString::fromUtf8("confirmar_edit_apresent"));
+        confirmar_edit_apresent->setGeometry(QRect(410, 400, 161, 23));
+        sizePolicy2.setHeightForWidth(confirmar_edit_apresent->sizePolicy().hasHeightForWidth());
+        confirmar_edit_apresent->setSizePolicy(sizePolicy2);
+        stackedWidget->addWidget(apresentacoesEvento);
+        add_edit_apresent->raise();
+        label_19->raise();
+        tabelaEditApresent->raise();
+        voltar_edit_apresent->raise();
+        confirmar_edit_apresent->raise();
+        editarApresentacao = new QWidget();
+        editarApresentacao->setObjectName(QString::fromUtf8("editarApresentacao"));
+        label_20 = new QLabel(editarApresentacao);
+        label_20->setObjectName(QString::fromUtf8("label_20"));
+        label_20->setGeometry(QRect(250, 10, 151, 16));
+        voltar_edit_apresent_unica = new QPushButton(editarApresentacao);
+        voltar_edit_apresent_unica->setObjectName(QString::fromUtf8("voltar_edit_apresent_unica"));
+        voltar_edit_apresent_unica->setGeometry(QRect(20, 390, 121, 23));
+        status_edit_apresent = new QTextBrowser(editarApresentacao);
+        status_edit_apresent->setObjectName(QString::fromUtf8("status_edit_apresent"));
+        status_edit_apresent->setGeometry(QRect(20, 250, 541, 91));
+        layoutWidget6 = new QWidget(editarApresentacao);
+        layoutWidget6->setObjectName(QString::fromUtf8("layoutWidget6"));
+        layoutWidget6->setGeometry(QRect(120, 70, 231, 151));
+        verticalLayout_12 = new QVBoxLayout(layoutWidget6);
+        verticalLayout_12->setObjectName(QString::fromUtf8("verticalLayout_12"));
+        verticalLayout_12->setContentsMargins(0, 0, 0, 0);
+        caixa_data_apresent = new QLineEdit(layoutWidget6);
+        caixa_data_apresent->setObjectName(QString::fromUtf8("caixa_data_apresent"));
 
-        verticalLayout->addWidget(stackedWidget);
+        verticalLayout_12->addWidget(caixa_data_apresent);
 
+        caixa_horario_apresent = new QLineEdit(layoutWidget6);
+        caixa_horario_apresent->setObjectName(QString::fromUtf8("caixa_horario_apresent"));
+
+        verticalLayout_12->addWidget(caixa_horario_apresent);
+
+        caixa_preco_apresent = new QLineEdit(layoutWidget6);
+        caixa_preco_apresent->setObjectName(QString::fromUtf8("caixa_preco_apresent"));
+
+        verticalLayout_12->addWidget(caixa_preco_apresent);
+
+        caixa_sala_apresent = new QLineEdit(layoutWidget6);
+        caixa_sala_apresent->setObjectName(QString::fromUtf8("caixa_sala_apresent"));
+
+        verticalLayout_12->addWidget(caixa_sala_apresent);
+
+        layoutWidget7 = new QWidget(editarApresentacao);
+        layoutWidget7->setObjectName(QString::fromUtf8("layoutWidget7"));
+        layoutWidget7->setGeometry(QRect(360, 70, 113, 151));
+        verticalLayout_13 = new QVBoxLayout(layoutWidget7);
+        verticalLayout_13->setObjectName(QString::fromUtf8("verticalLayout_13"));
+        verticalLayout_13->setContentsMargins(0, 0, 0, 0);
+        alterar_data_apresent = new QPushButton(layoutWidget7);
+        alterar_data_apresent->setObjectName(QString::fromUtf8("alterar_data_apresent"));
+        sizePolicy8.setHeightForWidth(alterar_data_apresent->sizePolicy().hasHeightForWidth());
+        alterar_data_apresent->setSizePolicy(sizePolicy8);
+
+        verticalLayout_13->addWidget(alterar_data_apresent);
+
+        alterar_horario_apresent = new QPushButton(layoutWidget7);
+        alterar_horario_apresent->setObjectName(QString::fromUtf8("alterar_horario_apresent"));
+        sizePolicy8.setHeightForWidth(alterar_horario_apresent->sizePolicy().hasHeightForWidth());
+        alterar_horario_apresent->setSizePolicy(sizePolicy8);
+
+        verticalLayout_13->addWidget(alterar_horario_apresent);
+
+        alterar_preco_apresent = new QPushButton(layoutWidget7);
+        alterar_preco_apresent->setObjectName(QString::fromUtf8("alterar_preco_apresent"));
+        sizePolicy8.setHeightForWidth(alterar_preco_apresent->sizePolicy().hasHeightForWidth());
+        alterar_preco_apresent->setSizePolicy(sizePolicy8);
+
+        verticalLayout_13->addWidget(alterar_preco_apresent);
+
+        alterar_sala_apresent = new QPushButton(layoutWidget7);
+        alterar_sala_apresent->setObjectName(QString::fromUtf8("alterar_sala_apresent"));
+        sizePolicy8.setHeightForWidth(alterar_sala_apresent->sizePolicy().hasHeightForWidth());
+        alterar_sala_apresent->setSizePolicy(sizePolicy8);
+
+        verticalLayout_13->addWidget(alterar_sala_apresent);
+
+        layoutWidget8 = new QWidget(editarApresentacao);
+        layoutWidget8->setObjectName(QString::fromUtf8("layoutWidget8"));
+        layoutWidget8->setGeometry(QRect(120, 40, 127, 19));
+        horizontalLayout_6 = new QHBoxLayout(layoutWidget8);
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
+        label_22 = new QLabel(layoutWidget8);
+        label_22->setObjectName(QString::fromUtf8("label_22"));
+
+        horizontalLayout_6->addWidget(label_22);
+
+        label_codigo_apresent_edit = new QLabel(layoutWidget8);
+        label_codigo_apresent_edit->setObjectName(QString::fromUtf8("label_codigo_apresent_edit"));
+
+        horizontalLayout_6->addWidget(label_codigo_apresent_edit);
+
+        stackedWidget->addWidget(editarApresentacao);
+        criarEvento = new QWidget();
+        criarEvento->setObjectName(QString::fromUtf8("criarEvento"));
+        label_23 = new QLabel(criarEvento);
+        label_23->setObjectName(QString::fromUtf8("label_23"));
+        label_23->setGeometry(QRect(260, 20, 91, 16));
+        add_apresent_criar_evento = new QPushButton(criarEvento);
+        add_apresent_criar_evento->setObjectName(QString::fromUtf8("add_apresent_criar_evento"));
+        add_apresent_criar_evento->setGeometry(QRect(394, 360, 171, 23));
+        finalizar_criar_evento = new QPushButton(criarEvento);
+        finalizar_criar_evento->setObjectName(QString::fromUtf8("finalizar_criar_evento"));
+        finalizar_criar_evento->setGeometry(QRect(20, 360, 75, 23));
+        cancelar_criar_evento = new QPushButton(criarEvento);
+        cancelar_criar_evento->setObjectName(QString::fromUtf8("cancelar_criar_evento"));
+        cancelar_criar_evento->setGeometry(QRect(20, 390, 75, 23));
+        status_criar_evento = new QTextBrowser(criarEvento);
+        status_criar_evento->setObjectName(QString::fromUtf8("status_criar_evento"));
+        status_criar_evento->setGeometry(QRect(30, 240, 521, 101));
+        layoutWidget9 = new QWidget(criarEvento);
+        layoutWidget9->setObjectName(QString::fromUtf8("layoutWidget9"));
+        layoutWidget9->setGeometry(QRect(110, 50, 371, 161));
+        horizontalLayout_7 = new QHBoxLayout(layoutWidget9);
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
+        horizontalLayout_7->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_14 = new QVBoxLayout();
+        verticalLayout_14->setObjectName(QString::fromUtf8("verticalLayout_14"));
+        label_24 = new QLabel(layoutWidget9);
+        label_24->setObjectName(QString::fromUtf8("label_24"));
+
+        verticalLayout_14->addWidget(label_24);
+
+        label_25 = new QLabel(layoutWidget9);
+        label_25->setObjectName(QString::fromUtf8("label_25"));
+
+        verticalLayout_14->addWidget(label_25);
+
+        label_26 = new QLabel(layoutWidget9);
+        label_26->setObjectName(QString::fromUtf8("label_26"));
+
+        verticalLayout_14->addWidget(label_26);
+
+        label_27 = new QLabel(layoutWidget9);
+        label_27->setObjectName(QString::fromUtf8("label_27"));
+
+        verticalLayout_14->addWidget(label_27);
+
+        label_28 = new QLabel(layoutWidget9);
+        label_28->setObjectName(QString::fromUtf8("label_28"));
+
+        verticalLayout_14->addWidget(label_28);
+
+
+        horizontalLayout_7->addLayout(verticalLayout_14);
+
+        verticalLayout_15 = new QVBoxLayout();
+        verticalLayout_15->setObjectName(QString::fromUtf8("verticalLayout_15"));
+        caixa_nome_novo_evento = new QLineEdit(layoutWidget9);
+        caixa_nome_novo_evento->setObjectName(QString::fromUtf8("caixa_nome_novo_evento"));
+
+        verticalLayout_15->addWidget(caixa_nome_novo_evento);
+
+        caixa_classe_novo_evento = new QLineEdit(layoutWidget9);
+        caixa_classe_novo_evento->setObjectName(QString::fromUtf8("caixa_classe_novo_evento"));
+
+        verticalLayout_15->addWidget(caixa_classe_novo_evento);
+
+        caixa_faixa_novo_evento = new QLineEdit(layoutWidget9);
+        caixa_faixa_novo_evento->setObjectName(QString::fromUtf8("caixa_faixa_novo_evento"));
+
+        verticalLayout_15->addWidget(caixa_faixa_novo_evento);
+
+        caixa_estado_novo_evento = new QLineEdit(layoutWidget9);
+        caixa_estado_novo_evento->setObjectName(QString::fromUtf8("caixa_estado_novo_evento"));
+
+        verticalLayout_15->addWidget(caixa_estado_novo_evento);
+
+        caixa_cidade_novo_evento = new QLineEdit(layoutWidget9);
+        caixa_cidade_novo_evento->setObjectName(QString::fromUtf8("caixa_cidade_novo_evento"));
+
+        verticalLayout_15->addWidget(caixa_cidade_novo_evento);
+
+
+        horizontalLayout_7->addLayout(verticalLayout_15);
+
+        stackedWidget->addWidget(criarEvento);
+        addApresentacao = new QWidget();
+        addApresentacao->setObjectName(QString::fromUtf8("addApresentacao"));
+        label_29 = new QLabel(addApresentacao);
+        label_29->setObjectName(QString::fromUtf8("label_29"));
+        label_29->setGeometry(QRect(210, 20, 171, 16));
+        concluir_nova_apresent = new QPushButton(addApresentacao);
+        concluir_nova_apresent->setObjectName(QString::fromUtf8("concluir_nova_apresent"));
+        concluir_nova_apresent->setGeometry(QRect(20, 360, 171, 23));
+        cancelar_nova_apresent = new QPushButton(addApresentacao);
+        cancelar_nova_apresent->setObjectName(QString::fromUtf8("cancelar_nova_apresent"));
+        cancelar_nova_apresent->setGeometry(QRect(20, 390, 75, 23));
+        status_nova_apresent = new QTextBrowser(addApresentacao);
+        status_nova_apresent->setObjectName(QString::fromUtf8("status_nova_apresent"));
+        status_nova_apresent->setGeometry(QRect(30, 240, 521, 101));
+        layoutWidget10 = new QWidget(addApresentacao);
+        layoutWidget10->setObjectName(QString::fromUtf8("layoutWidget10"));
+        layoutWidget10->setGeometry(QRect(120, 80, 341, 122));
+        horizontalLayout_9 = new QHBoxLayout(layoutWidget10);
+        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
+        horizontalLayout_9->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_16 = new QVBoxLayout();
+        verticalLayout_16->setObjectName(QString::fromUtf8("verticalLayout_16"));
+        label_30 = new QLabel(layoutWidget10);
+        label_30->setObjectName(QString::fromUtf8("label_30"));
+
+        verticalLayout_16->addWidget(label_30);
+
+        label_31 = new QLabel(layoutWidget10);
+        label_31->setObjectName(QString::fromUtf8("label_31"));
+
+        verticalLayout_16->addWidget(label_31);
+
+        label_32 = new QLabel(layoutWidget10);
+        label_32->setObjectName(QString::fromUtf8("label_32"));
+
+        verticalLayout_16->addWidget(label_32);
+
+        label_33 = new QLabel(layoutWidget10);
+        label_33->setObjectName(QString::fromUtf8("label_33"));
+
+        verticalLayout_16->addWidget(label_33);
+
+
+        horizontalLayout_9->addLayout(verticalLayout_16);
+
+        verticalLayout_17 = new QVBoxLayout();
+        verticalLayout_17->setObjectName(QString::fromUtf8("verticalLayout_17"));
+        caixa_data_nova_apresent = new QLineEdit(layoutWidget10);
+        caixa_data_nova_apresent->setObjectName(QString::fromUtf8("caixa_data_nova_apresent"));
+
+        verticalLayout_17->addWidget(caixa_data_nova_apresent);
+
+        caixa_horario_nova_apresent = new QLineEdit(layoutWidget10);
+        caixa_horario_nova_apresent->setObjectName(QString::fromUtf8("caixa_horario_nova_apresent"));
+
+        verticalLayout_17->addWidget(caixa_horario_nova_apresent);
+
+        caixa_preco_nova_apresent = new QLineEdit(layoutWidget10);
+        caixa_preco_nova_apresent->setObjectName(QString::fromUtf8("caixa_preco_nova_apresent"));
+
+        verticalLayout_17->addWidget(caixa_preco_nova_apresent);
+
+        caixa_sala_nova_apresent = new QLineEdit(layoutWidget10);
+        caixa_sala_nova_apresent->setObjectName(QString::fromUtf8("caixa_sala_nova_apresent"));
+
+        verticalLayout_17->addWidget(caixa_sala_nova_apresent);
+
+
+        horizontalLayout_9->addLayout(verticalLayout_17);
+
+        stackedWidget->addWidget(addApresentacao);
 
         retranslateUi(TelaUsuario);
         QObject::connect(Voltar, SIGNAL(clicked()), TelaUsuario, SLOT(close()));
 
-        stackedWidget->setCurrentIndex(5);
+        stackedWidget->setCurrentIndex(9);
 
 
         QMetaObject::connectSlotsByName(TelaUsuario);
@@ -916,7 +1261,7 @@ public:
         ___qtablewidgetitem7->setText(QApplication::translate("TelaUsuario", "Usu\303\241rio", nullptr));
         voltar_compradores->setText(QApplication::translate("TelaUsuario", "Voltar", nullptr));
         label_21->setText(QApplication::translate("TelaUsuario", "Editar Evento", nullptr));
-        confirmar_editar_evento->setText(QApplication::translate("TelaUsuario", "Confirmar e ir para apresenta\303\247\303\265es", nullptr));
+        confirmar_editar_evento->setText(QApplication::translate("TelaUsuario", "Ir para edi\303\247\303\243o de apresenta\303\247\303\265es", nullptr));
         cancelar_editar_evento->setText(QApplication::translate("TelaUsuario", "Cancelar", nullptr));
         caixa_nome_evento->setText(QApplication::translate("TelaUsuario", "//Nome do evento//", nullptr));
         caixa_classe_evento->setText(QApplication::translate("TelaUsuario", "//Classe do Evento//", nullptr));
@@ -930,6 +1275,38 @@ public:
         alterar_estado_evento->setText(QApplication::translate("TelaUsuario", "Alterar Estado", nullptr));
         label_18->setText(QApplication::translate("TelaUsuario", "C\303\263digo:", nullptr));
         codigo_evento_editar->setText(QApplication::translate("TelaUsuario", "TextLabel", nullptr));
+        label_19->setText(QApplication::translate("TelaUsuario", "Apresenta\303\247\303\265es do Evento", nullptr));
+        QTableWidgetItem *___qtablewidgetitem8 = tabelaEditApresent->horizontalHeaderItem(0);
+        ___qtablewidgetitem8->setText(QApplication::translate("TelaUsuario", "C\303\263digo", nullptr));
+        QTableWidgetItem *___qtablewidgetitem9 = tabelaEditApresent->horizontalHeaderItem(1);
+        ___qtablewidgetitem9->setText(QApplication::translate("TelaUsuario", "Apresenta\303\247\303\243o", nullptr));
+        add_edit_apresent->setText(QApplication::translate("TelaUsuario", "Adicionar Apresenta\303\247\303\243o", nullptr));
+        voltar_edit_apresent->setText(QApplication::translate("TelaUsuario", "Voltar para edi\303\247\303\243o do evento", nullptr));
+        confirmar_edit_apresent->setText(QApplication::translate("TelaUsuario", "Confirmar Altera\303\247\303\265es", nullptr));
+        label_20->setText(QApplication::translate("TelaUsuario", "Editar Apresenta\303\247\303\243o", nullptr));
+        voltar_edit_apresent_unica->setText(QApplication::translate("TelaUsuario", "Voltar", nullptr));
+        alterar_data_apresent->setText(QApplication::translate("TelaUsuario", "Alterar Data", nullptr));
+        alterar_horario_apresent->setText(QApplication::translate("TelaUsuario", "Alterar Hor\303\241rio", nullptr));
+        alterar_preco_apresent->setText(QApplication::translate("TelaUsuario", "Alterar Pre\303\247o", nullptr));
+        alterar_sala_apresent->setText(QApplication::translate("TelaUsuario", "Alterar Sala", nullptr));
+        label_22->setText(QApplication::translate("TelaUsuario", "C\303\263digo:", nullptr));
+        label_codigo_apresent_edit->setText(QApplication::translate("TelaUsuario", "TextLabel", nullptr));
+        label_23->setText(QApplication::translate("TelaUsuario", "Criar evento", nullptr));
+        add_apresent_criar_evento->setText(QApplication::translate("TelaUsuario", "Adicionar Apresenta\303\247\303\243o", nullptr));
+        finalizar_criar_evento->setText(QApplication::translate("TelaUsuario", "Finalizar", nullptr));
+        cancelar_criar_evento->setText(QApplication::translate("TelaUsuario", "Cancelar", nullptr));
+        label_24->setText(QApplication::translate("TelaUsuario", "Nome:", nullptr));
+        label_25->setText(QApplication::translate("TelaUsuario", "Classe:", nullptr));
+        label_26->setText(QApplication::translate("TelaUsuario", "Faixa Et\303\241ria:", nullptr));
+        label_27->setText(QApplication::translate("TelaUsuario", "Estado:", nullptr));
+        label_28->setText(QApplication::translate("TelaUsuario", "Cidade:", nullptr));
+        label_29->setText(QApplication::translate("TelaUsuario", "Adicionar Apresenta\303\247\303\243o", nullptr));
+        concluir_nova_apresent->setText(QApplication::translate("TelaUsuario", "Concluir Apresenta\303\247\303\243o", nullptr));
+        cancelar_nova_apresent->setText(QApplication::translate("TelaUsuario", "Cancelar", nullptr));
+        label_30->setText(QApplication::translate("TelaUsuario", "Data:", nullptr));
+        label_31->setText(QApplication::translate("TelaUsuario", "Hor\303\241rio:", nullptr));
+        label_32->setText(QApplication::translate("TelaUsuario", "Pre\303\247o:", nullptr));
+        label_33->setText(QApplication::translate("TelaUsuario", "Sala:", nullptr));
     } // retranslateUi
 
 };

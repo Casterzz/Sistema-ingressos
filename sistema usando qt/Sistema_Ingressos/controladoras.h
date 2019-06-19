@@ -3,7 +3,6 @@
 
 #include "interfaces.h"
 #include "dominios.h"
-//#include "windows.h"
 #include <QApplication>
 #include <QDebug>
 #include <string>
@@ -53,6 +52,9 @@ void inline CntrGeral::setCntrIAUsuario(IAUsuario *cntrIAUsuario) {
 
 void inline CntrGeral::executarAutGUI() {
     logado = cntrIAAutenticacao->executar_autenticacao(cpf);
+    if (logado) {
+        cpf = cntrIAAutenticacao->fornecer_cpf();
+    }
     emit altere_statusGUI(logado);
     qDebug() << "Autenticacao";
 }
@@ -67,7 +69,7 @@ void inline CntrGeral::executarUsuGUI() {
 }
 
 void inline CntrGeral::executarEveGUI() {
-//    cntrIAAutenticacao->executar_autenticacao(CPF&);
+    cntrIAEventos->executar(this->cpf, logado);
     qDebug() << "Eventos";
 }
 
@@ -89,10 +91,10 @@ class CntrIAAutenticacao : public QObject, public IAAutenticacao{
   public:
     void setCntrISAutenticacao(ISAutenticacao *);
     bool executar_autenticacao(CPF&) throw(runtime_error);
+    CPF fornecer_cpf() throw(runtime_error);
 
   public slots:
     void logarGUI(QString, QString);
-    //void executarEveGUI();
 
   signals:
     void notifique_situacao(int);
@@ -137,6 +139,14 @@ class CntrIAUsuario : public QObject, public IAUsuario{
     void alterarFaixaEventoGUI(string, string);
     void alterarCidadeEventoGUI(string, string);
     void alterarEstadoEventoGUI(string, string);
+    void alterarDataApresentacaoGUI(string, string);
+    void alterarHorarioApresentacaoGUI(string, string);
+    void alterarPrecoApresentacaoGUI(string, string);
+    void alterarSalaApresentacaoGUI(string, string);
+
+    void excluirApresentacaoGUI(string);
+    void addEventoGUI(EstruturaEvento);
+    void addApresentacaoGUI(EstruturaApresentacao);
 
   signals:
     void notifique_situacao(int);
@@ -152,6 +162,69 @@ class CntrIAUsuario : public QObject, public IAUsuario{
 
 void inline CntrIAUsuario::setCntrISUsuario(ISUsuario *cntrISUsuario) {
     this->cntrISUsuario = cntrISUsuario;
+}
+
+
+class CntrIAEventos : public QObject, public IAEventos{
+
+    Q_OBJECT
+
+  private:
+    ISEventos *cntrISEventos;
+    IAVendas *cntrIAVendas;
+    string cpf;
+    bool logado = false;
+
+  public:
+    void executarMostrarEventosGUI();
+    void setCntrISEventos(ISEventos *);
+    void setCntrIAVendas(IAVendas *);
+    void executar(CPF, bool) throw(runtime_error);
+
+  public slots:
+    void executarMostrarEventosEspGUI(string);
+    void processarApresentacoesGUI(CodigoEvento);
+    void pre_compra(CodigoEvento, CodigoApresentacao);
+
+  signals:
+    void mostre_todos_eventos(list<Evento>);
+    void mostre_eventos(list<Evento>);
+    void notifique_situacao(int);
+    void inicia_apresentacoes_disponiveis(list<Apresentacao>);
+    void encerrarEventos();
+};
+
+
+void inline CntrIAEventos::setCntrISEventos(ISEventos *cntrISEventos) {
+    this->cntrISEventos = cntrISEventos;
+}
+
+void inline CntrIAEventos::setCntrIAVendas(IAVendas *cntrIAVendas) {
+    this->cntrIAVendas = cntrIAVendas;
+}
+
+//-----------------------------------------
+
+class CntrIAVendas : public QObject, public IAVendas{
+
+    Q_OBJECT
+
+  private:
+    ISVendas *cntrISVendas;
+    IAVendas *cntrIAVendas;
+  public:
+    void executar(CPF, CodigoEvento, CodigoApresentacao) throw(runtime_error);
+    void setCntrISVendas(ISVendas *);
+    void executarMostrarDadosGUI(CPF, CodigoEvento, CodigoApresentacao);
+  public slots:
+    void executarCompraGUI(CodigoEvento, CodigoApresentacao);
+  signals:
+    void atualize_dados(CartaoCredito, Evento, Apresentacao);
+    void lista_ingressos_adquiridos(list<Ingresso>);
+};
+
+void inline CntrIAVendas::setCntrISVendas(ISVendas *cntrISVendas) {
+    this->cntrISVendas = cntrISVendas;
 }
 
 #endif // CONTROLADORAS_H

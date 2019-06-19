@@ -43,7 +43,9 @@ HEADERS += \
 FORMS += \
         autenticacao.ui \
         mainwindow.ui \
-        telausuario.ui
+        telaeventos.ui \
+        telausuario.ui \
+        telavendas.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
